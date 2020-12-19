@@ -1,0 +1,51 @@
+/* color variable*/
+$color-F6F6F6: #F6F6F6;
+$secondary: #7D7D7D;
+$primary: #214796;
+$color-D7D7D7: #D7D7D7;
+$color-000000: #000000;
+$color-11C19E: #11C19E;
+$color-FFFFFF: #FFFFFF;
+$color-grey: #555;
+
+
+/* fontSize variable*/
+$font-size-base: 0.875rem;
+$font-size-20: 1.25rem;
+$font-size-16: 1rem;
+$font-size-14: 0.875rem;
+$font-size-12: 0.75rem;
+$font-size-10: 0.625rem;
+
+
+$theme-colors: (
+    secondary: $secondary,
+    primary: $primary
+);
+
+
+$spacer: 1rem !default;
+$spacers: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+    (
+        10: ($spacer * 0.625),
+        46: ($spacer * 2.875)
+    ),
+  $spacers
+);
+
+
+$sizes: () !default;
+$sizes: map-merge((
+    12 : 12%,
+    20: 20%,
+    27: 27%,
+    29: 29%,
+    46: 46%
+  ),
+  $sizes);
+
+$border-width: 0.6px;
+
+
