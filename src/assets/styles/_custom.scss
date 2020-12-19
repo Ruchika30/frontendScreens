@@ -1,0 +1,184 @@
+$body-bg: $color-F6F6F6;
+$border-color: $color-D7D7D7;
+$body-color: $color-000000;
+
+.cardWrapper {
+  .bg-white {
+    .cardContentWrapper {
+      @extend .p-3;
+      &.px-0 {
+        @extend .px-0;
+      }
+      &:first-child {
+        @extend .border-0;
+      }
+      @extend .border-top;
+    }
+  }
+  .bg-color-11C19E {
+    @extend .p-3;
+    .cardContentWrapper {
+      @extend .pt-3;
+      @extend .border-0;
+      &:first-child {
+        @extend .pt-0;
+      }
+    }
+  }
+}
+
+.btn-primary {
+  @extend .py-10;
+  &:hover,
+  &:focus,
+  &:visited,
+  &:focus-within {
+    @extend .btn-primary;
+  }
+}
+
+.btn-outline-primary {
+  &:hover,
+  &:focus,
+  &:visited,
+  &:focus-within {
+    @extend .bg-transparent;
+    @extend .shadow-none;
+  }
+}
+
+.bg-color-11C19E {
+  background: $color-11C19E;
+}
+.lineHeight15 {
+  line-height: 0.9375rem;
+}
+
+.lineHeight20 {
+  line-height: 1.25rem!important;
+}
+
+.bottom-modal {
+  outline: none;
+  bottom: 0;
+  left: 0;
+  background: $color-F6F6F6;
+  @extend .position-fixed;
+  @extend .w-100;
+  @extend .mw-100;
+  @extend .d-flex;
+  @extend .justify-content-between;
+  @extend .flex-column;
+  @extend .rounded-top;
+  z-index: 15;
+  // min-height: 20rem;
+  will-change: transform;
+  box-shadow: 0 10px 570px;
+}
+
+
+.py-10 {padding-left: ($spacer * 0.625)!important; padding-right: ($spacer * 0.625)!important;}
+.ml-46 {margin-left: ($spacer * 2.875)!important;}
+.w-150 {width: 150px;}
+
+
+
+//floatingLabel start here
+.floatingLabel {
+  .form-control {
+    @extend .border-0;
+    @extend .px-3;
+    height: 2.5rem!important;
+    @extend .pt-3;
+    @extend .shadow-none;
+    @extend .font-16;
+  }
+  .floating-label > input + label, .floating-label > textarea + label {
+    @extend .px-3;
+    left: 0!important;
+    @extend .font-16;
+  }
+  .floating-label > input[placeholder]:not(:placeholder-shown) + label, 
+  .floating-label > input[placeholder]:not(:placeholder-shown) + label.label-sm, 
+  .floating-label > textarea[placeholder]:not(:placeholder-shown) + label, 
+  .floating-label > textarea[placeholder]:not(:placeholder-shown) + label.label-sm,
+  .floatingLabel .floating-label > input:focus + label, 
+  .floatingLabel .floating-label > input:focus + label.label-sm, 
+  .floatingLabel .floating-label > textarea:focus + label, 
+  .floatingLabel .floating-label > textarea:focus + label.label-sm
+  {
+    top: 2px!important;
+    @extend .font-10;
+  }
+  .floating-label > input:focus + label, 
+  .floating-label > input:focus + label.label-sm, 
+  .floating-label > textarea:focus + label, 
+  .floating-label > textarea:focus + label.label-sm {
+    top: 2px!important;
+    @extend .font-10;
+  }
+
+}
+
+
+.form-radio
+{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    @extend .d-inline-block;
+    @extend .position-relative;
+    @extend .rounded-circle;
+    top: 10px;
+    height: 22px;
+    width: 22px;
+    cursor: pointer;     
+    margin-right: 7px;
+    outline: none;
+}
+.form-radio:checked::before
+{
+  @extend .position-absolute;
+  @extend .JioTypeW04-Light;
+  @extend .font-14;
+  @extend .text-white;
+  left: 6px;
+  top: -2px;
+  content: '\02143';
+  transform: rotate(40deg);
+}
+// .form-radio:hover
+// {
+//      background-color: #f7f7f7;
+// }
+.form-radio:checked
+{
+  @extend .bg-primary;
+}
+label
+{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
