@@ -4,8 +4,6 @@ export { default as gear } from './magnify.png';
 export { default as japan } from './japan.jpg';
 export { default as arrow } from './arrow.png';
 export { default as banner } from './banner.png';
-
-
-
-
+export { default as banner2 } from './banner2.jpg';
+export { default as list } from './list.png';
 

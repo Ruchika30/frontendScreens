@@ -1,19 +1,22 @@
 import { css } from '@emotion/core';
-import { justifyContentSpaceBet, dFlex } from '../../assets/styles/flexbox'
-import { navyBlueColor, seaBlueColor, whiteColor } from '../../assets/styles/colors'
-import { mTopBottom4 } from '../../assets/styles/spacing'
-
+import { dFlex, justifyContentSpaceBet } from '../../assets/styles/flexbox';
+import { navyBlueColor, seaBlueColor, whiteColor } from '../../assets/styles/colors';
+import { mTopBottom4 } from '../../assets/styles/spacing';
 
 export default {
 
-    cardWrapper: css`
+  cardWrapper: css`
       width: 100 %;
      ${navyBlueColor};
     height: 55px;
     padding: 10px 0px;
 `,
+  iframeStyle: css`
+        height: 100%;
+        width: 100%;
+    `,
 
-    homeWrapper: css`
+  homeWrapper: css`
     height: 50px;
     width: 50px;
     background - color: ${seaBlueColor};
@@ -22,28 +25,34 @@ export default {
     margin - left: 150px;
 `,
 
-    icon: css`
+  videoWrapper: css`
+          position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+
+    `,
+
+  icon: css`
      height: 50px;
     width: 30px;
     `,
 
-    title: css`
+  title: css`
         font-size: 3em;
     `,
 
-    gridStyle: ({
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(14rem, 1fr))'
+  gridStyle: ({
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(14rem, 1fr))'
 
-    }),
+  }),
 
-    sectionContainer: css`
+  sectionContainer: css`
         ${mTopBottom4};
         ${dFlex}
-    `
+    `,
 
-    ,
-    numberAnimationContainer: css`
+  numberAnimationContainer: css`
         ${navyBlueColor};
         ${justifyContentSpaceBet};
         ${dFlex};
@@ -51,8 +60,5 @@ export default {
         padding: 10px;
 
 `
-}
-
-
-
+};
 

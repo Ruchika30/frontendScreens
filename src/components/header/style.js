@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
+
 export default {
 
-    header: css`
+  header: css`
         height: 400px;
         background-image: url('../../assets/icons/banner.jpeg');
         width: 100%;
@@ -11,21 +12,20 @@ export default {
         background-color: #b4fbfb;
 `,
 
-    menuWrapper: css`
+  menuWrapper: css`
      display: flex;
      margin-bottom: 100px;
     `,
 
-    animationTextBody : css`
+  animationTextBody: css`
         padding: 2% 5%;
     `,
-    
 
-    iconContainer: css`
+  iconContainer: css`
     width: 70 %;
     `,
 
-    aboutUs: css`
+  aboutUs: css`
         text-align: left;
         width: 100%;
         margin-left: 80px;
@@ -34,15 +34,10 @@ export default {
         align-items: center;
     `,
 
-    transitionsItem: css`
+  transitionsItem: css`
         display: none;
         visibility: hidden;
-    `,
+    `
 
+};
 
-
-
-
-}
-
-   

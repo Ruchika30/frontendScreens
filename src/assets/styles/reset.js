@@ -4,7 +4,7 @@ import {
 } from './spacing';
 import { fontFace } from './typography';
 import {
-  paperColor, secondaryColor, primaryColor, bgColor
+  bgColor, paperColor, primaryColor, secondaryColor
 } from './colors';
 
 // animation duration for components appear / disappear should be consistent
