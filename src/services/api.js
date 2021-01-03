@@ -9,7 +9,6 @@ import axios from 'axios'
 export async function api(type, requestURL, data, isSecure = false) {
     // const token = await AsyncStorage.getItem('authToken')
 
-    console.log("requestURL--", requestURL)
 
     const headers = {
         Accept: 'application/json',

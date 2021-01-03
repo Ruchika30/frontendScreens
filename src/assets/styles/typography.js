@@ -1,7 +1,6 @@
 import { css } from '@emotion/core';
 // import { withBasePath } from '../config';
 
-
 export const fontSize = {
   fontSize30: '3rem',
   fontSize28: '2rem',
@@ -13,7 +12,9 @@ export const fontSize = {
   fontSize18: '1.1rem',
   fontSize15: '0.9rem',
   fontSize12: '0.75rem',
-  fontSize10: '0.625rem'
+  fontSize10: '0.625rem',
+  fontSize9: '0.425rem'
+
 };
 
 export const fontSize26 = {
@@ -74,19 +75,22 @@ export const jioRupee = {
   fontFamily: 'rupee !important'
 };
 
-
 export const w700 = {
   fontWeight: 700
-}
+};
 
-export const gothic ={
+export const gothic = {
   fontFamily: 'gothic'
-}
+};
+
+export const gothicSemiBold = {
+  fontFamily: 'gothicSemiBold'
+};
 
 export const oswald = {
   fontFamily: 'oswald-regular'
-}
+};
 
 export const bebas = {
   fontFamily: 'BebasNeue-Regular'
-}
+};

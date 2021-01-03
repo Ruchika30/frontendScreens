@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
+import { seaBlueColor } from '../../assets/styles/colors';
 
 export default {
 
@@ -20,22 +21,27 @@ export default {
 
     `,
 
-    bar : css`
+  bar: css`
       width: 30px;
       height: 3px;
       background-color: black;
       margin: 5px 0px;
     `,
 
+  menuItem: css`
+    padding: 10px;
+    &:hover{
+      background-color: ${seaBlueColor};
+    }
+  `,
 
-  hamburger:css`
+  hamburger: css`
       display: none;
 
        @media (max-width: 450px) {
         display: block;
       },
   `,
-
 
   icon: css`
      height: 50px;
@@ -64,7 +70,7 @@ export default {
           opacity:0.7;
   `,
 
-    menuItemsWrapper: css`
+  menuItemsWrapper: css`
         width: 60%;
         margin: auto;
         position: relative;
@@ -73,7 +79,7 @@ export default {
       },
     `,
 
-    ul : css`
+  ul: css`
       margin-right: 10px,
       `
 };

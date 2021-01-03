@@ -1,0 +1,19 @@
+import {
+  gothic
+} from '../../assets/styles/typography';
+
+export default {
+
+  gridStyle: ({
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(14rem, 1fr))',
+    marginRight: '10px'
+
+  }),
+
+  title: ({
+    fontSize: '2rem',
+    fontFamily: 'gothic'
+  })
+
+};

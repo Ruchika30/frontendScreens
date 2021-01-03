@@ -134,7 +134,6 @@ export const mTopBottom5 = {
   marginBottom: space.space5
 };
 
-
 export const mLeftRightAuto = {
   marginLeft: space.spaceAuto,
   marginRight: space.spaceAuto
@@ -198,6 +197,7 @@ export const pBottom2 = {
 export const pTop3 = {
   paddingTop: space.space3
 };
+
 export const pBottom3 = {
   paddingBottom: space.space3
 };

@@ -34,6 +34,7 @@
             }
         ],
         "react/jsx-uses-vars": "error",
+        /* needs to be removed whiel refactor */
         "react/no-did-update-set-state": [
             "off"
         ],
@@ -125,7 +126,9 @@
         "react-hooks/exhaustive-deps": "warn",
         "linebreak-style": 0,
         "global-require": 0,
-       
+        /*
+        to be remove before refactor
+      */
         "no-use-before-define": [
             "error",
             {
