@@ -10,12 +10,14 @@ import Card from '../../components/card';
 import Layout from '../../components/layout/index.js';
 import { dFlex } from '../../assets/styles/flexbox';
 import styles from '../../assets/styles/base';
-import { lightGreyColor, skyBlueColor } from '../../assets/styles/colors';
+import { lightGreyColor, paperColor, skyBlueColor } from '../../assets/styles/colors';
 import { w100 } from '../../assets/styles/reset';
-import { fontSize14, fontSize28, w700 } from '../../assets/styles/typography';
+import {
+  fontSize14, fontSize28, gothicSemiBold, w700
+} from '../../assets/styles/typography';
 import SearchBar from '../../components/searchBar';
 import { m3, mLeft0, pLeft6 } from '../../assets/styles/spacing';
-import { careerSectors } from '../../services/careers';
+import { careerSectors, searchCareerSectors } from '../../services/careers';
 
 const container = css`
     width: 80%;
@@ -25,9 +27,10 @@ const container = css`
  `;
 
 const srchWrapper = css`
-    background-color: ${lightGreyColor};
-    padding: 10px;
+    background-color: ${paperColor};
+    padding: 13px;
     margin : 5px 0px;
+    box-shadow: 0 0 0 1px rgba(63,63,68,0.05), 0 1px 2px 0 rgba(63,63,68,0.15);
     `;
 
 const header = css`
@@ -38,6 +41,8 @@ const header = css`
 const CareersPage = () => {
   const history = useHistory();
   const [sectors, setSectors] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  console.log('searchTerm', searchTerm);
 
   const getInitialData = async () => {
     try {
@@ -61,14 +66,28 @@ const CareersPage = () => {
     history.push(`/careers/${id}`);
   };
 
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(async () => {
+      const body = { name: searchTerm };
+      const response = await searchCareerSectors(body);
+      setSectors(response);
+    }, 2000);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm]);
+
+  const handleSearch = e => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <React.Fragment>
       <Navbar fixed />
       {/* Header */}
       <div css={header}>
         <div css={[container]}>
-          <div css={[fontSize28, w700]}>Career Options of India</div>
-          <div css={[m3, mLeft0]}>
+          <div css={[fontSize28, w700, gothicSemiBold]}>Career Options of India</div>
+          <div css={[m3, mLeft0, gothicSemiBold]}>
             Ex nostrud sit officia incididunt ut cupidatat duis aliquip reprehenderit occaecat aute velit.
             Eiusmod in sint eiusmod anim nulla eiusmod
             reprehenderit magna officia culpa nisi.
@@ -80,10 +99,10 @@ const CareersPage = () => {
         </div>
 
       </div>
-      <div css={[container, fontSize14]}>Home/Careers In India</div>
+      <div css={[container, fontSize14, gothicSemiBold]}>Home/Careers In India</div>
       <Layout contentStyle={styles.layoutContainer}>
         <div style={{ width: '100%' }} css={srchWrapper}>
-          <SearchBar />
+          <SearchBar searchvalue={handleSearch} />
         </div>
         <section css={styles.gridStyle}>
           {sectors.map(item => (

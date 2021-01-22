@@ -8,7 +8,7 @@ import { useParams } from 'react-router';
 
 import Navbar from '../../components/navbar';
 // import Header from '../../components/header';
-import CardForVideo from '../../components/cardForVideo';
+import CardWithDataBelow from '../../components/cardWithDetailBelow';
 import Layout from '../../components/layout';
 // import { dFlex } from '../../assets/styles/flexbox'
 import styles from '../../assets/styles/base';
@@ -57,21 +57,91 @@ const VideoLibrary = ({ ref }) => {
     history.push(`/careers/${id}`);
   };
 
+  const arrayOfrows = [
+    {
+      sectionName: 'section1 ',
+      videos: [
+        {
+          cardId: 1,
+          cardDescription: 'this is acrd one'
+        },
+        {
+          cardId: 2,
+          cardDescription: 'this is acrd one'
+        }
+      ]
+    },
+    {
+      sectionName: 'section2 ',
+      videos: [
+        {
+          cardId: 1,
+          cardDescription: 'this is acrd one'
+        },
+        {
+          cardId: 2,
+          cardDescription: 'this is acrd one'
+        }
+      ]
+    },
+    {
+      sectionName: 'section1 ',
+      videos: [
+        {
+          cardId: 1,
+          cardDescription: 'this is acrd one'
+        },
+        {
+          cardId: 2,
+          cardDescription: 'this is acrd one'
+        }
+      ]
+    },
+    {
+      sectionName: 'section1 ',
+      videos: [
+        {
+          cardId: 1,
+          cardDescription: 'this is acrd one'
+        },
+        {
+          cardId: 2,
+          cardDescription: 'this is acrd one'
+        }
+      ]
+    },
+    {
+      sectionName: 'section1 ',
+      videos: [
+        {
+          cardId: 1,
+          cardDescription: 'this is acrd one'
+        },
+        {
+          cardId: 2,
+          cardDescription: 'this is acrd one'
+        }
+      ]
+    },
+    {
+      sectionName: 'section1 ',
+      videos: [
+        {
+          cardId: 1,
+          cardDescription: 'this is acrd one'
+        },
+        {
+          cardId: 2,
+          cardDescription: 'this is acrd one'
+        }
+      ]
+    }
+  ];
   return (
     <div css={ref}>
 
-      {/* <div css={header}>
-        <div css={[headerWrapper]}>
-          <div css={[fontSize28, w700]}>Career Options of India</div>
-
-        </div>
-        <div>Home/Careers In India</div>
-      </div> */}
-
       <Layout contentStyle={styles.layoutContainer}>
-        <div css={m3}>
-          <SearchBar />
-        </div>
+
         <div>
           <section css={style.videoWrapper}>
             <iframe
@@ -84,6 +154,17 @@ const VideoLibrary = ({ ref }) => {
               width="560"
               height="349"
             />
+          </section>
+
+          <section>
+            <div style={{ display: 'flex', overflow: 'auto', whiteSpace: 'nowrap' }}>
+              {arrayOfrows.map(item => (
+                <div>
+                  <CardWithDataBelow data={item} />
+                </div>
+              ))}
+
+            </div>
           </section>
 
         </div>

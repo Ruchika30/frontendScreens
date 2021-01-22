@@ -1,19 +1,26 @@
 const api = 'api';
 const baseUrl = process.env.REACT_APP_BE_URL || '';
 
+const prefixCareersSector = 'career-sector';
+const prefixCareerList = 'career-list';
+
 const apiEndpoints = {
   careerSectors: 'career-sector',
   careerList: 'career-list',
   overview: 'overview',
-  skillset: 'SkillSets'
+  skillset: 'SkillSets',
+  roles: 'Roles',
+  search: 'search'
 };
 
 const API_ROUTES = {
   getCareerSectors: `${api}/${apiEndpoints.careerSectors}`,
   getCareerList: `${api}/${apiEndpoints.careerList}`,
   getOverview: `${api}/${apiEndpoints.overview}`,
-  getSkillset: `${api}/${apiEndpoints.skillset}`
-
+  getSkillset: `${api}/${apiEndpoints.skillset}`,
+  getRoles: `${api}/${apiEndpoints.roles}`,
+  searchSector: `${api}/${prefixCareersSector}/${apiEndpoints.search}`,
+  searchCareer: `${api}/${prefixCareerList}/${apiEndpoints.search}`
 };
 
 export default API_ROUTES;

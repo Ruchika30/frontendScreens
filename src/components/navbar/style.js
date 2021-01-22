@@ -67,7 +67,8 @@ export default {
           background-color: black;
           display: block;
           padding:10px;
-          opacity:0.7;
+          position: absolute;
+          width: 100%;
   `,
 
   menuItemsWrapper: css`

@@ -36,8 +36,6 @@ const Navbar = props => {
             <li onClick={() => handleClick('/')} css={menuItem}>Home</li>
             <li onClick={() => handleClick('/sectors')} css={menuItem}>Careers</li>
             <li css={menuItem}>Link2</li>
-            <li css={menuItem}>Link3</li>
-            <li css={menuItem}>Link4</li>
           </ul>
         </div>
 
@@ -49,11 +47,12 @@ const Navbar = props => {
       </div>
 
       { toggle ? (
-        <div css={navbarMobileStyle}>
-          <div>Careers</div>
-          <div>Careers</div>
-          <div>Careers</div>
-        </div>
+        <ul css={navbarMobileStyle}>
+          <li onClick={() => handleClick('/')} css={menuItem}>Home</li>
+          <li onClick={() => handleClick('/sectors')} css={menuItem}>Careers</li>
+          <li css={menuItem}>Link2</li>
+
+        </ul>
       ) : null}
     </div>
   );
