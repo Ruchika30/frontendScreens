@@ -20,6 +20,8 @@ import {
 } from '../../assets/styles/typography';
 import Skillset from '../Skillset';
 import OnlineCourses from '../Courses';
+import Responsibility from '../RolesResponsibility';
+import VideoLibrary from '../VideoLibrary';
 
 const headerWrapper = css`
     ${w100};
@@ -62,9 +64,10 @@ const CareerPage = ({ idDetailContext }) => {
   };
 
   const menuItems = [
-    { value: 'overview', link: '#navbar', id: 0 },
-    { value: 'skillSet', link: '#skillSet', id: 1 },
-    { value: 'Online courses', link: '#onlineCourses', id: 2 }
+    { value: 'videoLibrary', link: '#video', id: 0 },
+    { value: 'overview', link: '#navbar', id: 1 },
+    { value: 'skillSet', link: '#skillSet', id: 2 },
+    { value: 'Roles & Reponsibility', link: '#responsibility', id: 3 }
   ];
   return (
     <div>
@@ -132,9 +135,10 @@ const CareerPage = ({ idDetailContext }) => {
 
         {/* content */}
         <div css={contentWrapper}>
+          <div id="video" css={longDiv}><VideoLibrary /></div>
           <div id="overview" css={longDiv}><Overview careerId={id} /></div>
           <div id="skillSet" css={longDiv}><Skillset /></div>
-          <div id="onlineCourses" css={longDiv}><OnlineCourses /></div>
+          <div id="responsibility" css={longDiv}><Responsibility /></div>
         </div>
 
       </div>

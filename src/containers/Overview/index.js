@@ -16,7 +16,7 @@ const Overview = props => {
   const getInitialData = async id => {
     try {
       // show();
-      const response = await overviewService(id);
+      const response = await overviewService('5fc25408edd5611e28402703');
       setOverViewData(response);
 
       // hide();

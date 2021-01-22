@@ -19,10 +19,14 @@ import {
 import Tag from '../../components/tag';
 import CareerDetailCard from '../../components/cardWithDetail';
 import CarouselComponent from '../../components/carousel';
-import { careerListsById as careerListsByIdService, overview as overviewService } from '../../services/careers';
+import {
+  careerListsById as careerListsByIdService,
+  overview as overviewService, searchCareer
+} from '../../services/careers';
 import { useParams } from 'react-router';
 import { useHistory, useLocation } from 'react-router-dom';
 import consumer from '../../context/consumer';
+import Table from '../../components/table';
 
 const CareerList = ({ idDetailContext }) => {
   const [carrerList, setCareerList] = useState([]);
@@ -30,16 +34,13 @@ const CareerList = ({ idDetailContext }) => {
   const { id } = useParams();
   const history = useHistory();
   const [careerId, setCareerId] = idDetailContext;
+  const [searchTerm, setSearchTerm] = useState(null);
+  // const [career, setCareer] = useState([]);
 
-  const cardStyle = () => {
-
-  };
-
-  const getInitialData = async id => {
+  const getInitialData = async (id, pageNo) => {
     try {
       // show();
-      const { careers } = await careerListsByIdService(id);
-      debugger;
+      const { careers } = await careerListsByIdService(id, pageNo);
       setCareerList(careers);
 
       // hide();
@@ -51,9 +52,24 @@ const CareerList = ({ idDetailContext }) => {
   };
 
   const handleCareerClick = () => {
-    debugger;
     history.push(`/career/${id}`);
   };
+
+  const handleCareerSearch = e => {
+    setSearchTerm(e.target.value);
+  };
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(async () => {
+      if (searchTerm) {
+        const body = { career_name: searchTerm };
+        const { careers } = await searchCareer(body);
+        setCareerList(careers);
+      }
+    }, 2000);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm]);
 
   useEffect(() => {
     getInitialData(id);
@@ -72,20 +88,24 @@ const CareerList = ({ idDetailContext }) => {
 
         <div css={[m3, mLeft0]}>Career Options</div>
         <div style={{ width: '100%' }} css={srchWrapper}>
-          <SearchBar />
+          <SearchBar searchvalue={handleCareerSearch} />
         </div>
-        <div css={[dFlex, m3, mLeft0]}>
+        {/* tags */}
+        {/* <div css={[dFlex, m3, mLeft0]}>
           <div css={[mRight3]}><Tag dropDown text="Industry" css={tag} /></div>
           <div css={mRight3}><Tag dropDown text="Avg Salary" css={tag} /></div>
           <div css={mRight3}><Tag dropDown text="Popularity" css={tag} /></div>
-        </div>
+        </div> */}
 
-        {carrerList.map(item => (
+        {/* {carrerList && carrerList.map(item => (
           <div onClick={handleCareerClick}>
             <CareerDetailCard careerData={item} />
             <hr />
           </div>
-        ))}
+        ))} */}
+        <div onClick={handleCareerClick}>
+          <Table careerData={carrerList} />
+        </div>
 
       </Layout>
     </React.Fragment>

@@ -1,6 +1,7 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import CareerIdValueProvider from './context/idValueProvider';
+import { greyForBg } from './assets/styles/colors';
 
 const HomePage = lazy(() => import('../src/containers/HomePage'));
 const CareerSectors = lazy(() => import('../src/containers/CareersSectors'));
@@ -10,7 +11,7 @@ const Overview = lazy(() => import('../src/containers/Overview'));
 const video = lazy(() => import('../src/containers/VideoLibrary'));
 
 const App = () => (
-  <div className="App">
+  <div className="App" style={{ backgroundColor: greyForBg, minHeight: '100vh' }}>
     <Router>
       <Suspense fallback={<div className="loader centerLoader" />}>
         <Switch>

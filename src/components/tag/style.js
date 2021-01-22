@@ -10,7 +10,7 @@ export default {
       textAlign: 'center',
       // marginRight: 8,
       // maxHeight: '20px',
-      padding: '1px 5px',
+      padding: '1px 2px',
       overflowX: 'scroll',
       whiteSpace: 'nowrap',
       maxWidth: '150px'

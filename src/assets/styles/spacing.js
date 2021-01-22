@@ -151,6 +151,10 @@ export const p3 = {
 export const p4 = {
   padding: space.space4
 };
+
+export const p5 = {
+  padding: space.space5
+};
 export const p40 = {
   padding: space.space40
 };

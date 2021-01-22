@@ -22,8 +22,8 @@ export const careerSectors = async () => {
   return getSectorsMapper(response);
 };
 
-export const careerListsById = async id => {
-  const response = await api('GET', `${API_ROUTES.getCareerList}/${id}`, false);
+export const careerListsById = async (id, pageNo) => {
+  const response = await api('GET', `${API_ROUTES.getCareerList}/${id}`, false, pageNo);
   return getCareerListMapper(response);
 };
 
@@ -44,5 +44,20 @@ export const getOverviewDetails = async id => {
 
 export const getSkillset = async id => {
   const response = await api('GET', `${API_ROUTES.getSkillset}/${id}`, false);
-  return overviewdataMapper(response);
+  return response;
+};
+
+export const getRolesAndResponsibilities = async id => {
+  const response = await api('GET', `${API_ROUTES.getRoles}/${id}`, false);
+  return response;
+};
+
+export const searchCareerSectors = async data => {
+  const response = await api('POST', `${API_ROUTES.searchSector}`, data, false, 0);
+  return response;
+};
+
+export const searchCareer = async data => {
+  const response = await api('POST', `${API_ROUTES.searchCareer}`, data, false, 0);
+  return response;
 };

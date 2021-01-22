@@ -22,6 +22,7 @@ export const navyBlue = '#0E4194';
 export const seaBlueColor = '#01BBC8';
 export const darkGrayColor = '#666666';
 export const skyBlueColor = '#E5F8F9';
+export const greyForBg = '#F3F6F8';
 
 export const lightGrayFontColor = {
   color: lightGreyColor
@@ -46,7 +47,6 @@ export const bgPrimary = {
 export const navyBlueColor = {
   background: navyBlue
 };
-
 
 export const bgPrimaryDisableColor = {
   background: primaryDisableColor

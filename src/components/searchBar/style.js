@@ -5,12 +5,17 @@ export default {
 
   container: css`
         width: 50%;
-        border: 1px solid black;
-        // border-radius: 20px;
-        // padding: 0px 10px;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+        padding:  7px;
          display:flex;
         align-items: center;
         justify-content: space-between;
+        
+        @media (max-width: 480px){
+            width: 100%;
+          
+        }
     `,
 
   icon: css`

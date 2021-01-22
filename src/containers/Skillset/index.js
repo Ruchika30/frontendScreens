@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import React, { useEffect, useState } from 'react';
-import CardWithDetailOver from '../../components/cardWithDetailOverIt';
+import CardWithDetailOnSide from '../../components/CardWithDetailOnSide';
 import style from './style.js';
 import { getSkillset as getSkillsetService } from '../../services/careers';
 import { useHistory, useParams } from 'react-router';
@@ -34,7 +34,8 @@ const Skillset = () => {
       <div css={[gridStyle, mTop2]}>
         {skillList.map(item => (
           <div style={{ marginRight: '50px' }}>
-            <CardWithDetailOver skillsData={item} />
+            <CardWithDetailOnSide data={item} />
+
           </div>
         ))}
 

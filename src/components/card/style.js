@@ -14,8 +14,9 @@ export default {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    maxWidth: '20rem',
     '&:hover': {
-      transform: 'scale(1.05)',
+      transform: 'scale(1.02)',
       transition: '0.3s'
     }
   },

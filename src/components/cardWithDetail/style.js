@@ -7,7 +7,7 @@ import { mBottom1, mLeft3 } from '../../assets/styles/spacing';
 export default {
 
   containerStyle: css`
-    border: 0.1px solid black;
+    border: 0.1px solid darkgrey;
     display: flex;
     justify-content: space-between;
     padding: 10px 0px;
@@ -45,7 +45,7 @@ export default {
   menu: css`
        ${mLeft3};
         @media (max-width: 480px){
-            border-bottom: 1px solid black; 
+            border-bottom: 1px solid darkgrey; 
             padding: 5px 0px;
         }
 
