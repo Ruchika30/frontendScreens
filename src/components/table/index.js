@@ -88,6 +88,7 @@ const StickyHeadTable = props => {
               ))}
             </TableRow>
           </TableHead>
+
           <TableBody>
             {careerData.map(row => (
               <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
@@ -103,6 +104,7 @@ const StickyHeadTable = props => {
             ))}
           </TableBody>
         </Table>
+
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}

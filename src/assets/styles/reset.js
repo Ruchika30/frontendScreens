@@ -25,6 +25,12 @@ export const borderRadius = {
   borderRadiusMd: '0.325rem'
 };
 
+export const alignVerticallyCenter = {
+  display: 'flex',
+  justifyContent: 'center',
+  flexDirection: 'column'
+};
+
 export const borderRadiusMd = {
   borderRadius: borderRadius.borderRadiusMd
 };

@@ -37,7 +37,7 @@ export default {
   imgContainer: css`
     height: 50px;
     width: 50px;
-    background-color: pink;
+    // background-color: pink;
     `,
 
   header: css`

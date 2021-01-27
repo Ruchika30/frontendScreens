@@ -8,9 +8,9 @@ import consumer from '../../context/consumer';
 import Overview from '../Overview';
 import ScrollIntoView from 'react-scroll-into-view';
 import {
-  arrow, list, space, upwardArrow
+  arrow, gear, list, space, upwardArrow
 } from '../../assets/icons';
-import { w100 } from '../../assets/styles/reset';
+import { alignVerticallyCenter, w100 } from '../../assets/styles/reset';
 import { darkBlue, lightCyan } from '../../assets/styles/colors';
 import {
   m3, mLeft0, mRight2, pLeft6, pTop2
@@ -18,7 +18,7 @@ import {
 import { dFlex } from '../../assets/styles/flexbox';
 import { useHistory, useParams } from 'react-router';
 import {
-  fontSize12, fontSize14, gothic, gothicSemiBold
+  fontSize12, fontSize14, fontSize20, gothic, gothicSemiBold
 } from '../../assets/styles/typography';
 import Skillset from '../Skillset';
 import OnlineCourses from '../Courses';
@@ -27,6 +27,7 @@ import VideoLibrary from '../VideoLibrary';
 import { careerListMenuItems } from '../../services/careers';
 import BreadCrumb from '../../components/breadCrumb';
 import GoToTop from '../../components/goToTop';
+import LoaderProvider from '../../hooks/use-loader';
 
 const headerWrapper = css`
     ${w100};
@@ -50,6 +51,8 @@ const CareerPage = ({ idDetailContext }) => {
     menuTitle, iconWrapper, navbar, menu, itemContainer, icon, contentWrapper, dropDownMenu,
     contentAndMenuWrapper, headingStyle
   } = style;
+  const { show, hide } = LoaderProvider();
+
   const careerMenu = 'CAREER MENU';
 
   const container = css`
@@ -102,9 +105,10 @@ const CareerPage = ({ idDetailContext }) => {
 
   const getInitialData = async () => {
     try {
-      // show();
+      show();
       const { items } = await careerListMenuItems(id);
       setMenuList(items);
+      hide();
     } catch (error) {
       // handle error
     }
@@ -135,14 +139,14 @@ const CareerPage = ({ idDetailContext }) => {
         <div css={[header]} id="header">
           <div css={[headerWrapper]}>
             <div css={imgContainer}>
-              <img src={space} css={icon} alt="logo" />
+              <img src={gear} css={icon} alt="logo" />
             </div>
-            <div style={{ marginLeft: '10px' }}>
-              <div css={[gothicSemiBold]}>Software Engineer</div>
-              <div css={[dFlex, pTop2]}>
+            <div style={{ marginLeft: '10px' }} css={alignVerticallyCenter}>
+              <div css={[gothicSemiBold, fontSize20]}>Software Engineer</div>
+              {/* <div css={[dFlex, pTop2]}>
                 <div css={[actionBtns]}>Follow</div>
                 <div css={[actionBtns]}>Compare</div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div style={{ marginTop: '10px' }}>
