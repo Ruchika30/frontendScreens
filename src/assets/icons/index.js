@@ -8,4 +8,5 @@ export { default as banner2 } from './banner2.jpg';
 export { default as list } from './list.png';
 export { default as upwardArrow } from './upwards-arrow.png';
 export { default as gear } from './gears.svg';
+export { default as logoWithTxt } from './logo_text_png.png';
 
