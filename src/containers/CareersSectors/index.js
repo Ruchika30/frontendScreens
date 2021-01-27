@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
@@ -21,6 +22,7 @@ import SearchBar from '../../components/searchBar';
 import { m3, mLeft0, pLeft6 } from '../../assets/styles/spacing';
 import { careerSectors, searchCareerSectors } from '../../services/careers';
 import BreadCrumb from '../../components/breadCrumb';
+import LoaderProvider from '../../hooks/use-loader';
 
 const container = css`
     width: 80%;
@@ -37,7 +39,7 @@ const srchWrapper = css`
     `;
 
 const header = css`
-  background-color: ${celestialBlue};
+  background-color: ${lightCyan};
 //    ${pLeft6}
   `;
 
@@ -50,14 +52,14 @@ const CareersPage = () => {
   const history = useHistory();
   const [sectors, setSectors] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  console.log('searchTerm', searchTerm);
+  const { show, hide } = LoaderProvider();
 
   const getInitialData = async () => {
     try {
-      // show();
+      show();
       const response = await careerSectors();
       setSectors(response);
-      // hide();
+      hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);

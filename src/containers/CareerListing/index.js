@@ -28,6 +28,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import consumer from '../../context/consumer';
 import Table from '../../components/table';
 import BreadCrumb from '../../components/breadCrumb';
+import LoaderProvider from '../../hooks/use-loader';
 
 const CareerList = ({ idDetailContext }) => {
   const [carrerList, setCareerList] = useState([]);
@@ -36,14 +37,15 @@ const CareerList = ({ idDetailContext }) => {
   const history = useHistory();
   const [careerId, setCareerId] = idDetailContext;
   const [searchTerm, setSearchTerm] = useState(null);
+  const { show, hide } = LoaderProvider();
 
   const getInitialData = async (id, pageNo) => {
     try {
-      // show();
+      show();
       const { careers } = await careerListsByIdService(id, pageNo);
       setCareerList(careers);
 
-      // hide();
+      hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
