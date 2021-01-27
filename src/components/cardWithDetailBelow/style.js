@@ -5,47 +5,13 @@ import { fontSize28 } from '../../assets/styles/typography';
 
 export default {
 
-  cardWrapper: {
-    margin: '10px 10px',
-    backgroundPosition: 'right',
-
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    '&:hover': {
-      transform: 'scale(1.05)',
-      transition: '0.3s'
-    }
-  },
-
-  bgImage: {
-    // backgroundImage: `url(${japan})`
-  },
-
-  imageWrapper: {
-    width: '100%',
-    '&:hover': {
-      transform: 'scale(1.1)',
-      transition: '0.3s'
-    }
-  },
-
-  innerCardWrapper: {
-    height: '80%',
-    width: '80%',
-    backgroundColor: 'white',
-    opacity: '0.7',
-
-    justifyContent: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-
-  },
-
-  title: {
-    fontSize28
-
-  }
+  cardWrapper: css`
+    border: 1px solid black;
+    margin: 10px 10px;
+    min-width: 400px;
+     @media (max-width: 800px){
+      min-width: 100px;
+     }
+  `
 
 };

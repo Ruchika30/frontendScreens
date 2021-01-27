@@ -5,10 +5,13 @@ import style from './style';
 import { getOverviewDetails as overviewService } from '../../services/careers';
 import consumer from '../../context/consumer';
 import { mTop2 } from '../../assets/styles/spacing';
+import { heading, title } from '../../assets/styles/reset';
 
 const Overview = props => {
   const { careerId } = props;
-  const { title, description, wrapper } = style;
+  const {
+    description, wrapper
+  } = style;
   const [overviewData, setOverViewData] = useState('');
 
   const { courseName, overviewText } = overviewData || {};
@@ -36,6 +39,7 @@ const Overview = props => {
 
   return (
     <div css={wrapper}>
+      <div css={heading}>Overview</div>
       <div css={title}>{courseName}</div>
       <div css={[description, mTop2]}>{overviewText}</div>
     </div>

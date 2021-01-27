@@ -10,7 +10,9 @@ import Card from '../../components/card';
 import Layout from '../../components/layout/index.js';
 import { dFlex } from '../../assets/styles/flexbox';
 import styles from '../../assets/styles/base';
-import { lightGreyColor, paperColor, skyBlueColor } from '../../assets/styles/colors';
+import {
+  celestialBlue, lightCyan, lightGreyColor, paperColor, skyBlueColor
+} from '../../assets/styles/colors';
 import { w100 } from '../../assets/styles/reset';
 import {
   fontSize14, fontSize28, gothicSemiBold, w700
@@ -18,6 +20,7 @@ import {
 import SearchBar from '../../components/searchBar';
 import { m3, mLeft0, pLeft6 } from '../../assets/styles/spacing';
 import { careerSectors, searchCareerSectors } from '../../services/careers';
+import BreadCrumb from '../../components/breadCrumb';
 
 const container = css`
     width: 80%;
@@ -34,9 +37,14 @@ const srchWrapper = css`
     `;
 
 const header = css`
-  background-color: ${skyBlueColor};
+  background-color: ${celestialBlue};
 //    ${pLeft6}
   `;
+
+const links = [
+  { link: '/', value: 'Home' },
+  { link: '/sectors', value: 'CareerSectors' }
+];
 
 const CareersPage = () => {
   const history = useHistory();
@@ -66,6 +74,10 @@ const CareersPage = () => {
     history.push(`/careers/${id}`);
   };
 
+  const handleClick = link => {
+    history.push(link);
+  };
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       const body = { name: searchTerm };
@@ -82,7 +94,7 @@ const CareersPage = () => {
 
   return (
     <React.Fragment>
-      <Navbar fixed />
+      <Navbar fixed barColor={lightCyan} />
       {/* Header */}
       <div css={header}>
         <div css={[container]}>
@@ -99,7 +111,11 @@ const CareersPage = () => {
         </div>
 
       </div>
-      <div css={[container, fontSize14, gothicSemiBold]}>Home/Careers In India</div>
+
+      <div css={[container]} style={{ marginTop: '10px' }}>
+        <BreadCrumb listOfLinks={links} />
+      </div>
+
       <Layout contentStyle={styles.layoutContainer}>
         <div style={{ width: '100%' }} css={srchWrapper}>
           <SearchBar searchvalue={handleSearch} />

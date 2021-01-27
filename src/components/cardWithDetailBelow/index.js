@@ -15,8 +15,8 @@ const Card = props => {
   } = style;
 
   return (
-    <div style={{ border: '1px solid black', margin: '10px 10px', minWidth: '400px' }}>
-      <div style={{ widows: '100%' }}>
+    <div css={cardWrapper}>
+      <div style={{ width: '100%' }}>
         <img src={banner} alt="banner" style={{ width: '100%' }} />
       </div>
       {/* information */}

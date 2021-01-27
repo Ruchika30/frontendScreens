@@ -6,7 +6,7 @@ import { greyForBg } from './assets/styles/colors';
 const HomePage = lazy(() => import('../src/containers/HomePage'));
 const CareerSectors = lazy(() => import('../src/containers/CareersSectors'));
 const CareersListing = lazy(() => import('../src/containers/CareerListing'));
-const CareerPage = lazy(() => import('../src/containers/CareerPage'));
+const CareerPage = lazy(() => import('./containers/CareerPage/index.jsx'));
 const Overview = lazy(() => import('../src/containers/Overview'));
 const video = lazy(() => import('../src/containers/VideoLibrary'));
 

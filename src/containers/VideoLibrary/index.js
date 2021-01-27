@@ -13,7 +13,7 @@ import Layout from '../../components/layout';
 // import { dFlex } from '../../assets/styles/flexbox'
 import styles from '../../assets/styles/base';
 import { skyBlueColor } from '../../assets/styles/colors';
-import { w100 } from '../../assets/styles/reset';
+import { heading, w100 } from '../../assets/styles/reset';
 import { fontSize28, w700 } from '../../assets/styles/typography';
 import SearchBar from '../../components/searchBar';
 import { m3, mLeft0, pLeft6 } from '../../assets/styles/spacing';
@@ -139,37 +139,31 @@ const VideoLibrary = ({ ref }) => {
   ];
   return (
     <div css={ref}>
+      <div css={heading}>Video Library</div>
 
-      <Layout contentStyle={styles.layoutContainer}>
+      <section css={style.videoWrapper}>
+        <iframe
+          src="https://www.youtube.com/embed/E7wJTI-1dvQ"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          title="video"
+          css={style.iframeStyle}
+          width="560"
+          height="349"
+        />
+      </section>
 
-        <div>
-          <section css={style.videoWrapper}>
-            <iframe
-              src="https://www.youtube.com/embed/E7wJTI-1dvQ"
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title="video"
-              css={style.iframeStyle}
-              width="560"
-              height="349"
-            />
-          </section>
-
-          <section>
-            <div style={{ display: 'flex', overflow: 'auto', whiteSpace: 'nowrap' }}>
-              {arrayOfrows.map(item => (
-                <div>
-                  <CardWithDataBelow data={item} />
-                </div>
-              ))}
-
+      <section>
+        <div style={{ display: 'flex', overflow: 'auto', whiteSpace: 'nowrap' }}>
+          {arrayOfrows.map(item => (
+            <div>
+              <CardWithDataBelow data={item} />
             </div>
-          </section>
+          ))}
 
         </div>
-      </Layout>
-
+      </section>
     </div>
   );
 };

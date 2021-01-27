@@ -23,6 +23,10 @@ export const seaBlueColor = '#01BBC8';
 export const darkGrayColor = '#666666';
 export const skyBlueColor = '#E5F8F9';
 export const greyForBg = '#F3F6F8';
+export const darkBlue = '#1B1443';
+export const lighSeaBlue = '#1cd3c6';
+export const celestialBlue = '#C4FFF9';
+export const lightCyan = '#D6FFF6';
 
 export const lightGrayFontColor = {
   color: lightGreyColor

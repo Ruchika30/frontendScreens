@@ -9,7 +9,7 @@ import Layout from '../../components/layout/index.js';
 import { dFlex, justifyContentSpaceEven } from '../../assets/styles/flexbox';
 import NumberAnimation from '../../components/numberAnimation';
 import styles from '../../assets/styles/base';
-import { skyBlueColor } from '../../assets/styles/colors';
+import { lightCyan, seaBlueColor, skyBlueColor } from '../../assets/styles/colors';
 import { w100 } from '../../assets/styles/reset';
 import { fontSize28, w700 } from '../../assets/styles/typography';
 import SearchBar from '../../components/searchBar';
@@ -27,6 +27,7 @@ import { useParams } from 'react-router';
 import { useHistory, useLocation } from 'react-router-dom';
 import consumer from '../../context/consumer';
 import Table from '../../components/table';
+import BreadCrumb from '../../components/breadCrumb';
 
 const CareerList = ({ idDetailContext }) => {
   const [carrerList, setCareerList] = useState([]);
@@ -35,7 +36,6 @@ const CareerList = ({ idDetailContext }) => {
   const history = useHistory();
   const [careerId, setCareerId] = idDetailContext;
   const [searchTerm, setSearchTerm] = useState(null);
-  // const [career, setCareer] = useState([]);
 
   const getInitialData = async (id, pageNo) => {
     try {
@@ -59,6 +59,12 @@ const CareerList = ({ idDetailContext }) => {
     setSearchTerm(e.target.value);
   };
 
+  const links = [
+    { link: '/', value: 'Home' },
+    { link: '/sectors', value: 'CareerSectors' },
+    { link: `/sectors/${id}`, value: 'CareerList' }
+  ];
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (searchTerm) {
@@ -79,12 +85,15 @@ const CareerList = ({ idDetailContext }) => {
 
   return (
     <React.Fragment>
-      <Navbar fixed />
+      <Navbar fixed barColor={lightCyan} />
       {/* banner */}
       <div>
         <CarouselComponent />
       </div>
       <Layout contentStyle={styles.layoutContainer}>
+        <div style={{ marginTop: '10px' }}>
+          <BreadCrumb listOfLinks={links} />
+        </div>
 
         <div css={[m3, mLeft0]}>Career Options</div>
         <div style={{ width: '100%' }} css={srchWrapper}>
