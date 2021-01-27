@@ -38,8 +38,8 @@ const CareerPage = ({ idDetailContext }) => {
   const refFromUseRef = useRef(null);
   const history = useHistory();
   const {
-    longDiv, header, courseName, inActive, active, actionBtns, wrapper, imgContainer, menuItemsStyle,
-    menuTitle, iconWrapper, menu, itemContainer, icon, contentWrapper, dropDownMenu,
+    longDiv, header, courseName, headerContainer, inActive, active, actionBtns, wrapper, imgContainer, menuItemsStyle,
+    menuTitle, iconWrapper, navbar, menu, itemContainer, icon, contentWrapper, dropDownMenu,
     contentAndMenuWrapper
   } = style;
 
@@ -71,20 +71,22 @@ const CareerPage = ({ idDetailContext }) => {
   ];
   return (
     <div>
-      <div id="navbar">
-        <Navbar fixed />
-      </div>
-      {/* header */}
-      <div css={header} id="header">
-        <div css={[headerWrapper]}>
-          <div css={imgContainer}>
-            <img src={space} css={icon} alt="logo" />
-          </div>
-          <div style={{ marginLeft: '10px' }}>
-            <div css={[gothicSemiBold]}>Software Engineer</div>
-            <div css={[dFlex, pTop2]}>
-              <div css={[actionBtns]}>Follow</div>
-              <div css={[actionBtns]}>Compare</div>
+      <div css={headerContainer}>
+        <div id="navbar">
+          <Navbar fixed />
+        </div>
+        {/* header */}
+        <div css={[header]} id="header">
+          <div css={[headerWrapper]}>
+            <div css={imgContainer}>
+              <img src={space} css={icon} alt="logo" />
+            </div>
+            <div style={{ marginLeft: '10px' }}>
+              <div css={[gothicSemiBold]}>Software Engineer</div>
+              <div css={[dFlex, pTop2]}>
+                <div css={[actionBtns]}>Follow</div>
+                <div css={[actionBtns]}>Compare</div>
+              </div>
             </div>
           </div>
         </div>

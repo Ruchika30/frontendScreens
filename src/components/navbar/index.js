@@ -8,15 +8,11 @@ import { css, jsx } from '@emotion/core';
 
 const Navbar = props => {
   const history = useHistory();
-  const { fixed } = props;
+  const { barColor } = props;
   const [toggle, setToggle] = useState(false);
   const {
     navbar, bar, hamburger, navbarMobileStyle, menuItems, menuItem, homeWrapper, menuItemsWrapper
   } = style;
-
-  const gotoHome = () => {
-    history.push('/');
-  };
 
   const handleHamburger = () => {
     toggle ? setToggle(false) : setToggle(true);
@@ -30,6 +26,7 @@ const Navbar = props => {
     <div>
       <div
         css={navbar}
+        style={{ backgroundColor: barColor }}
       >
         <div css={menuItemsWrapper}>
           <ul css={menuItems}>

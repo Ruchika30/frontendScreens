@@ -12,14 +12,14 @@ import Layout from '../../components/layout';
 // import { dFlex } from '../../assets/styles/flexbox'
 import styles from '../../assets/styles/base';
 import { skyBlueColor } from '../../assets/styles/colors';
-import { w100 } from '../../assets/styles/reset';
+import { heading, title, w100 } from '../../assets/styles/reset';
 import { fontSize28, w700 } from '../../assets/styles/typography';
 import SearchBar from '../../components/searchBar';
 import {
-  m3, mLeft0, pLeft6, pTop3
+  m3, mLeft0, mTop2, pLeft6,
+  pTop3
 } from '../../assets/styles/spacing';
 import { getRolesAndResponsibilities as getResponsibilitiesService } from '../../services/careers';
-import Card from '../../components/card';
 
 const headerWrapper = css`
     ${w100};
@@ -34,7 +34,7 @@ const header = css`
 const Responsibilty = ({ ref }) => {
   const history = useHistory();
   const { id } = useParams();
-  const { contentWrapper } = style;
+  const { contentWrapper, videoWrapper } = style;
   const [responsibilities, setResponsibilities] = useState([]);
 
   const getInitialData = async idValue => {
@@ -61,7 +61,6 @@ const Responsibilty = ({ ref }) => {
   };
 
   const data = [
-
     {
       careername: ' communicxati',
       description: 'loreme ipusmbhggg loreme ipusmbhgggloreme ipusmbhggg'
@@ -76,39 +75,37 @@ const Responsibilty = ({ ref }) => {
 
   return (
     <div css={ref}>
-      <Layout contentStyle={styles.layoutContainer}>
-        <div>
-          <section css={style.videoWrapper}>
-            <iframe
-              src="https://www.youtube.com/embed/E7wJTI-1dvQ"
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title="video"
-              css={style.iframeStyle}
-              width="560"
-              height="349"
-            />
-          </section>
+      <div>
+        <div css={heading}>Roles and Responsibilties</div>
 
-          {/* cards */}
-          <section>
-            {responsibilities.map(item => (
-              <div css={contentWrapper}>
+        <section css={[videoWrapper, mTop2]}>
+          <iframe
+            src="https://www.youtube.com/embed/E7wJTI-1dvQ"
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            title="video"
+            css={style.iframeStyle}
+            width="560"
+            height="349"
+          />
+        </section>
+
+        {/* cards */}
+        <section>
+          {responsibilities.map(item => (
+            <div css={contentWrapper}>
+              <div css={pTop3}>
+                <div>{item.name}</div>
                 <div css={pTop3}>
-                  <div>{item.name}</div>
-                  <div css={pTop3}>
-                    {item.description}
-                  </div>
+                  {item.description}
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
+        </section>
 
-          </section>
-
-        </div>
-      </Layout>
-
+      </div>
     </div>
   );
 };

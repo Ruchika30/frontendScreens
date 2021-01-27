@@ -4,6 +4,11 @@ import { gothic } from '../../assets/styles/typography';
 
 export default {
   title: css`
+        font-size: 1.5em;
+        ${gothic};
+    `,
+
+  heading: css`
         font-size: 2em;
         ${gothic};
     `,

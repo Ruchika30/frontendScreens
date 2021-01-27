@@ -9,6 +9,13 @@ export default {
     padding: 13px;
     margin : 5px 0px;
     box-shadow: 0 0 0 1px rgba(63,63,68,0.05), 0 1px 2px 0 rgba(63,63,68,0.15);
+    `,
+
+  breadCrumbs: css`
+     display: flex; 
+      & > li { 
+          list-style-type: none;
+      }
     `
 
 };

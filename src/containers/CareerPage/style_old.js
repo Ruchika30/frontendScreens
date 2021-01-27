@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import {
-  darkBlue, darkGrayColor, lighSeaBlue, lightCyan, navyBlueColor, paperColor, seaBlueColor, skyBlueColor
+  navyBlueColor, paperColor, seaBlueColor, skyBlueColor, whiteColor
 } from '../../assets/styles/colors';
 import { mRight2 } from '../../assets/styles/spacing';
 import { fontSize12 } from '../../assets/styles/typography';
@@ -28,12 +28,6 @@ export default {
     ${fontSize12};
     `,
 
-  headingStyle: css`
-    list-style-type: none;
-    color: ${paperColor}
-    
-  `,
-
   imgContainer: css`
     height: 50px;
     width: 50px;
@@ -41,35 +35,32 @@ export default {
     `,
 
   header: css`
-    background-color: ${lightCyan};
+    background-color: ${skyBlueColor};
     padding-left: 15%;
-    padding-top: 1%;
+    padding-top: 3%;
     padding-bottom: 10px;
+
+
     @media (max-width: 1350px ) {
-            //   padding-left: 25%;
+              padding-left: 25%;
         },
   `,
 
   contentAndMenuWrapper: css`
       display: flex;
-      // padding-top:40%;
-      width: 100%;
-      // height: 700px;
-      margin: auto;
-
+      padding-top:40%;
         @media (max-width: 800px) {
             display: block;
         },
-   `,
+  `,
 
   headerContainer: css`
         overflow: hidden;
-        // background-color: #333;
-        position: relative;
+        background-color: #333;
+        position: fixed;
         top: 0;
         width: 100%;
         z-index: 100;
-        // position : sticky;
   `,
   // menu: css`
   //       margin-top: 70px;
@@ -77,23 +68,24 @@ export default {
   //   `,
 
   contentWrapper: css`
-        padding-top: 50px;
-        width: 70%;
-        overflow-y: auto;
-        background-color: ${paperColor};
-        // @media (max-width: 1350px ) {
-        //       margin-left: 25%;
-        // },
+        margin-left: 15%;
+        width: 80%;
+        // background-color: pink;
+        @media (max-width: 1350px ) {
+              margin-left: 25%;
+        },
          @media (max-width: 800px) {
               margin-left: 0;
-                 width: 100%;
         },
-
-        &> div {
-            padding: 2%;
-
-        }
        
+    `,
+
+  dropDownMenu: css`
+  // position : fixed;
+    @media (min-width: 800px) {
+            display: none;
+        },
+        
     `,
 
   menuTitle: css`
@@ -101,10 +93,7 @@ export default {
         padding: 10px;
         border: 1px solid black;
         width: 90%;
-        border-radius: 2px;
-        color:  ${paperColor};
-        background-color: ${darkBlue};
-
+        border-radius: 5px;
     `,
 
   menuItemsStyle: css`
@@ -112,13 +101,10 @@ export default {
         padding: 10px;
         border: 1px solid black;
         width: 90%;
-        color:  ${paperColor};
-        background-color: ${darkBlue};
-        // color: red;
   `,
 
   longDiv: css`
-       height: 1000px;
+       height: 2000px;
     `,
 
   wrapper: css`
@@ -137,23 +123,12 @@ export default {
         },
     `,
 
-  dropDownMenu: css`
-    // position: absolute;
-    top: 100px;
-    z-index: 200;
-    width: 100%;
-    @media (min-width: 800px) {
-            display: none;
-        }
-
-    `,
-
   active: css`
-    color: ${lighSeaBlue};
+  color:red;
         
     `,
   inActive: css`
-  color: white;
+  color: black;
        
     `,
 
@@ -169,10 +144,6 @@ export default {
   itemContainer: css`
             display: flex;
             align-items: center;
-            padding: 5px;
-             &:hover{
-              background-color: ${seaBlueColor};
-            }
     `
 
 };

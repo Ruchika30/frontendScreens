@@ -32,6 +32,17 @@ export const borderRadiusSm = {
   borderRadius: borderRadius.borderRadiusSmall
 };
 
+export const title = {
+  fontSize: '1.3rem',
+  fontFamily: 'gothic'
+};
+
+export const heading = {
+  fontSize: '1.7rem',
+  fontFamily: 'gothic'
+
+};
+
 export const borderRadiusSmaller = {
   borderRadius: borderRadius.borderRadiusSmall
 };

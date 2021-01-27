@@ -6,6 +6,7 @@ import style from './style.js';
 import { getSkillset as getSkillsetService } from '../../services/careers';
 import { useHistory, useParams } from 'react-router';
 import { mTop2 } from '../../assets/styles/spacing';
+import { heading } from '../../assets/styles/reset';
 
 const Skillset = () => {
   const { gridStyle, title } = style;
@@ -30,7 +31,7 @@ const Skillset = () => {
 
   return (
     <div>
-      <div css={title}>Required Skills for this career</div>
+      <div css={heading}>Required Skills for this career</div>
       <div css={[gridStyle, mTop2]}>
         {skillList.map(item => (
           <div style={{ marginRight: '50px' }}>

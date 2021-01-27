@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import { seaBlueColor } from '../../assets/styles/colors';
+import { seaBlueColor, skyBlueColor } from '../../assets/styles/colors';
 
 export default {
 
   navbar: css`
      width: 100%;
-     background-color: #E5F8F9;
+    
     height: 55px;
     padding: 10px 20px;
 `,
