@@ -6,8 +6,6 @@ export default {
 
   navbar: css`
      width: 100%;
-    
-    height: 55px;
     padding: 10px 20px;
 `,
 
@@ -69,6 +67,8 @@ export default {
           padding:10px;
           position: absolute;
           width: 100%;
+          z-index: 200;
+        
   `,
 
   menuItemsWrapper: css`
@@ -76,9 +76,27 @@ export default {
         margin: auto;
         position: relative;
         @media (max-width: 360px) {
-        display: none;
+          display: none;
       },
     `,
+
+  menu: css`
+     display: flex;
+          & > li {
+            list-style-type: none;
+            margin-right: 10px;
+     }
+    `,
+  menuWrapper: css`
+        display: flex;
+        margin: auto;
+        padding: 10px 10%;
+        align-items: center;
+        justify-content: space-between;
+        @media (max-width: 450px) {
+          display: none;
+      },
+      `,
 
   ul: css`
       margin-right: 10px,

@@ -90,7 +90,7 @@ const StickyHeadTable = props => {
           </TableHead>
 
           <TableBody>
-            {careerData.map(row => (
+            {careerData && careerData.map(row => (
               <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                 {columns.map(column => {
                   const value = row[column.id];
@@ -109,7 +109,7 @@ const StickyHeadTable = props => {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={careerData.length}
+        count={careerData && careerData.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}

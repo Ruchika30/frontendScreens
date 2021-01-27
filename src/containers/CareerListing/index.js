@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
@@ -64,15 +65,17 @@ const CareerList = ({ idDetailContext }) => {
   const links = [
     { link: '/', value: 'Home' },
     { link: '/sectors', value: 'CareerSectors' },
-    { link: `/sectors/${id}`, value: 'CareerList' }
+    { link: `/careers/${id}`, value: 'CareerList' }
   ];
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (searchTerm) {
         const body = { career_name: searchTerm };
+        show();
         const { careers } = await searchCareer(body);
         setCareerList(careers);
+        hide();
       }
     }, 2000);
 

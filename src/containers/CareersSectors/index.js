@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/no-named-as-default */
 
 /** @jsx jsx */
@@ -83,8 +84,10 @@ const CareersPage = () => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       const body = { name: searchTerm };
+      show();
       const response = await searchCareerSectors(body);
       setSectors(response);
+      hide();
     }, 2000);
 
     return () => clearTimeout(delayDebounceFn);

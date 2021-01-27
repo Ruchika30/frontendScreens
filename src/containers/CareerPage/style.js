@@ -141,6 +141,7 @@ export default {
     // position: absolute;
     top: 100px;
     z-index: 200;
+    margin: 10px 0px;
     width: 100%;
     @media (min-width: 800px) {
             display: none;

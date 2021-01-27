@@ -21,6 +21,7 @@ const BreadCrumb = props => {
       & > li { 
           list-style-type: none;
             cursor: pointer;
+            display: flex;
 
         &:hover{
             text-decoration: underline;

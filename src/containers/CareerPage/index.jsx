@@ -85,7 +85,10 @@ const CareerPage = ({ idDetailContext }) => {
 
   const links = [
     { link: '/', value: 'Home' },
-    { link: '/sectors', value: 'CareerSectors' }
+    { link: '/sectors', value: 'CareerSectors' },
+    { link: `/careers/${id}`, value: 'CareerList' },
+    { link: `/career/${id}`, value: 'CareerDetails' }
+
   ];
 
   function topFunction() {
