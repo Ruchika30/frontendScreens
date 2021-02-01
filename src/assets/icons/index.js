@@ -10,4 +10,5 @@ export { default as upwardArrow } from './upwards-arrow.png';
 export { default as gear } from './gears.svg';
 export { default as logoWithTxt } from './logo_text_png.png';
 export { default as cancel } from './cancel.svg';
+export { default as home } from './home.jpg';
 

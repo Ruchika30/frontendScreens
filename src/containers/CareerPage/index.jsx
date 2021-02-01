@@ -157,7 +157,6 @@ const CareerPage = ({ idDetailContext }) => {
       <div css={headerContainer}>
         {/* <div id="navbar"> */}
         <Navbar fixed barColor={lightCyan} />
-        {/* </div> */}
 
         {/* header */}
         <div css={[header]} id="header">
@@ -180,74 +179,78 @@ const CareerPage = ({ idDetailContext }) => {
       </div>
 
       {/* <div style={{ marginTop: '10px', paddingLeft: '24%' }}> */}
-      <Layout contentStyle={styles.layoutContainer}>
-        <div style={{ marginTop: '10px' }}>
-          <BreadCrumb listOfLinks={links} />
-        </div>
+      { menuList ? (
+        <Layout contentStyle={styles.layoutContainer} style={{ width: '80%' }}>
+          <div style={{ marginTop: '10px' }}>
+            <BreadCrumb listOfLinks={links} />
+          </div>
 
-        {/* dropdown-menu */}
-        <div css={dropDownMenu}>
-          <h4 onClick={toggleMenu} css={menuTitle}>{menuItem}</h4>
-          {expandMenu ? (
-            <div css={menuItemsStyle}>
-              {menuList.map((item, index) => (
-                <ScrollIntoView selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
-                  <ul css={[gothic, menuItem === item.value ? active : inActive]}>
-                    <li>
-                      {item.value}
-                    </li>
-                  </ul>
-                </ScrollIntoView>
-              ))}
-            </div>
-          ) : null}
-        </div>
-
-        {menuList ? (
-          <div css={contentAndMenuWrapper}>
-            {/* panel menu  */}
-            { menuList ? (
-              <div style={{
-                display: 'flex',
-                height: '700px',
-                margin: 'auto'
-              }}
-              >
-                {menuList ? (
-                  <div css={panel}>
-                    <div>
-                      <h4 css={headingStyle}>Career Menu</h4>
-                    </div>
-                    {menuList.map((item, index) => (
-                      <ScrollIntoView smooth="smooth" selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
-                        <div css={itemContainer}>
-                          <ul css={[gothic, menuItem === item.value ? active : inActive]}>
-                            <li>
-                              {item.value}
-                            </li>
-                          </ul>
-                        </div>
-                      </ScrollIntoView>
-                    ))}
-
-                  </div>
-                ) : null }
-
-                {/* content */}
-                {menuList ? (
-                  <div css={contentWrapper}>
-                    {menuList && menuList.map(menu => (
-                      <div>{getCorrespondingContent(menu.link)}</div>
-                    ))}
-                  </div>
-                ) : null}
+          {/* dropdown-menu */}
+          <div css={dropDownMenu}>
+            <h4 onClick={toggleMenu} css={menuTitle}>{menuItem}</h4>
+            {expandMenu ? (
+              <div css={menuItemsStyle}>
+                {menuList.map((item, index) => (
+                  <ScrollIntoView selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
+                    <ul css={[gothic, menuItem === item.value ? active : inActive]}>
+                      <li>
+                        {item.value}
+                      </li>
+                    </ul>
+                  </ScrollIntoView>
+                ))}
               </div>
             ) : null}
           </div>
-        ) : null}
 
-        { goToTopIconVisiblity && <GoToTop goToTopIconVisiblity />}
-      </Layout>
+          {menuList ? (
+            <div css={contentAndMenuWrapper}>
+              {/* panel menu  */}
+              { menuList ? (
+                <div style={{
+                  display: 'flex',
+                  height: '700px',
+                  margin: 'auto'
+                }}
+                >
+                  {menuList ? (
+                    <div css={panel}>
+                      <div>
+                        <h4 css={headingStyle}>Career Menu</h4>
+                      </div>
+                      {menuList.map((item, index) => (
+                        <ScrollIntoView smooth="smooth" selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
+                          <div css={itemContainer}>
+                            <ul css={[gothic, menuItem === item.value ? active : inActive]}>
+                              <li>
+                                {item.value}
+                              </li>
+                            </ul>
+                          </div>
+                        </ScrollIntoView>
+                      ))}
+
+                    </div>
+                  ) : null }
+
+                  {/* content */}
+                  {menuList ? (
+                    <div css={contentWrapper}>
+                      {menuList && menuList.map(menu => (
+                        <div>{getCorrespondingContent(menu.link)}</div>
+                      ))}
+                    </div>
+                  ) : null}
+
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+
+          { goToTopIconVisiblity && <GoToTop goToTopIconVisiblity />}
+        </Layout>
+      ) : null}
+
     </div>
   );
 };

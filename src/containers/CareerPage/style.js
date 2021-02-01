@@ -44,10 +44,10 @@ export default {
   header: css`
     background-color: ${lightCyan};
     // padding-left: 24%;
-    padding-top: 1%;
     padding-bottom: 10px;
     @media (max-width: 450px ) {
-      padding-left: 10%;
+          padding-top: 10%;
+        padding-left: 10%;
         },
   `,
 
@@ -77,10 +77,12 @@ export default {
   contentWrapper: css`
         // padding-top: 50px;
         width: 70%;
-        overflow-y: hidden;
+        overflow-y: scroll;
         margin-top: 1%;
         background-color:  ${paperColor};
-         &> div {
+        
+  
+        &> div {
             padding: 3% 5%;
 
         }
@@ -96,6 +98,7 @@ export default {
            
         }
 
+   
        
        
     `,
@@ -104,6 +107,9 @@ export default {
       width: 70%;
       ${dFlex};
       margin: auto;
+       @media (max-width: 450px) {
+            width: 100%;
+        },
       
    `,
 

@@ -78,7 +78,7 @@ export default {
           display: block;
           padding:10px;
           position: absolute;
-          width: 70%;
+          width: 100%;
           z-index: 200;
           top: 0;
           height: 100%;
@@ -111,6 +111,7 @@ export default {
         @media (max-width: 450px) {
           display: none;
           visibility : none;
+         
       },
       `,
 

@@ -16,6 +16,12 @@ export default {
       & > li { 
           list-style-type: none;
       }
-    `
+    `,
+
+  cardGridStyle: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))'
+
+  }
 
 };

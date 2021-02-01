@@ -1,15 +1,17 @@
 
 import { css } from '@emotion/core';
-import { japan } from '../../assets/icons';
+import { home, japan } from '../../assets/icons';
 import { fontSize28 } from '../../assets/styles/typography';
 
 export default {
 
   cardWrapper: {
-    backgroundColor: 'red',
+    backgroundColor: 'white',
     margin: '10px 10px',
-    backgroundPosition: 'right',
-    backgroundImage: `url(${japan})`,
+    backgroundPosition: 'center',
+    backgroundImage: `url(${home})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
     height: '18em',
     display: 'flex',
     justifyContent: 'center',
@@ -22,7 +24,7 @@ export default {
   },
 
   bgImage: {
-    backgroundImage: `url(${japan})`
+    backgroundImage: `url(${home})`
   },
 
   imageWrapper: {

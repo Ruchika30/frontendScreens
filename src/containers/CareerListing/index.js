@@ -54,6 +54,13 @@ const CareerList = ({ idDetailContext }) => {
     }
   };
 
+  const header = css`
+  background-color: pink;
+      @media (max-width: 450px ) {
+          padding-top: 60px;
+          width: 100%;
+        },
+  `;
   const handleCareerClick = () => {
     history.push(`/career/${id}`);
   };
@@ -92,7 +99,7 @@ const CareerList = ({ idDetailContext }) => {
     <React.Fragment>
       <Navbar fixed barColor={lightCyan} />
       {/* banner */}
-      <div>
+      <div css={header}>
         <CarouselComponent />
       </div>
       <Layout contentStyle={styles.layoutContainer}>
