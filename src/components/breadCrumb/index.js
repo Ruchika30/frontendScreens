@@ -1,7 +1,7 @@
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   fontSize14, fontSize28, gothicSemiBold, w700
 } from '../../assets/styles/typography';
@@ -11,6 +11,7 @@ const BreadCrumb = props => {
   const { listOfLinks } = props;
   const history = useHistory();
 
+  const [screenWidth, setscreenWidth] = useState('');
   const container = css`
     width: 80%;
     padding-bottom: 5px;
@@ -30,6 +31,27 @@ const BreadCrumb = props => {
     
     `;
 
+  useEffect(() => {
+    // Get the screen width
+    (function () {
+      window.onresize = displayWindowSize;
+      window.onload = displayWindowSize;
+
+      function displayWindowSize() {
+        const myWidth = window.innerWidth;
+        setscreenWidth(myWidth);
+      }
+    }());
+  }, []);
+
+  const getLinkValue = (item, index) => {
+    if (screenWidth < 450) {
+      if (listOfLinks.length > 2 && index !== 0 && index !== listOfLinks.length - 1) return '..';
+      return item.value;
+    }
+    return item.value;
+  };
+
   const handleClick = link => {
     history.push(link);
   };
@@ -38,7 +60,8 @@ const BreadCrumb = props => {
       <ul css={breadCrumbs}>
         {listOfLinks.map((item, index) => (
           <li onClick={() => handleClick(item.link)}>
-            {item.value}
+            {/* {item.value} */}
+            {getLinkValue(item, index)}
             {(index === listOfLinks.length - 1) ? null : <span style={{ padding: '0px 10px' }}> / </span> }
           </li>
         ))}
