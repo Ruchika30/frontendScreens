@@ -5,9 +5,12 @@ import { banner2 } from '../../assets/icons';
 
 const CarouselComponent = () => (
   <Carousel
+    autoPlay
     showThumbs={false}
+    interval={1000}
+    infiniteLoop
     stopOnHover
-    dynamicHeight
+    dynamicHeight={false}
   >
     <div>
       <img src={banner2} alt="banner" />

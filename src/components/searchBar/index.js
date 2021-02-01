@@ -4,6 +4,8 @@ import { css, jsx } from '@emotion/core';
 import React, { useState } from 'react';
 import style from './style';
 import { lens } from '../../assets/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const SearchBar = props => {
   const {
@@ -21,7 +23,7 @@ const SearchBar = props => {
     <div css={container}>
       <input css={searchBarStyle} placeholder="Search for the career sector" onChange={handleValue} />
       <div css={iconWrapper}>
-        <img src={lens} css={icon} alt="icon" />
+        <FontAwesomeIcon icon={faSearch} css={icon} alt="icon" />
       </div>
     </div>
   );

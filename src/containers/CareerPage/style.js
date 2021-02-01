@@ -4,6 +4,7 @@ import {
 } from '../../assets/styles/colors';
 import { mRight2 } from '../../assets/styles/spacing';
 import { fontSize12 } from '../../assets/styles/typography';
+import { dFlex } from '../../assets/styles/flexbox';
 
 export default {
   videoWrapper: css`
@@ -42,21 +43,18 @@ export default {
 
   header: css`
     background-color: ${lightCyan};
-    padding-left: 15%;
+    // padding-left: 24%;
     padding-top: 1%;
     padding-bottom: 10px;
-    @media (max-width: 1350px ) {
-            //   padding-left: 25%;
+    @media (max-width: 450px ) {
+      padding-left: 10%;
         },
   `,
 
   contentAndMenuWrapper: css`
       display: flex;
-      // padding-top:40%;
       width: 100%;
-      // height: 700px;
       margin: auto;
-
         @media (max-width: 800px) {
             display: block;
         },
@@ -77,10 +75,15 @@ export default {
   //   `,
 
   contentWrapper: css`
-        padding-top: 50px;
+        // padding-top: 50px;
         width: 70%;
-        overflow-y: auto;
-        background-color: ${paperColor};
+        overflow-y: hidden;
+        margin-top: 1%;
+        background-color:  ${paperColor};
+         &> div {
+            padding: 3% 5%;
+
+        }
         // @media (max-width: 1350px ) {
         //       margin-left: 25%;
         // },
@@ -88,13 +91,21 @@ export default {
               margin-left: 0;
                  width: 100%;
         },
-
-        &> div {
-            padding: 2%;
-
+          @media (max-width: 450px) {
+           width: 100%;
+           
         }
+
+       
        
     `,
+
+  headerWrapper: css`
+      width: 70%;
+      ${dFlex};
+      margin: auto;
+      
+   `,
 
   menuTitle: css`
         margin: auto;

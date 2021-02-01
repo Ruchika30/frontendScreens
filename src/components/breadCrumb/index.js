@@ -24,7 +24,7 @@ const BreadCrumb = props => {
             display: flex;
 
         &:hover{
-            text-decoration: underline;
+            text-decoration: none;
            } 
       }
     
@@ -34,19 +34,16 @@ const BreadCrumb = props => {
     history.push(link);
   };
   return (
-    <div>
-      {/* Breadcrumb */ }
-      <div css={[container, fontSize14, gothicSemiBold]}>
-        <ul css={breadCrumbs}>
-          {listOfLinks.map(item => (
-            <li onClick={() => handleClick(item.link)}>
-              {item.value}
-              <span style={{ padding: '0px 10px' }}> / </span>
-            </li>
-          ))}
+    <div css={[container, fontSize14, gothicSemiBold]}>
+      <ul css={breadCrumbs}>
+        {listOfLinks.map((item, index) => (
+          <li onClick={() => handleClick(item.link)}>
+            {item.value}
+            {(index === listOfLinks.length - 1) ? null : <span style={{ padding: '0px 10px' }}> / </span> }
+          </li>
+        ))}
 
-        </ul>
-      </div>
+      </ul>
     </div>
   );
 };

@@ -7,6 +7,11 @@ export default {
   navbar: css`
      width: 100%;
     padding: 10px 20px;
+
+     @media (max-width: 360px) {
+       display: none;
+     }
+
 `,
 
   homeWrapper: css`
@@ -33,11 +38,18 @@ export default {
     }
   `,
 
+  close: css`
+    &:after{
+        display: inline-block;
+        content: "\00d7"; /* This will render the 'X' */
+  }
+  `,
+
   hamburger: css`
       display: none;
-
-       @media (max-width: 450px) {
+    @media (max-width: 450px) {
         display: block;
+        
       },
   `,
 
@@ -66,9 +78,11 @@ export default {
           display: block;
           padding:10px;
           position: absolute;
-          width: 100%;
+          width: 70%;
           z-index: 200;
-        
+          top: 0;
+          height: 100%;
+          opacity: 0.9;
   `,
 
   menuItemsWrapper: css`
@@ -90,11 +104,13 @@ export default {
   menuWrapper: css`
         display: flex;
         margin: auto;
-        padding: 10px 10%;
+        width: 70%;
+        padding: 10px 0;
         align-items: center;
         justify-content: space-between;
         @media (max-width: 450px) {
           display: none;
+          visibility : none;
       },
       `,
 
