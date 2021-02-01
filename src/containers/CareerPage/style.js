@@ -80,8 +80,6 @@ export default {
         overflow-y: scroll;
         margin-top: 1%;
         background-color:  ${paperColor};
-        
-  
         &> div {
             padding: 3% 5%;
 
