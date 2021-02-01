@@ -36,10 +36,10 @@ body {
   right: 36px;
   top: 36px; */
    position: relative;
-  width: 36px;
-  height: 30px;
+  width: 30px;
+  height: 25px;
   right: 36px;
-  top: 36px;
+  top: 20px;
 }
 
 /* Color/shape of burger icon bars */

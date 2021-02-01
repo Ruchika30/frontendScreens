@@ -12,6 +12,15 @@ code {
     monospace;
 }
 
+/* for hiding scrollbar */
+*{
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+/*  */
+
 
 @font-face {
   font-family: 'BebasNeue-Regular';

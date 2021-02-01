@@ -4,11 +4,11 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import React, { useEffect, useState } from 'react';
-import style from './style';
 import { useHistory, useLocation } from 'react-router-dom';
 import Navbar from '../../components/navbar';
 import Header from '../../components/header';
 import Card from '../../components/card';
+// import CardWithDetailAbove from '../../components/cardWithDetailsAbove';
 import Layout from '../../components/layout/index.js';
 import { dFlex } from '../../assets/styles/flexbox';
 import styles from '../../assets/styles/base';
@@ -24,6 +24,7 @@ import { m3, mLeft0, pLeft6 } from '../../assets/styles/spacing';
 import { careerSectors, searchCareerSectors } from '../../services/careers';
 import BreadCrumb from '../../components/breadCrumb';
 import LoaderProvider from '../../hooks/use-loader';
+import style from './style';
 
 const container = css`
     width: 70%;
@@ -42,6 +43,10 @@ const srchWrapper = css`
 
 const header = css`
   background-color: ${lightCyan};
+      @media (max-width: 450px ) {
+          padding-top: 70px;
+          width: 100%;
+        },
 //    ${pLeft6}
   `;
 
@@ -125,10 +130,11 @@ const CareersPage = () => {
         <div style={{ width: '100%' }} css={srchWrapper}>
           <SearchBar searchvalue={handleSearch} />
         </div>
-        <section css={styles.gridStyle}>
+        <section css={style.cardGridStyle}>
           {sectors.map((item, e) => (
             <div onClick={() => handleSectorClick(e, item._id)}>
               <Card details={item} />
+              {/* <CardWithDetailAbove details={item} /> */}
             </div>
           ))}
 
