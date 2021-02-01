@@ -55,7 +55,7 @@ const CareerList = ({ idDetailContext }) => {
   };
 
   const header = css`
-  background-color: pink;
+  background-color: ${lightCyan};
       @media (max-width: 450px ) {
           padding-top: 60px;
           width: 100%;

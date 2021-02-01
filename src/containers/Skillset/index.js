@@ -34,9 +34,9 @@ const Skillset = () => {
       <div css={heading}>Required Skills for this career</div>
       <div css={[gridStyle, mTop2]}>
         {skillList.map(item => (
-          <div style={{ marginRight: '50px' }}>
+          // <div style={{ marginRight: '50px' }}>
+          <div>
             <CardWithDetailOnSide data={item} />
-
           </div>
         ))}
 
