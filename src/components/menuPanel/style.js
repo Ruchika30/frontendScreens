@@ -1,8 +1,8 @@
 import { css } from '@emotion/core';
-import { lightGreyColor} from '../../assets/styles/colors'
+import { lightGreyColor } from '../../assets/styles/colors';
 
 export default {
-    wrapper: css`
+  wrapper: css`
         background-color: ${lightGreyColor};
         height: auto;
         padding:0px 15px;
@@ -11,7 +11,7 @@ export default {
         position :absolute;
     `,
 
-    iframeStyle: css`
+  iframeStyle: css`
             position: absolute;
             top: 0;
             left: 0;
@@ -19,22 +19,17 @@ export default {
             height: 100%;
     `,
 
-
-    iconWrapper: css`
+  iconWrapper: css`
         padding: 5px;
     `,
 
-
-    icon: css`
+  icon: css`
         height: 20px;
     `,
 
-
-    itemContainer : css`
+  itemContainer: css`
             display: flex;
             align-items: center;
     `
 
-
-
-}
+};

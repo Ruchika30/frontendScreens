@@ -115,7 +115,7 @@ export default {
         margin: auto;
         padding: 10px;
         border: 1px solid black;
-        width: 90%;
+        width: 100%;
         border-radius: 2px;
         color:  ${paperColor};
         background-color: ${darkBlue};
@@ -126,7 +126,7 @@ export default {
         margin: auto;
         padding: 10px;
         border: 1px solid black;
-        width: 90%;
+        width: 100%;
         color:  ${paperColor};
         background-color: ${darkBlue};
         // color: red;
