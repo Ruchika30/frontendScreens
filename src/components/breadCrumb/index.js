@@ -3,7 +3,7 @@
 import { css, jsx } from '@emotion/core';
 import React, { useEffect, useState } from 'react';
 import {
-  fontSize14, fontSize28, gothicSemiBold, w700
+  fontSize14, gothicSemiBold
 } from '../../assets/styles/typography';
 import { useHistory } from 'react-router-dom';
 

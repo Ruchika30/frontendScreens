@@ -4,9 +4,6 @@ import React from 'react';
 import { dFlex } from '../../assets/styles/flexbox';
 import style from './style';
 import { gear } from '../../assets/icons';
-import { centerAlign } from '../../assets/styles/common';
-import { fontSize15, w700 } from '../../assets/styles/typography';
-import { mLeft2 } from '../../assets/styles/spacing';
 import Tag from '../tag';
 
 const index = props => {

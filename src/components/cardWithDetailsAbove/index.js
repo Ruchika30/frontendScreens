@@ -1,11 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import React, { useEffect } from 'react';
-import { banner, space } from '../../assets/icons';
 import style from './style';
-import { fontSize30, gothic, oswald } from '../../assets/styles/typography';
-import { m3 } from '../../assets/styles/spacing';
-import { gridStyle } from '../../assets/styles/base';
 
 const Card = props => {
   const { details } = props;

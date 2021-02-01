@@ -4,7 +4,6 @@ import React, {
   useCallback, useEffect, useRef, useState
 } from 'react';
 import style from './style';
-import { render } from 'react-dom';
 import { animated, useTransition } from 'react-spring';
 import './animationStyle.css';
 import { useHistory } from 'react-router-dom';
