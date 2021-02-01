@@ -38,7 +38,6 @@ const VideoLibrary = ({ ref }) => {
     try {
       // show();
       const response = await getOverviewDetails(idValue);
-      debugger;
       setSectorDetails(response);
       // hide();
     } catch (error) {

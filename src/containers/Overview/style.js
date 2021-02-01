@@ -19,7 +19,7 @@ export default {
     `,
 
   wrapper: css`
-        margin-top:3%;
+        margin-top:1%;
     `
 
 };

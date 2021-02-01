@@ -25,6 +25,7 @@
     "moment": "^2.27.0",
     "promise-memoize": "^1.2.1",
     "react": "^16.13.1",
+    "react-burger-menu": "^3.0.3",
     "react-dom": "^16.13.1",
     "react-intl": "^5.4.3",
     "react-jss": "^10.3.0",

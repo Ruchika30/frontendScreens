@@ -1,5 +1,8 @@
 
 import { css } from '@emotion/core';
+import {
+  darkGrayColor
+} from '../../assets/styles/colors';
 
 export default {
 
@@ -20,6 +23,7 @@ export default {
 
   icon: css`
         height: 20px;
+        color: ${darkGrayColor};
     `,
 
   iconWrapper: css`

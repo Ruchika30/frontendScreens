@@ -16,7 +16,6 @@ const index = props => {
   } = style;
 
   // const { career_name, category, popularity, salary } = data
-  debugger;
   return (
     <div>
       {details.map(item => (
@@ -31,7 +30,7 @@ const index = props => {
                                     Requires Bachelor Degree
                                 </div>
                             </div> */}
-            <img src={gear} />
+            <img src={gear} alt="careerLogo" />
           </div>
 
           <div css={menu}>

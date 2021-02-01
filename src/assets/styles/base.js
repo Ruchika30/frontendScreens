@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+
 const styles = {
   Container: {
     display: 'flex',
@@ -19,15 +20,18 @@ const styles = {
     padding: '15px 10px 15px 10px'
   },
   layoutContainer: {
-    width: '80%',
-    margin: 'auto'
+    width: '70%',
+    margin: 'auto',
+    '@media(max-width: 450px)': {
+      width: '90%'
+    }
   },
+
   gridStyle: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(14rem, 1fr))'
 
-  },
-
+  }
 
 };
 

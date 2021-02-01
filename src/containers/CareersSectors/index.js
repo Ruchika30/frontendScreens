@@ -26,9 +26,10 @@ import BreadCrumb from '../../components/breadCrumb';
 import LoaderProvider from '../../hooks/use-loader';
 
 const container = css`
-    width: 80%;
-    padding-left: 10%;
+    width: 70%;
+    /* padding-left: 10%; */
     padding-bottom: 5px;
+    margin: auto;
    
  `;
 
@@ -73,12 +74,9 @@ const CareersPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSectorClick = id => {
+  const handleSectorClick = (e, id) => {
+    if (e.stopPropagation) { e.stopPropagation(); }
     history.push(`/careers/${id}`);
-  };
-
-  const handleClick = link => {
-    history.push(link);
   };
 
   useEffect(() => {
@@ -99,7 +97,9 @@ const CareersPage = () => {
 
   return (
     <React.Fragment>
+      {/* <div> */}
       <Navbar fixed barColor={lightCyan} />
+      {/* </div> */}
       {/* Header */}
       <div css={header}>
         <div css={[container]}>
@@ -117,17 +117,17 @@ const CareersPage = () => {
 
       </div>
 
-      <div css={[container]} style={{ marginTop: '10px' }}>
-        <BreadCrumb listOfLinks={links} />
-      </div>
-
       <Layout contentStyle={styles.layoutContainer}>
+        <div style={{ marginTop: '10px' }}>
+          <BreadCrumb listOfLinks={links} />
+        </div>
+
         <div style={{ width: '100%' }} css={srchWrapper}>
           <SearchBar searchvalue={handleSearch} />
         </div>
         <section css={styles.gridStyle}>
-          {sectors.map(item => (
-            <div onClick={() => handleSectorClick(item._id)}>
+          {sectors.map((item, e) => (
+            <div onClick={() => handleSectorClick(e, item._id)}>
               <Card details={item} />
             </div>
           ))}

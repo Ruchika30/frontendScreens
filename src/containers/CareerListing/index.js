@@ -99,7 +99,6 @@ const CareerList = ({ idDetailContext }) => {
         <div style={{ marginTop: '10px' }}>
           <BreadCrumb listOfLinks={links} />
         </div>
-
         <div css={[m3, mLeft0]}>Career Options</div>
         <div style={{ width: '100%' }} css={srchWrapper}>
           <SearchBar searchvalue={handleCareerSearch} />
@@ -117,7 +116,7 @@ const CareerList = ({ idDetailContext }) => {
             <hr />
           </div>
         ))} */}
-        <div onClick={handleCareerClick}>
+        <div onClick={handleCareerClick} style={{ minHeight: '70vh' }}>
           <Table careerData={carrerList} />
         </div>
 

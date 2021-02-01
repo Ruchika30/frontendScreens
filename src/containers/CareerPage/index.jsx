@@ -17,6 +17,8 @@ import {
 } from '../../assets/styles/spacing';
 import { dFlex } from '../../assets/styles/flexbox';
 import { useHistory, useParams } from 'react-router';
+import Layout from '../../components/layout/index.js';
+import styles from '../../assets/styles/base';
 import {
   fontSize12, fontSize14, fontSize20, gothic, gothicSemiBold
 } from '../../assets/styles/typography';
@@ -29,12 +31,6 @@ import BreadCrumb from '../../components/breadCrumb';
 import GoToTop from '../../components/goToTop';
 import LoaderProvider from '../../hooks/use-loader';
 
-const headerWrapper = css`
-    ${w100};
-    ${dFlex};
-    
- `;
-
 const CareerPage = ({ idDetailContext }) => {
   const [careerId, setCareerId] = idDetailContext;
   const { id } = useParams();
@@ -43,13 +39,14 @@ const CareerPage = ({ idDetailContext }) => {
   const [menuList, setMenuList] = useState([]);
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('Career Options');
+  const [menuLink, setMenuLink] = useState('');
 
   const refFromUseRef = useRef(null);
   const history = useHistory();
   const {
     longDiv, header, courseName, headerContainer, inActive, active, actionBtns, wrapper, imgContainer, menuItemsStyle,
-    menuTitle, iconWrapper, navbar, menu, itemContainer, icon, contentWrapper, dropDownMenu,
-    contentAndMenuWrapper, headingStyle
+    menuTitle, iconWrapper, menu, itemContainer, icon, contentWrapper, dropDownMenu,
+    contentAndMenuWrapper, headingStyle, headerWrapper
   } = style;
   const { show, hide } = LoaderProvider();
 
@@ -68,6 +65,7 @@ const CareerPage = ({ idDetailContext }) => {
     position: sticky;
     top: 0;
     width: 20%;
+    margin: 1% 0;
 
      @media (max-width: 800px) {
             display: none;
@@ -99,6 +97,7 @@ const CareerPage = ({ idDetailContext }) => {
   const handleMenuClick = item => {
     history.replace(item.link);
     setMenuItem(item.value);
+    setMenuLink(item.link);
     // setSelectedMenu
     toggleMenu();
     if (expandMenu) {
@@ -130,14 +129,36 @@ const CareerPage = ({ idDetailContext }) => {
     }
   };
 
+  const getCorrespondingContent = menu => {
+    switch (menu) {
+      case '#overview': {
+        return <div id="overview" css={longDiv}><Overview careerId={id} /></div>;
+      }
+      case '#skillSet': {
+        return <div id="skillSet" css={longDiv}><Skillset /></div>;
+      }
+      case '#responsibility': {
+        return <div id="responsibility" css={longDiv}><Responsibility /></div>;
+      }
+      case '#videoLibrary': {
+        return <div id="videoLibrary" css={longDiv}><VideoLibrary /></div>;
+      }
+
+      default: {
+        return <div>ahhhdh</div>;
+      }
+    }
+  };
+
   window.onscroll = () => scrollFunction();
 
   return (
     <div>
       <div css={headerContainer}>
-        <div id="navbar">
-          <Navbar fixed barColor={lightCyan} />
-        </div>
+        {/* <div id="navbar"> */}
+        <Navbar fixed barColor={lightCyan} />
+        {/* </div> */}
+
         {/* header */}
         <div css={[header]} id="header">
           <div css={[headerWrapper]}>
@@ -152,70 +173,81 @@ const CareerPage = ({ idDetailContext }) => {
               </div> */}
             </div>
           </div>
-          <div style={{ marginTop: '10px' }}>
+          {/* <div style={{ marginTop: '10px' }}>
             <BreadCrumb listOfLinks={links} />
-          </div>
+          </div> */}
+        </div>
+      </div>
+
+      {/* <div style={{ marginTop: '10px', paddingLeft: '24%' }}> */}
+      <Layout contentStyle={styles.layoutContainer}>
+        <div style={{ marginTop: '10px' }}>
+          <BreadCrumb listOfLinks={links} />
         </div>
 
-      </div>
-
-      {/* dropdown-menu */}
-      <div css={dropDownMenu}>
-        <h4 onClick={toggleMenu} css={menuTitle}>{menuItem}</h4>
-        {expandMenu ? (
-          <div css={menuItemsStyle}>
-            {menuList.map((item, index) => (
-              <ScrollIntoView selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
-                <ul css={[gothic, menuItem === item.value ? active : inActive]}>
-                  <li>
-                    {item.value}
-                  </li>
-                </ul>
-              </ScrollIntoView>
-            ))}
-          </div>
-        ) : null}
-      </div>
-
-      <div css={contentAndMenuWrapper}>
-        {/* panel menu  */}
-        <div style={{
-          width: '100%',
-          display: 'flex',
-          height: '700px',
-          margin: 'auto'
-        }}
-        >
-          <div css={panel}>
-            <div>
-              <h4 css={headingStyle}>Career Menu</h4>
-            </div>
-            {menuList.map((item, index) => (
-              <ScrollIntoView smooth="smooth" selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
-                <div css={itemContainer}>
+        {/* dropdown-menu */}
+        <div css={dropDownMenu}>
+          <h4 onClick={toggleMenu} css={menuTitle}>{menuItem}</h4>
+          {expandMenu ? (
+            <div css={menuItemsStyle}>
+              {menuList.map((item, index) => (
+                <ScrollIntoView selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
                   <ul css={[gothic, menuItem === item.value ? active : inActive]}>
                     <li>
                       {item.value}
                     </li>
                   </ul>
-                </div>
-              </ScrollIntoView>
-            ))}
-
-          </div>
-
-          {/* content */}
-          <div css={contentWrapper}>
-            <div id="overview" css={longDiv}><Overview careerId={id} /></div>
-            <div id="video" css={longDiv}><VideoLibrary /></div>
-            <div id="skillSet" css={longDiv}><Skillset /></div>
-            <div id="responsibility" css={longDiv}><Responsibility /></div>
-          </div>
-
+                </ScrollIntoView>
+              ))}
+            </div>
+          ) : null}
         </div>
-      </div>
 
-      { goToTopIconVisiblity && <GoToTop goToTopIconVisiblity />}
+        {menuList ? (
+          <div css={contentAndMenuWrapper}>
+            {/* panel menu  */}
+            { menuList ? (
+              <div style={{
+                display: 'flex',
+                height: '700px',
+                margin: 'auto'
+              }}
+              >
+                {menuList ? (
+                  <div css={panel}>
+                    <div>
+                      <h4 css={headingStyle}>Career Menu</h4>
+                    </div>
+                    {menuList.map((item, index) => (
+                      <ScrollIntoView smooth="smooth" selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
+                        <div css={itemContainer}>
+                          <ul css={[gothic, menuItem === item.value ? active : inActive]}>
+                            <li>
+                              {item.value}
+                            </li>
+                          </ul>
+                        </div>
+                      </ScrollIntoView>
+                    ))}
+
+                  </div>
+                ) : null }
+
+                {/* content */}
+                {menuList ? (
+                  <div css={contentWrapper}>
+                    {menuList && menuList.map(menu => (
+                      <div>{getCorrespondingContent(menu.link)}</div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+
+        { goToTopIconVisiblity && <GoToTop goToTopIconVisiblity />}
+      </Layout>
     </div>
   );
 };
