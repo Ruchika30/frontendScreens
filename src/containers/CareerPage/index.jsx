@@ -213,7 +213,7 @@ const CareerPage = ({ idDetailContext }) => {
                   margin: 'auto'
                 }}
                 >
-                  {menuList ? (
+                  {menuList.length ? (
                     <div css={panel}>
                       <div>
                         <h4 css={headingStyle}>Career Menu</h4>
@@ -234,14 +234,13 @@ const CareerPage = ({ idDetailContext }) => {
                   ) : null }
 
                   {/* content */}
-                  {menuList ? (
+                  {menuList.length ? (
                     <div css={contentWrapper}>
                       {menuList && menuList.map(menu => (
                         <div>{getCorrespondingContent(menu.link)}</div>
                       ))}
                     </div>
                   ) : null}
-
                 </div>
               ) : null}
             </div>
