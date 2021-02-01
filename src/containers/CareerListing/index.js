@@ -4,28 +4,20 @@ import { css, jsx } from '@emotion/core';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import style from './style';
 import Navbar from '../../components/navbar';
-import Header from '../../components/header';
-import Card from '../../components/card';
 import Layout from '../../components/layout/index.js';
-import { dFlex, justifyContentSpaceEven } from '../../assets/styles/flexbox';
-import NumberAnimation from '../../components/numberAnimation';
 import styles from '../../assets/styles/base';
-import { lightCyan, seaBlueColor, skyBlueColor } from '../../assets/styles/colors';
-import { w100 } from '../../assets/styles/reset';
-import { fontSize28, w700 } from '../../assets/styles/typography';
+import { lightCyan } from '../../assets/styles/colors';
 import SearchBar from '../../components/searchBar';
 import {
-  m3, mBottom3, mLeft0, mRight3
+  m3, mLeft0
 } from '../../assets/styles/spacing';
-import Tag from '../../components/tag';
-import CareerDetailCard from '../../components/cardWithDetail';
 import CarouselComponent from '../../components/carousel';
 import {
   careerListsById as careerListsByIdService,
   overview as overviewService, searchCareer
 } from '../../services/careers';
 import { useParams } from 'react-router';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import consumer from '../../context/consumer';
 import Table from '../../components/table';
 import BreadCrumb from '../../components/breadCrumb';

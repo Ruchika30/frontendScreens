@@ -9,7 +9,7 @@ import { mTop2 } from '../../assets/styles/spacing';
 import { heading } from '../../assets/styles/reset';
 
 const Skillset = () => {
-  const { gridStyle, title } = style;
+  const { gridStyle } = style;
   const { id } = useParams();
   const [skillList, setSkills] = useState([]);
 

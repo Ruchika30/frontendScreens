@@ -2,7 +2,7 @@
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import React, { forwardRef, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './style';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useParams } from 'react-router';
@@ -10,15 +10,10 @@ import Navbar from '../../components/navbar';
 // import Header from '../../components/header';
 import Layout from '../../components/layout';
 // import { dFlex } from '../../assets/styles/flexbox'
-import styles from '../../assets/styles/base';
 import { skyBlueColor } from '../../assets/styles/colors';
 import { heading, title, w100 } from '../../assets/styles/reset';
 import { fontSize28, w700 } from '../../assets/styles/typography';
-import SearchBar from '../../components/searchBar';
-import {
-  m3, mLeft0, mTop2, pLeft6,
-  pTop3
-} from '../../assets/styles/spacing';
+import { mTop2, pLeft6, pTop3 } from '../../assets/styles/spacing';
 import { getRolesAndResponsibilities as getResponsibilitiesService } from '../../services/careers';
 
 const headerWrapper = css`

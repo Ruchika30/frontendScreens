@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import style from './style';
 // import Progress from 'react-progressbar';
-import { cancel, logoWithTxt } from '../../assets/icons';
+import { logoWithTxt } from '../../assets/icons';
 import { useHistory } from 'react-router-dom';
 import { css, jsx } from '@emotion/core';
 import { lightCyan } from '../../assets/styles/colors';

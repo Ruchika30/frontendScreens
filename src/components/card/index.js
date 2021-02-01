@@ -1,7 +1,5 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import React from 'react';
-import { space } from '../../assets/icons';
 import style from './style';
 import { fontSize30, gothic, oswald } from '../../assets/styles/typography';
 import { m3 } from '../../assets/styles/spacing';

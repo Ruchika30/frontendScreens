@@ -1,6 +1,6 @@
 import { mBottom1, mRight3, p5 } from '../../assets/styles/spacing';
 import { css } from '@emotion/core';
-import { lightGreyColor, paperColor, skyBlueColor } from '../../assets/styles/colors';
+import { paperColor, skyBlueColor } from '../../assets/styles/colors';
 
 export default {
   headings: css`

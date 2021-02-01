@@ -1,29 +1,19 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import React, { useEffect, useRef, useState } from 'react';
-import Menu from '../../components/menuPanel';
 import style from './style';
 import Navbar from '../../components/navbar';
 import consumer from '../../context/consumer';
 import Overview from '../Overview';
 import ScrollIntoView from 'react-scroll-into-view';
-import {
-  arrow, gear, list, space, upwardArrow
-} from '../../assets/icons';
+import { gear } from '../../assets/icons';
 import { alignVerticallyCenter, w100 } from '../../assets/styles/reset';
 import { darkBlue, lightCyan } from '../../assets/styles/colors';
-import {
-  m3, mLeft0, mRight2, pLeft6, pTop2
-} from '../../assets/styles/spacing';
-import { dFlex } from '../../assets/styles/flexbox';
 import { useHistory, useParams } from 'react-router';
 import Layout from '../../components/layout/index.js';
 import styles from '../../assets/styles/base';
-import {
-  fontSize12, fontSize14, fontSize20, gothic, gothicSemiBold
-} from '../../assets/styles/typography';
+import { fontSize20, gothic, gothicSemiBold } from '../../assets/styles/typography';
 import Skillset from '../Skillset';
-import OnlineCourses from '../Courses';
 import Responsibility from '../RolesResponsibility';
 import VideoLibrary from '../VideoLibrary';
 import { careerListMenuItems } from '../../services/careers';
