@@ -11,7 +11,7 @@ const BreadCrumb = props => {
   const { listOfLinks } = props;
   const history = useHistory();
 
-  const [screenWidth, setscreenWidth] = useState('');
+  const [screenWidth, setscreenWidth] = useState(900);
   const container = css`
     width: 80%;
     padding-bottom: 5px;
@@ -42,11 +42,11 @@ const BreadCrumb = props => {
         setscreenWidth(myWidth);
       }
     }());
-  }, []);
+  });
 
   const getLinkValue = (item, index) => {
     if (screenWidth < 450) {
-      if (listOfLinks.length > 2 && index !== 0 && index !== listOfLinks.length - 1) return '..';
+      if (listOfLinks.length > 3 && index !== 0 && index !== listOfLinks.length - 1) return '..';
       return item.value;
     }
     return item.value;
@@ -60,7 +60,6 @@ const BreadCrumb = props => {
       <ul css={breadCrumbs}>
         {listOfLinks.map((item, index) => (
           <li onClick={() => handleClick(item.link)}>
-            {/* {item.value} */}
             {getLinkValue(item, index)}
             {(index === listOfLinks.length - 1) ? null : <span style={{ padding: '0px 10px' }}> / </span> }
           </li>

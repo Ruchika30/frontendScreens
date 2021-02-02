@@ -1,0 +1,152 @@
+$navy : #1B1443;
+$sea:#01BBC8;
+$sky:#E5F8F9;
+$white:#ffffff;
+
+.header{
+      height: 400px;
+      background-image: url('../../assets/icons/banner.jpeg');
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: right;
+      background-color: #b4fbfb;
+}
+
+.icon-navbar{
+    max-width: 200px;
+    max-height: 100px;
+    width: 50%;
+    
+}
+
+
+.icon-container{
+    max-width: 70px;
+    max-height: 100px;
+    width: 50%;
+}
+
+.menuWrapper{
+    display: flex;
+    margin-bottom: 100px;
+}
+
+@media only screen and (max-width: 400px) {
+    .icon-container{
+        width: 100%;
+    }
+
+   .transitions-item{
+      display: none;
+      visibility: hidden;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .transitions-item{
+      display: none;
+      visibility: hidden;
+  }
+}
+
+.animationTextBody{
+    padding:2% 5%;
+}
+
+.alternativeLogo{
+    visibility: hidden;
+}
+
+
+.category-icon{
+    width:100%
+}
+
+.alternate-icon{
+    width: 60%;
+}
+.content-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+    height: 355px;
+      background-color:$sky;
+}
+
+
+.aboutTitle:hover{
+    cursor: pointer;
+}
+.aboutTitle{
+    font-size: 23px;
+     font-family: 'SourceSansPro-Bold';
+     color: $navy
+}
+
+.title-container{
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.description{
+    text-align: left;
+     font-size: 18px;
+}
+.text-container{
+    margin-left: 20px;
+}
+
+.title{
+    font-family: 'SourceSansPro-Bold';
+}
+
+.aboutUs{
+   text-align: left;
+   width: 100%;
+    margin-left: 80px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.readerDetailsContainer{
+    text-align: left;
+    display: flex;
+    margin-top: 7px;
+}
+
+.readerDetailsContainer > div{
+    margin-left: 20px;
+}
+
+.readerDetailsContainer:first-child{
+     margin-left: 0px;
+}
+
+.icons{
+    margin-right: 7px;
+}
+
+.mainPgContainer{
+    width: 80%;
+    height:80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    // background-image: url('../../assets/icons/banner.jpeg');
+}
+
+.mainPgContent{
+    font-size: 30px;
+    text-align: left;
+}
+
+.headerWrapper{
+    width: '100%';       
+}

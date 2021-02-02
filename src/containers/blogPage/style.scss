@@ -1,0 +1,167 @@
+
+$navy : #1B1443;
+$sea:#01BBC8;
+$sky:#E5F8F9;
+$white:#ffffff;
+
+.blogContainer{
+    width:60%;
+    margin:auto;
+    // background-color: pink;
+    padding-bottom: 15px;
+
+}
+
+
+
+.goToTopWrapper{
+    height: 30px;
+    width: 30px;
+     background-color: $sea;
+    border-radius: 50%;
+    padding: 5px;
+    margin-left: 5%;
+ }
+
+
+.contentImgContainer{
+    width: 100%;
+    // background-color: pink;
+    margin-top: 10px;
+}
+
+.contentImg{
+    width: 100%;
+}
+
+.titleContainer{
+    text-align: left;
+    font-family: 'SourceSansPro-Bold';
+
+}
+
+
+.nameOuterContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imageContainer{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color:$sea;
+    margin-right: 10px;
+    padding:10px;
+}
+
+.authorContainer{
+    display: flex;
+    align-items: center;
+}
+
+.nameContainer{
+    text-align: left;
+    display: block;
+}
+.name{
+    font-size: 24px;
+}
+.social-icons {
+    display: flex;
+    margin-top: 10px;
+}
+.social-icons > div{
+    margin-left: 10px;
+    
+}
+.nameWrapper{
+    display: flex;
+    align-items: center;
+}
+
+.contentContainer{
+ font-family: 'SourceSansPro-Regular';
+     font-size: 1.5em;
+        text-align: justify;
+        margin-top: 15px;
+
+}
+
+.blogFooter{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    // background-color: green;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $sea;
+
+}
+
+.actionBtns{
+    display: flex;
+}
+
+.cardContainer{
+     display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem, 1fr));
+}
+
+
+.cardWrapper{
+     display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem, 1fr));
+    grid-column-gap:3rem;
+}
+
+    .recommendedTitle{
+        font-size: 50px;
+        color: $navy;
+        margin: 0;
+        text-transform: uppercase;
+        font-family: 'SourceSansPro-Bold';
+ }
+
+    .recommendedContentWrapper{
+    background-color:$sea;
+    margin : 10px 10px;
+    padding: 4em;
+    }
+
+    .navbarWrapper{
+        position:fixed;
+        width: 100%;
+    }
+
+        
+    .home{
+        width: 100%;
+    }
+
+
+    .profileIcon{
+        // height: 50px;
+        // width: 50px;
+        width: 100%;
+        // margin-top: 5px;
+    }
+
+ 
+@media only screen and (max-width: 460px) {
+  .blogContainer{
+    width:90%;
+    margin:auto;
+  }
+   .recommendedTitle{
+        font-size: 30px;
+   }
+
+   .contentContainer{
+        font-size: 20px;
+   }
+
+   .recommendedContentWrapper{
+       padding: 0px;
+   }
+}

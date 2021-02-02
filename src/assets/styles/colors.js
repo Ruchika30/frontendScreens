@@ -27,6 +27,8 @@ export const darkBlue = '#1B1443';
 export const lighSeaBlue = '#1cd3c6';
 export const celestialBlue = '#C4FFF9';
 export const lightCyan = '#D6FFF6';
+export const aquaBlue = '#B4FBFB';
+export const darkPurple = '#353478';
 
 export const lightGrayFontColor = {
   color: lightGreyColor

@@ -17,9 +17,9 @@ export default props => {
         Careers
       </a>
 
-      {/* <a className="menu-item" onClick={onClickBlog}>
+      <a className="menu-item" onClick={onClickBlog}>
         Blog
-      </a> */}
+      </a>
 
     </Menu>
   );
