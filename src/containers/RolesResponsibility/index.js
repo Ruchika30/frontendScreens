@@ -12,7 +12,7 @@ import Layout from '../../components/layout';
 // import { dFlex } from '../../assets/styles/flexbox'
 import { skyBlueColor } from '../../assets/styles/colors';
 import { heading, title, w100 } from '../../assets/styles/reset';
-import { fontSize28, w700 } from '../../assets/styles/typography';
+import { fontSize28, lato, w700 } from '../../assets/styles/typography';
 import { mTop2, pLeft6, pTop3 } from '../../assets/styles/spacing';
 import { getRolesAndResponsibilities as getResponsibilitiesService } from '../../services/careers';
 
@@ -71,7 +71,7 @@ const Responsibilty = ({ ref }) => {
   return (
     <div css={ref}>
       <div>
-        <div css={heading}>Roles and Responsibilties</div>
+        <div css={[heading, lato]}>Roles and Responsibilties</div>
 
         <section css={[videoWrapper, mTop2]}>
           <iframe
@@ -87,9 +87,9 @@ const Responsibilty = ({ ref }) => {
         </section>
 
         {/* cards */}
-        <section>
+        <section style={{ marginTop: '20px' }}>
           {responsibilities.map(item => (
-            <div css={contentWrapper}>
+            <div css={[contentWrapper, lato]}>
               <div css={pTop3}>
                 <div>{item.name}</div>
                 <div css={pTop3}>

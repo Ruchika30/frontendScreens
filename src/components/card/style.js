@@ -1,6 +1,6 @@
 
 import { css } from '@emotion/core';
-import { home, japan } from '../../assets/icons';
+import { home, japan, tmpBg } from '../../assets/icons';
 import { fontSize28 } from '../../assets/styles/typography';
 
 export default {
@@ -9,7 +9,7 @@ export default {
     backgroundColor: 'white',
     margin: '10px 10px',
     backgroundPosition: 'center',
-    backgroundImage: `url(${home})`,
+    backgroundImage: `url(${tmpBg})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     height: '18em',
@@ -17,14 +17,16 @@ export default {
     justifyContent: 'center',
     alignItems: 'center',
     maxWidth: '20rem',
+    boxShadow: 'rgba(0, 0, 0, 0.08) 0px 6px 16px 0px',
     '&:hover': {
-      transform: 'scale(1.02)',
-      transition: '0.3s'
+      // transform: 'scale(1.02)',
+      transition: '0.3s',
+      transform: 'translate(0, -10px)'
     }
   },
 
   bgImage: {
-    backgroundImage: `url(${home})`
+    backgroundImage: `url(${tmpBg})`
   },
 
   imageWrapper: {

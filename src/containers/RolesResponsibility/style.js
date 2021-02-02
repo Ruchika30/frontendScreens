@@ -19,6 +19,7 @@ export default {
 
   contentWrapper: css`
         padding: 1rem;
+        marginTop: 10px;
         // border: 1px solid black;
         box-shadow: 0 10px 18px rgba(.10,0,0,0.10), 0 5px 5px rgba(0,0,0,0.12);
 

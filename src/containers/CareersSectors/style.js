@@ -7,7 +7,7 @@ export default {
   srchWrapper: css`
     background-color: ${paperColor};
     padding: 13px;
-    margin : 5px 0px;
+    margin : 10px 0px;
     box-shadow: 0 0 0 1px rgba(63,63,68,0.05), 0 1px 2px 0 rgba(63,63,68,0.15);
     `,
 
@@ -20,7 +20,8 @@ export default {
 
   cardGridStyle: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))'
+    gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))',
+    marginTop: '20px'
 
   }
 

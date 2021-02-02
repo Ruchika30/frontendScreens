@@ -19,6 +19,7 @@ const BreadCrumb = props => {
  `;
   const breadCrumbs = css`
      display: flex; 
+    font-family: latoRegular;
       & > li { 
           list-style-type: none;
             cursor: pointer;

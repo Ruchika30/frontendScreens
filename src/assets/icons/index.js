@@ -10,8 +10,7 @@ export { default as upwardArrow } from './upwards-arrow.png';
 export { default as gear } from './gears.svg';
 export { default as logoWithTxt } from './logo_text_png.png';
 export { default as cancel } from './cancel.svg';
-export { default as home } from './home.jpg';
-
+export { default as tmpBg } from './engine.jpg';
 export { default as rightArrow } from './right-arrow.svg';
 export { default as profile } from './avatar.svg';
 // export { default as banner } from './banner.jpeg';

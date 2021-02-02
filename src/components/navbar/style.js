@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import { seaBlueColor, skyBlueColor } from '../../assets/styles/colors';
+import { darkPurple, seaBlueColor, skyBlueColor } from '../../assets/styles/colors';
 
 export default {
 
@@ -32,7 +32,14 @@ export default {
     `,
 
   menuItem: css`
-    padding: 10px;
+        text-decoration: none;
+        color: ${darkPurple} ;
+        font-family: refficreeBold;
+        padding: 5px 12px;
+        font-size: 19px;
+        border-radius: 20px;
+        border: 2px solid ${seaBlueColor};;
+
     &:hover{
       background-color: ${seaBlueColor};
     }
@@ -104,7 +111,7 @@ export default {
   menuWrapper: css`
         display: flex;
         margin: auto;
-        width: 70%;
+        width: 90%;
         padding: 10px 0;
         align-items: center;
         justify-content: space-between;

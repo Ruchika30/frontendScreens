@@ -1,7 +1,7 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import CareerIdValueProvider from './context/idValueProvider';
-import { greyForBg } from './assets/styles/colors';
+import { greyForBg, pagewhite, paperColor } from './assets/styles/colors';
 import { LoaderProvider } from './hooks/use-loader';
 import './App.scss';
 
@@ -19,7 +19,7 @@ const AboutPage = lazy(() => import('../src/containers/AboutPage'));
 const HomePage = lazy(() => import('./containers/HomePage'));
 
 const App = () => (
-  <div className="App" style={{ backgroundColor: greyForBg, minHeight: '100vh' }}>
+  <div className="App" style={{ backgroundColor: pagewhite, minHeight: '100vh' }}>
     <LoaderProvider>
       <Router>
         <Suspense fallback={<div className="loader centerLoader" />}>

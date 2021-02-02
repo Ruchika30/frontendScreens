@@ -17,9 +17,11 @@ const styles = {
     boxShadow: ' 0 2px 4px rgba(0, 0, 0, 0.1)',
     borderRadius: '4px',
     background: '#FFFFFF',
-    padding: '15px 10px 15px 10px'
+    padding: '15px 10px 15px 10px',
+    fontFamily: 'latoRegular'
   },
   layoutContainer: {
+    fontFamily: 'latoRegular',
     width: '70%',
     margin: 'auto',
     '@media(max-width: 450px)': {

@@ -7,15 +7,15 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Navbar from '../../components/navbar';
 import Header from '../../components/header';
-import Card from '../../components/card';
-// import CardWithDetailAbove from '../../components/cardWithDetailsAbove';
+import Card from '../../components/cardForSectors';
+// import CardwWithDetailBelow from '../../components/cardWithDetailBelow';
 import Layout from '../../components/layout/index.js';
 import styles from '../../assets/styles/base';
 import {
-  celestialBlue, lightCyan, lightGreyColor, paperColor, skyBlueColor
+  aquaBlue, celestialBlue, lightCyan, lightGreyColor, paperColor, skyBlueColor
 } from '../../assets/styles/colors';
 import {
-  fontSize28, gothicSemiBold, w700
+  fontSize28, gothicSemiBold, lato, latoBlack, w700
 } from '../../assets/styles/typography';
 import SearchBar from '../../components/searchBar';
 import { m3, mLeft0, pLeft6 } from '../../assets/styles/spacing';
@@ -29,6 +29,7 @@ const container = css`
     /* padding-left: 10%; */
     padding-bottom: 5px;
     margin: auto;
+    padding: 20px 0px;
    
  `;
 
@@ -40,7 +41,8 @@ const srchWrapper = css`
     `;
 
 const header = css`
-  background-color: ${lightCyan};
+  background-color: ${aquaBlue};
+ 
       @media (max-width: 450px ) {
           padding-top: 70px;
           width: 100%;
@@ -101,13 +103,13 @@ const CareersPage = () => {
   return (
     <React.Fragment>
       {/* <div> */}
-      <Navbar fixed barColor={lightCyan} />
+      <Navbar fixed barColor={aquaBlue} />
       {/* </div> */}
       {/* Header */}
       <div css={header}>
         <div css={[container]}>
-          <div css={[fontSize28, w700, gothicSemiBold]}>Career Options of India</div>
-          <div css={[m3, mLeft0, gothicSemiBold]}>
+          <div css={[fontSize28, w700, gothicSemiBold, lato]}>Career Options of India</div>
+          <div css={[m3, mLeft0, gothicSemiBold, lato]}>
             Ex nostrud sit officia incididunt ut cupidatat duis aliquip reprehenderit occaecat aute velit.
             Eiusmod in sint eiusmod anim nulla eiusmod
             reprehenderit magna officia culpa nisi.
@@ -132,7 +134,7 @@ const CareersPage = () => {
           {sectors.map((item, e) => (
             <div onClick={() => handleSectorClick(e, item._id)}>
               <Card details={item} />
-              {/* <CardWithDetailAbove details={item} /> */}
+              {/* <CardwWithDetailBelow details={item} /> */}
             </div>
           ))}
 

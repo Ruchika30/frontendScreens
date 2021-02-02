@@ -94,3 +94,11 @@ export const oswald = {
 export const bebas = {
   fontFamily: 'BebasNeue-Regular'
 };
+
+export const lato = {
+  fontFamily: 'latoRegular'
+};
+
+export const latoBlack = {
+  fontFamily: 'latoBlack'
+};
