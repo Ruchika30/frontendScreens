@@ -7,7 +7,7 @@ import GET_BLOGPOST from '../../queries/category/getArticle';
 import { GET_CATEGORY_ARTICLES_QUERY } from '../../queries/category/getCategoryArticles';
 import Query from '../../components/query_b';
 import { useHistory, useLocation } from 'react-router-dom';
-import { home, upwardArrow, profile } from '../../assets/icons';
+import { home, profile, upwardArrow } from '../../assets/icons';
 import moment from 'moment';
 
 const BlogPage = ({ location }) => {
@@ -67,7 +67,7 @@ const BlogPage = ({ location }) => {
   return (
     <div>
       {isNavbarVisible ? <Navbar fixed={isNavbarVisible} progressValue={getPercent} />
-        : ( 
+        : (
           <div
             style={{
               position: 'fixed',
@@ -80,7 +80,7 @@ const BlogPage = ({ location }) => {
             <div className="goToTopWrapper">
               <img src={upwardArrow} alt="goTop" className="home" />
             </div>
-         </div>
+          </div>
         )}
 
       {/* query */}

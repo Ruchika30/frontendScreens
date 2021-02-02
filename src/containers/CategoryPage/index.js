@@ -2,19 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar_b';
 import Header from '../../components/header_b';
 import Card from '../../components/card_b';
-import  './style.scss';
+import './style.scss';
 
 import { useHistory, useParams } from 'react-router-dom';
 import { GET_CATEGORY_ARTICLES_QUERY } from '../../queries/category/getCategoryArticles';
 import Query from '../../components/query_b';
 import { upwardArrow } from '../../assets/icons';
 
-
 const CategoryPage = ({ location }) => {
   const history = useHistory();
   const [idValue, setIdValue] = useState('');
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
-
 
   useEffect(() => {
     setIdValue(location.state.categoryId);
@@ -39,7 +37,6 @@ const CategoryPage = ({ location }) => {
   };
 
   window.onscroll = () => scrollFunction();
-
 
   return (
     <div>

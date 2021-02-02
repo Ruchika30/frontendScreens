@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar_b';
 
-import { useHistory,  } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import style from './style.scss';
 
