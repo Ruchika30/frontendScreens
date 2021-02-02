@@ -3,7 +3,7 @@
 import { css, jsx } from '@emotion/react';
 import React, { useEffect, useState } from 'react';
 import style from './style.scss';
-import { home } from '../../assets/icons';
+import { tmpBg } from '../../assets/icons';
 import { useHistory } from 'react-router-dom';
 
 const Navbar = props => {
@@ -32,7 +32,7 @@ const Navbar = props => {
       >
         <div css="wrapperStyle" onClick={gotoHome}>
           <div className="goToTopWrapperStyle">
-            <img src={home} alt="goTop" className="homeStyle" />
+            <img src={tmpBg} alt="goTop" className="homeStyle" />
           </div>
         </div>
 

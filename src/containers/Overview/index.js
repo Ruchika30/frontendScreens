@@ -6,6 +6,7 @@ import { getOverviewDetails as overviewService } from '../../services/careers';
 import consumer from '../../context/consumer';
 import { mTop2 } from '../../assets/styles/spacing';
 import { heading, title } from '../../assets/styles/reset';
+import { lato } from '../../assets/styles/typography';
 
 const Overview = props => {
   const { careerId } = props;
@@ -39,9 +40,9 @@ const Overview = props => {
 
   return (
     <div css={wrapper}>
-      <div css={heading}>Overview</div>
-      <div css={title}>{courseName}</div>
-      <div css={[description, mTop2]}>{overviewText}</div>
+      <div css={[heading, lato]}>Overview</div>
+      <div css={[title, lato]}>{courseName}</div>
+      <div css={[description, mTop2, lato]}>{overviewText}</div>
     </div>
   );
 };

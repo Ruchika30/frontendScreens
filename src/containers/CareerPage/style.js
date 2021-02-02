@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import {
-  darkBlue, darkGrayColor, lighSeaBlue, lightCyan, navyBlueColor, paperColor, seaBlueColor, skyBlueColor
+  aquaBlue, darkBlue, darkGrayColor, lighSeaBlue, lightCyan, navyBlueColor, paperColor, seaBlueColor, skyBlueColor
 } from '../../assets/styles/colors';
 import { mRight2 } from '../../assets/styles/spacing';
 import { fontSize12 } from '../../assets/styles/typography';
@@ -42,9 +42,9 @@ export default {
     `,
 
   header: css`
-    background-color: ${lightCyan};
+    background-color: ${aquaBlue};
     // padding-left: 24%;
-    padding-bottom: 10px;
+    padding: 20px 0px;
     @media (max-width: 450px ) {
           padding-top: 10%;
         padding-left: 10%;
@@ -62,12 +62,12 @@ export default {
 
   headerContainer: css`
         overflow: hidden;
-        // background-color: #333;
         position: relative;
         top: 0;
         width: 100%;
         z-index: 100;
-        // position : sticky;
+        font-family: latoRegular;
+        
   `,
   // menu: css`
   //       margin-top: 70px;
@@ -76,7 +76,7 @@ export default {
 
   contentWrapper: css`
         // padding-top: 50px;
-        width: 70%;
+        width: 100%;
         overflow-y: scroll;
         margin-top: 1%;
         background-color:  ${paperColor};
@@ -132,7 +132,7 @@ export default {
         // color: red;
   `,
 
-  longDiv: css`
+  contentContainer: css`
        height: 1000px;
     `,
 

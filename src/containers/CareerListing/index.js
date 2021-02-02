@@ -115,7 +115,7 @@ const CareerList = ({ idDetailContext }) => {
             <hr />
           </div>
         ))} */}
-        <div onClick={handleCareerClick} style={{ minHeight: '70vh' }}>
+        <div onClick={handleCareerClick} style={{ minHeight: '70vh', marginTop: '20px' }}>
           <Table careerData={carrerList} />
         </div>
 

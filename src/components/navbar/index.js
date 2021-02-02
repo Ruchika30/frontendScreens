@@ -5,7 +5,7 @@ import style from './style';
 import { logoWithTxt } from '../../assets/icons';
 import { useHistory } from 'react-router-dom';
 import { css, jsx } from '@emotion/core';
-import { lightCyan } from '../../assets/styles/colors';
+import { aquaBlue } from '../../assets/styles/colors';
 import './style.css';
 
 // import { slide as Menu } from 'react-burger-menu';
@@ -50,15 +50,13 @@ const Navbar = props => {
       {/* <div css={hamburger}>
         <Menu pageWrapId="page-wrap" outerContainerId="App" />
       </div> */}
-
       <div
         css={navbar}
-        style={{ backgroundColor: lightCyan }}
+        style={{ backgroundColor: aquaBlue }}
       >
-
         {/* navbar for other devices */}
         <div css={menuWrapper}>
-          <div style={{ width: '200px' }} onClick={onLogoClick}>
+          <div style={{ width: '180px' }} onClick={onLogoClick}>
             <img src={logoWithTxt} alt="logo" style={{ width: '100%' }} />
           </div>
           <ul css={menu}>

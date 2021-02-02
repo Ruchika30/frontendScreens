@@ -8,11 +8,13 @@ import Overview from '../Overview';
 import ScrollIntoView from 'react-scroll-into-view';
 import { gear } from '../../assets/icons';
 import { alignVerticallyCenter, w100 } from '../../assets/styles/reset';
-import { darkBlue, lightCyan } from '../../assets/styles/colors';
+import { aquaBlue, darkBlue } from '../../assets/styles/colors';
 import { useHistory, useParams } from 'react-router';
 import Layout from '../../components/layout/index.js';
 import styles from '../../assets/styles/base';
-import { fontSize20, gothic, gothicSemiBold } from '../../assets/styles/typography';
+import {
+  fontSize20, fontSize28, gothic, gothicSemiBold, lato, latoBlack
+} from '../../assets/styles/typography';
 import Skillset from '../Skillset';
 import Responsibility from '../RolesResponsibility';
 import VideoLibrary from '../VideoLibrary';
@@ -34,7 +36,7 @@ const CareerPage = ({ idDetailContext }) => {
   const refFromUseRef = useRef(null);
   const history = useHistory();
   const {
-    longDiv, header, courseName, headerContainer, inActive, active, actionBtns, wrapper, imgContainer, menuItemsStyle,
+    contentContainer, header, courseName, headerContainer, inActive, active, actionBtns, wrapper, imgContainer, menuItemsStyle,
     menuTitle, iconWrapper, menu, itemContainer, icon, contentWrapper, dropDownMenu,
     contentAndMenuWrapper, headingStyle, headerWrapper
   } = style;
@@ -42,20 +44,13 @@ const CareerPage = ({ idDetailContext }) => {
 
   const careerMenu = 'CAREER MENU';
 
-  const container = css`
-    width: 80%;
-    padding-left: 25%;
-    padding-bottom: 5px;
-   
- `;
-
   const panel = css`
   background-color: ${darkBlue};
     padding: 30px;
     position: sticky;
     top: 0;
-    width: 20%;
-    margin: 1% 0;
+    width: 30%;
+    margin-top: 1%;
 
      @media (max-width: 800px) {
             display: none;
@@ -122,16 +117,16 @@ const CareerPage = ({ idDetailContext }) => {
   const getCorrespondingContent = menu => {
     switch (menu) {
       case '#overview': {
-        return <div id="overview" css={longDiv}><Overview careerId={id} /></div>;
+        return <div id="overview" css={contentContainer}><Overview careerId={id} /></div>;
       }
       case '#skillSet': {
-        return <div id="skillSet" css={longDiv}><Skillset /></div>;
+        return <div id="skillSet" css={contentContainer}><Skillset /></div>;
       }
       case '#responsibility': {
-        return <div id="responsibility" css={longDiv}><Responsibility /></div>;
+        return <div id="responsibility" css={contentContainer}><Responsibility /></div>;
       }
       case '#videoLibrary': {
-        return <div id="videoLibrary" css={longDiv}><VideoLibrary /></div>;
+        return <div id="videoLibrary" css={contentContainer}><VideoLibrary /></div>;
       }
 
       default: {
@@ -144,9 +139,8 @@ const CareerPage = ({ idDetailContext }) => {
 
   return (
     <div>
-      <div css={headerContainer}>
-        {/* <div id="navbar"> */}
-        <Navbar fixed barColor={lightCyan} />
+      <div css={[headerContainer]}>
+        <Navbar fixed barColor={aquaBlue} />
 
         {/* header */}
         <div css={[header]} id="header">
@@ -155,16 +149,13 @@ const CareerPage = ({ idDetailContext }) => {
               <img src={gear} css={icon} alt="logo" />
             </div>
             <div style={{ marginLeft: '10px' }} css={alignVerticallyCenter}>
-              <div css={[gothicSemiBold, fontSize20]}>Software Engineer</div>
+              <div css={[gothicSemiBold, fontSize28, lato]}>Software Engineer</div>
               {/* <div css={[dFlex, pTop2]}>
                 <div css={[actionBtns]}>Follow</div>
                 <div css={[actionBtns]}>Compare</div>
               </div> */}
             </div>
           </div>
-          {/* <div style={{ marginTop: '10px' }}>
-            <BreadCrumb listOfLinks={links} />
-          </div> */}
         </div>
       </div>
 
@@ -177,7 +168,7 @@ const CareerPage = ({ idDetailContext }) => {
 
           {/* dropdown-menu */}
           <div css={dropDownMenu}>
-            <h4 onClick={toggleMenu} css={menuTitle}>{menuItem}</h4>
+            <h4 onClick={toggleMenu} css={[menuTitle, lato]}>{menuItem}</h4>
             {expandMenu ? (
               <div css={menuItemsStyle}>
                 {menuList.map((item, index) => (
@@ -196,43 +187,42 @@ const CareerPage = ({ idDetailContext }) => {
           {menuList ? (
             <div css={contentAndMenuWrapper}>
               {/* panel menu  */}
-              { menuList ? (
-                <div style={{
-                  display: 'flex',
-                  height: '700px',
-                  margin: 'auto'
-                }}
-                >
-                  {menuList.length ? (
-                    <div css={panel}>
-                      <div>
-                        <h4 css={headingStyle}>Career Menu</h4>
-                      </div>
-                      {menuList.map((item, index) => (
-                        <ScrollIntoView smooth="smooth" selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
-                          <div css={itemContainer}>
-                            <ul css={[gothic, menuItem === item.value ? active : inActive]}>
-                              <li>
-                                {item.value}
-                              </li>
-                            </ul>
-                          </div>
-                        </ScrollIntoView>
-                      ))}
-
+              <div style={{
+                display: 'flex',
+                height: '700px',
+                margin: 'auto'
+              }}
+              >
+                {menuList.length ? (
+                  <div css={panel}>
+                    <div>
+                      <h4 css={[headingStyle, lato]}>Career Menu</h4>
                     </div>
-                  ) : null }
+                    {menuList.map((item, index) => (
+                      <ScrollIntoView smooth="smooth" selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
+                        <div css={[itemContainer]}>
+                          <ul css={[gothic, lato, menuItem === item.value ? active : inActive]}>
+                            <li>
+                              {item.value}
+                            </li>
+                          </ul>
+                        </div>
+                      </ScrollIntoView>
+                    ))}
 
-                  {/* content */}
-                  {menuList.length ? (
-                    <div css={contentWrapper}>
-                      {menuList && menuList.map(menu => (
-                        <div>{getCorrespondingContent(menu.link)}</div>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              ) : null}
+                  </div>
+                ) : null }
+
+                {/* content */}
+                {menuList.length ? (
+                  <div css={contentWrapper}>
+                    {menuList && menuList.map(menu => (
+                      <div>{getCorrespondingContent(menu.link)}</div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+
             </div>
           ) : null}
 

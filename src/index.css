@@ -39,8 +39,6 @@ code {
   src: url(assets/fonts/GothicA1-SemiBold.ttf);
 }
 
-
-
 @font-face {
   font-family: 'refficreeBold';
   src: url(./assets/fonts/Rifficree-bold.ttf);
@@ -56,3 +54,12 @@ code {
   src: url(./assets/fonts/Oswald-VariableFont_wght.ttf);
 }
 
+@font-face {
+  font-family: 'latoRegular';
+  src: url(./assets/fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'latoBlack';
+  src: url(./assets/fonts/Lato-Black.ttf);
+}

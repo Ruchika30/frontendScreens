@@ -20,6 +20,7 @@ export default {
 
   wrapper: css`
         margin-top:1%;
+        font-family: latoRegular;
     `
 
 };

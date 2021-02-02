@@ -171,6 +171,7 @@ export default {
         margin: auto;
         padding: 10px 10%;
         align-items: center;
+        justify-content: space-between;
       `,
 
   liWrapper: css`
