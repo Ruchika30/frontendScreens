@@ -1,28 +1,28 @@
 
 console.clear();
 
-var textPath = document.querySelector('#text-path');
+const textPath = document.querySelector('#text-path');
 
-var textContainer = document.querySelector('#text-container');
+const textContainer = document.querySelector('#text-container');
 
-var path = document.querySelector(textPath.getAttribute('href'));
+const path = document.querySelector(textPath.getAttribute('href'));
 
-var pathLength = path.getTotalLength();
+const pathLength = path.getTotalLength();
 console.log(pathLength);
 
 function updateTextPathOffset(offset) {
-    textPath.setAttribute('startOffset', offset);
+  textPath.setAttribute('startOffset', offset);
 }
 
 updateTextPathOffset(pathLength);
 
 function onScroll() {
-    requestAnimationFrame(function () {
-        var rect = textContainer.getBoundingClientRect();
-        var scrollPercent = rect.y / window.innerHeight;
-        console.log(scrollPercent);
-        updateTextPathOffset(scrollPercent * 2 * pathLength);
-    });
+  requestAnimationFrame(() => {
+    const rect = textContainer.getBoundingClientRect();
+    const scrollPercent = rect.y / window.innerHeight;
+    console.log(scrollPercent);
+    updateTextPathOffset(scrollPercent * 2 * pathLength);
+  });
 }
 
 window.addEventListener('scroll', onScroll);

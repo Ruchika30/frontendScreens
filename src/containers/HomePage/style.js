@@ -1,19 +1,18 @@
 import { css } from '@emotion/react';
-import { navyBlueColor, darkPurple, paperColor, darkBlue, lightGreyColor,   darkGrayColor, seaBlueColor, skyBlueColor } from '../../assets/styles/colors'
-
+import {
+  darkBlue, darkGrayColor, darkPurple, lightGreyColor, navyBlueColor, paperColor, seaBlueColor, skyBlueColor
+} from '../../assets/styles/colors';
 
 export default {
 
-    cardWrapper: css`
+  cardWrapper: css`
       width: 100 %;
      ${navyBlueColor};
     height: 55px;
     padding: 10px 0px;
 `,
 
-
-
-    menuItem: css`
+  menuItem: css`
         text-decoration: none;
         color: ${darkPurple} ;
         font-family: refficreeBold;
@@ -27,7 +26,7 @@ export default {
         }
     `,
 
-    homeWrapper: css`
+  homeWrapper: css`
     height: 50px;
     width: 50px;
     background - color: ${skyBlueColor};
@@ -38,58 +37,55 @@ export default {
 
 `,
 
-    icon: css`
+  icon: css`
      height: 50px;
     width: 30px;
     `,
 
-
-    title: css`
+  title: css`
         // text-align: center;
             font-size: 3rem;
             font-family: gothic;
             font-weight: 500;
     `,
 
-    gothic: css`
+  gothic: css`
       font-family: gothic;
     `,
 
-
-    description: css`
+  description: css`
         font-size: 1rem;
         text-align: center;
         font-family: gothic;
        
     `,
- 
-    headerDescription: css`
+
+  headerDescription: css`
      @media (max-width: 750px){
             display: none;
      }
     `,
-    
-    gridStyle: ({
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(17rem, 1fr))',
-        minHeight: '400px'
 
-    }),
+  gridStyle: ({
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(17rem, 1fr))',
+    minHeight: '400px'
 
-    iframeStyle: css`
+  }),
+
+  iframeStyle: css`
         height: 100%;
         width: 100%;
     `,
 
-    sectionContainer: css`
+  sectionContainer: css`
         margin-top: 2.5rem;
         margin-bottom: 2.5rem;
         display: flex;
         // background-color: red;
     `,
 
-
-    footer: css`
+  footer: css`
         justify-content: space-between;
         padding : 2%;
         display: flex;
@@ -97,14 +93,12 @@ export default {
         margin: auto;
         align-items: center;
     `,
-    
 
-    html : css`
+  html: css`
         scroll - behavior: smooth;
     `,
-    
 
-    numberAnimationContainer: css`
+  numberAnimationContainer: css`
         background-color: ${darkBlue};
        justify-content:space-between;
          display: flex;
@@ -119,7 +113,7 @@ export default {
 
 `,
 
-    nmbrContainer: css`
+  nmbrContainer: css`
           justify-content: space-between;
             display: flex;
             width: 80%;
@@ -128,7 +122,7 @@ export default {
 
         `,
 
-    header: css`
+  header: css`
         // height: 400px;
         background-image: url('../../assets/icons/banner.jpeg');
         width: 100%;
@@ -141,13 +135,13 @@ export default {
         background-size: cover;
 `,
 
-    bannerContextContainer: css`
+  bannerContextContainer: css`
         display: flex;
         justify-content: space-between;    
         padding : 0px 8%;
     `,
 
-    headerContent: css`
+  headerContent: css`
         width: 30%;
         padding-top: 50px; 
         padding-left: 100px;
@@ -158,20 +152,20 @@ export default {
        }
     `,
 
-    actionOptionContainer: css`
+  actionOptionContainer: css`
         @media (max-width: 480px){
             // display: none;
         }
     `,
 
-    headerImg: css`
+  headerImg: css`
         height: 450px;
         @media (max-width: 480px){
             display: none;
         }
     `,
 
-    menuWrapper: css`
+  menuWrapper: css`
         display: flex;
         // background-color: ${lightGreyColor};
         margin: auto;
@@ -179,7 +173,7 @@ export default {
         align-items: center;
       `,
 
-      liWrapper: css`
+  liWrapper: css`
         display: flex;
         list-style-type: none;
         & > div {
@@ -187,9 +181,7 @@ export default {
         }
       `,
 
-
-
-    menu: css`
+  menu: css`
      display: flex;
           & > li {
             list-style-type: none;
@@ -197,7 +189,7 @@ export default {
      }
     `,
 
-    actionTextContainer: css`
+  actionTextContainer: css`
         flex: 1;
         // margin: auto; 
         padding: 10%;
@@ -207,22 +199,21 @@ export default {
         justify- content: center;
     `,
 
-    option: css`
+  option: css`
         font-size: 2.5rem;
         color: black;
        
     `,
 
-    animationTextBody: css`
+  animationTextBody: css`
       
     `,
 
-
-    iconContainer: css`
+  iconContainer: css`
     width: 70 %;
     `,
 
-    aboutUs: css`
+  aboutUs: css`
         text-align: left;
         width: 100%;
         margin-left: 80px;
@@ -231,30 +222,25 @@ export default {
         align-items: center;
     `,
 
-    transitionsItem: css`
+  transitionsItem: css`
         display: none;
         visibility: hidden;
     `,
 
-    scrollblock: css`
+  scrollblock: css`
         position: relative;
         margin: 0;
         width: 100%;
         height: 600px;
     `,
 
-    items : css`
+  items: css`
         list-style-type: none;
         & > a {
              text-decoration: none;
         }
            
-    `,
+    `
 
- 
-
-}
-
-
-
+};
 

@@ -1,6 +1,5 @@
 // import axios from 'axios'
 
-
 //  const makeApiCall= (url, { method } ) =>{
 //      debugger;
 //     const options = {
@@ -10,14 +9,13 @@
 //             'Accept': 'application/json',
 //             'Content-Type': 'application/json;charset=UTF-8'
 //         },
-       
+
 //     };
 
 //     axios(options)
 //         .then(response => {
 //             return response
 //         });
-
 
 // }
 

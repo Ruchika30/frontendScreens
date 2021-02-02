@@ -10,17 +10,18 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tag from '../tags_b';
 import {
-  banner, logo, logoWithTxt, category
+  banner, category, logo, logoWithTxt
 } from '../../assets/icons';
 import { render } from 'react-dom';
 import { animated, useTransition } from 'react-spring';
 import './animationStyle.css';
 import { useHistory } from 'react-router-dom';
-import bannerImg from '../../assets/icons/banner.jpeg'
-
+import bannerImg from '../../assets/icons/banner.jpeg';
 
 const Header = props => {
-  const { main, categoryName, description, noIcons , animationRqrd} = props;
+  const {
+    main, categoryName, description, noIcons, animationRqrd
+  } = props;
   const [isFollowing, setFollowing] = useState(false);
   const history = useHistory();
 
@@ -42,7 +43,7 @@ const Header = props => {
   const first = 'Get Ready';
   const second = 'To Know';
   const third = 'How your Future';
-  const fourth =  'Career looks like!';
+  const fourth = 'Career looks like!';
 
   const reset = useCallback(() => {
     ref.current.map(clearTimeout);
@@ -52,7 +53,6 @@ const Header = props => {
     ref.current.push(setTimeout(() => set([first, third]), 5000));
     ref.current.push(setTimeout(() => set([first, second, third]), 8000));
     ref.current.push(setTimeout(() => set([first, second, third, fourth]), 9000));
-
   }, []);
 
   useEffect(() => void reset(), [reset]);
@@ -88,8 +88,7 @@ const Header = props => {
                 {description}
               </div>
 
-           
-            <div className="readerDetailsContainer">
+              <div className="readerDetailsContainer">
                 <div style={{ marginLeft: '0px' }}>
                   <FontAwesomeIcon icon={faUsers} className="icons" />
                   {/* 12,827 Followers */}
@@ -107,7 +106,7 @@ const Header = props => {
           </div>
         )
         : (
-      
+
           <div className="header">
             <div className="animationTextBody">
               <div className="menuWrapper">
@@ -132,8 +131,6 @@ const Header = props => {
               ))}
             </div>
           </div>
-
-
 
         )}
     </div>
