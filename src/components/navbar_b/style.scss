@@ -1,0 +1,53 @@
+$navy : #1B1443;
+$sea:#01BBC8;
+$sky:#E5F8F9;
+$white:#ffffff;
+
+.navbarStyle{
+    width: 100%;
+    background-color:$navy;
+    height: 55px;
+    padding: 10px 0px;
+   
+
+}
+
+.wrapperStyle{
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 299;
+            margin-left: 5%
+}
+
+.homeStyle{
+    width: 100%;
+}
+
+.goToTopWrapperStyle{
+    height: 30px;
+    width: 30px;
+     background-color: $sea;
+    border-radius: 50%;
+    padding: 8px;
+    margin-left: 5%;
+ }
+
+.homeWrapper{
+ height: 50px;
+    width: 50px;
+    background-color: $sea;
+    border-radius: 50%;
+    align-items: center;
+     margin-left: 150px;
+
+}
+
+.icon{
+    height: 50px;
+    width:30px
+}
+
+.icon:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,39 @@
+$sea:#01BBC8;
+
+
+.cardWrapper{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(20rem, 1fr));
+        grid-column-gap:3rem;
+        margin: 5px;
+        
+    }
+
+.contentWrapper{
+     width: 85%;
+    margin: auto;
+    margin-top: 20px;
+
+}
+
+
+.goToTopWrapper{
+    height: 30px;
+    width: 30px;
+     background-color: $sea;
+    border-radius: 50%;
+    padding: 5px;
+    margin-left: 5%;
+ }
+
+.home{
+    width: 100%;
+}
+
+    @media only screen and (max-width: 360px) {
+        .contentWrapper{
+            width: 100%;
+
+        }
+
+    }

@@ -27,10 +27,6 @@ code {
   src: url(assets/fonts/BebasNeue-Regular.ttf);
 }
 
-@font-face {
-  font-family: 'oswald-regular';
-  src: url(assets/fonts/Oswald-VariableFont_wght.ttf);
-}
 
 @font-face {
   font-family: 'gothic';
@@ -42,3 +38,21 @@ code {
   font-family: 'gothicSemiBold';
   src: url(assets/fonts/GothicA1-SemiBold.ttf);
 }
+
+
+
+@font-face {
+  font-family: 'refficreeBold';
+  src: url(./assets/fonts/Rifficree-bold.ttf);
+}
+
+@font-face {
+  font-family: 'bebas';
+  src: url(./assets/fonts/BebasNeue-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'oswald';
+  src: url(./assets/fonts/Oswald-VariableFont_wght.ttf);
+}
+
