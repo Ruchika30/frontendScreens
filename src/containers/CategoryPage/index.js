@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../../components/navbar_b';
-import Header from '../../components/header_b';
-import Card from '../../components/card_b';
+import Navbar from '../../components/navbar';
+import Header from '../../components/headerForBlog';
+import Card from '../../components/cardForBlog';
 import './style.scss';
 
 import { useHistory, useParams } from 'react-router-dom';
 import { GET_CATEGORY_ARTICLES_QUERY } from '../../queries/category/getCategoryArticles';
-import Query from '../../components/query_b';
+import Query from '../../components/query';
 import { upwardArrow } from '../../assets/icons';
 
 const CategoryPage = ({ location }) => {

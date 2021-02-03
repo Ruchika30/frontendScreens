@@ -15,7 +15,6 @@ const Card = props => {
 
   return (
     <div css={cardWrapper}>
-      {/* <img src={space} css={bgImage}></img> */}
       <div css={innerCardWrapper}>
         <img src={image} alt="kids" style={{ width: '100%', height: '100%' }} />
       </div>

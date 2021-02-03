@@ -14,8 +14,6 @@ const Menu = props => {
   const history = useHistory();
   // const menuItems = ['overview', 'video library', 'Career path', 'skillset']
 
-  const handleMenuLCick = link => {
-  };
   return (
     <div css={wrapper}>
       <div>Career Menu</div>
@@ -25,7 +23,6 @@ const Menu = props => {
             <div css={iconWrapper}>
               <img src={arrow} css={icon} />
             </div>
-            {/* <div onClick={()=>handleMenuLCick(item.link)}>{item.value}</div>   */}
           </div>
         </ScrollIntoView>
       ))}

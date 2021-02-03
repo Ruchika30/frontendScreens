@@ -2,9 +2,6 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import style from './style';
 import { arrow } from '../../assets/icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faSortDown } from '@fortawesome/free-solid-svg-icons';
-// import { fontSize10 } from '../../assets/styles/typography';
 
 const Tags = props => {
   const {

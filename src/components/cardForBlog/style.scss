@@ -4,13 +4,6 @@ $sky:#E5F8F9;
 $white:#ffffff;
 
 
-// .contentContainer{
-//     width: 85%;
-//     margin:auto;
-//     margin-top: 20px;
-// }
-
-
 .outer{
   display:flex;
 margin-top: 20px;
@@ -33,15 +26,8 @@ margin-top: 20px;
    text-transform: uppercase;
       color: $sea;
     font-family: 'SourceSansPro-Bold';
-    
-
-
 }
-.itemContainer{
-    // display: grid;
-    // margin-top: 20px;
-//   grid-template-columns: auto auto auto;
-}
+
 .blogItem {
     background-color:$sky;
     padding: 20px;

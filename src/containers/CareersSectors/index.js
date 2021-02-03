@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Navbar from '../../components/navbar';
 import Header from '../../components/header';
-import Card from '../../components/cardForSectors';
+import Card from '../../components/cardWithDetailsBelow';
 // import CardwWithDetailBelow from '../../components/cardWithDetailBelow';
 import Layout from '../../components/layout/index.js';
 import styles from '../../assets/styles/base';

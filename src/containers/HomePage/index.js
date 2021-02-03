@@ -4,9 +4,9 @@ import { css, jsx } from '@emotion/react';
 import React, { useEffect, useState } from 'react';
 import style from './style';
 
-import Layout from '../../components/layout_b';
+import Layout from '../../components/layout';
 import NumberAnimation from '../../components/numberAnimation';
-import CardWithBtn from '../../components/cardwithBtn_b';
+import CardWithBtn from '../../components/cardForStages';
 import { useHistory } from 'react-router-dom';
 import {
   HomePgBanner, careerChangers, choose, decide, explore, grads, highSchool, home, kids, logoIcon, logoWithTxt, school, whyUs
@@ -129,12 +129,6 @@ const HomePage = () => {
   window.addEventListener('scroll', event => {
     onScroll();
   });
-  // const menuItems = [
-  //     { value: 'overview', link: '#navbar', id: 0 },
-  //     { value: 'skillSet', link: '#skillSet', id: 1 },
-  //     { value: 'Online courses', link: '#onlineCourses', id: 2 },
-  //     { value: 'Roles & Reponsibility', link: '#responsibility', id: 2 }
-  // ];
 
   return (
     <React.Fragment onScroll={onScroll}>

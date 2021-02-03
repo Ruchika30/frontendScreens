@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
-
-import Header from '../../components/header_b';
-import Card from '../../components/card_b';
+import Header from '../../components/headerForBlog';
+import Card from '../../components/cardForBlog';
 import { useHistory, useParams } from 'react-router-dom';
 import CATEGORY_ARTICLES_QUERY from '../../queries/category/landingPageData';
-import Query from '../../components/query_b';
-import CategoryCard from '../../components/categoryCard_b';
+import Query from '../../components/query';
+import CategoryCard from '../../components/categoryLabel';
 import { home, upwardArrow } from '../../assets/icons';
 
 const BlogLandingPage = () => {

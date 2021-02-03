@@ -37,12 +37,8 @@ export default {
 
   innerCardWrapper: {
     height: '80%',
-    // width: '80%',
     backgroundColor: 'white',
-    // opacity: '0.7',
-
     justifyContent: 'center',
-    // display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
 

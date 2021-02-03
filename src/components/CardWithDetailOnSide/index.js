@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import React, { useEffect } from 'react';
-import { space } from '../../assets/icons';
+import { gear } from '../../assets/icons';
 import style from './style';
 import { lato } from '../../assets/styles/typography';
 
@@ -21,7 +21,7 @@ const Card = props => {
     }}
     >
       <div style={{ width: '90px' }}>
-        <img src={space} alt="banner" style={{ width: '100%' }} />
+        <img src={gear} alt="banner" style={{ width: '100%' }} />
       </div>
       {/* information */}
       <div style={{ paddingLeft: '10px', flex: 0.5, paddingTop: '5px' }} css={lato}>

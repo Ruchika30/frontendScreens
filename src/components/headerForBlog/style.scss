@@ -53,18 +53,12 @@ $white:#ffffff;
     padding:2% 5%;
 }
 
-.alternativeLogo{
-    visibility: hidden;
-}
 
 
 .category-icon{
     width:100%
 }
 
-.alternate-icon{
-    width: 60%;
-}
 .content-container{
     display: flex;
     align-items: center;
@@ -129,24 +123,4 @@ $white:#ffffff;
 
 .icons{
     margin-right: 7px;
-}
-
-.mainPgContainer{
-    width: 80%;
-    height:80%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    // background-image: url('../../assets/icons/banner.jpeg');
-}
-
-.mainPgContent{
-    font-size: 30px;
-    text-align: left;
-}
-
-.headerWrapper{
-    width: '100%';       
 }

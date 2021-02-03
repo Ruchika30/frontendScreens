@@ -6,31 +6,13 @@ import {
   fontSize14, gothicSemiBold
 } from '../../assets/styles/typography';
 import { useHistory } from 'react-router-dom';
+import style from './style';
 
 const BreadCrumb = props => {
   const { listOfLinks } = props;
   const history = useHistory();
-
   const [screenWidth, setscreenWidth] = useState(900);
-  const container = css`
-    width: 80%;
-    padding-bottom: 5px;
-   
- `;
-  const breadCrumbs = css`
-     display: flex; 
-    font-family: latoRegular;
-      & > li { 
-          list-style-type: none;
-            cursor: pointer;
-            display: flex;
-
-        &:hover{
-            text-decoration: none;
-           } 
-      }
-    
-    `;
+  const { container, breadCrumbs } = style;
 
   useEffect(() => {
     // Get the screen width

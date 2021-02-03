@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
-import Tag from '../../components/tags_b';
-import Card from '../../components/card_b';
-import Navbar from '../../components/navbar_b';
+import Tag from '../../components/tags';
+import Card from '../../components/cardForBlog';
+import Navbar from '../../components/navbar';
 import GET_BLOGPOST from '../../queries/category/getArticle';
 import { GET_CATEGORY_ARTICLES_QUERY } from '../../queries/category/getCategoryArticles';
-import Query from '../../components/query_b';
+import Query from '../../components/query';
 import { useHistory, useLocation } from 'react-router-dom';
 import { home, profile, upwardArrow } from '../../assets/icons';
 import moment from 'moment';
+import { darkBlue } from '../../assets/styles/colors';
 
 const BlogPage = ({ location }) => {
   const { id, categoryId } = location.state;
@@ -66,7 +67,8 @@ const BlogPage = ({ location }) => {
 
   return (
     <div>
-      {isNavbarVisible ? <Navbar fixed={isNavbarVisible} progressValue={getPercent} />
+      {isNavbarVisible
+        ? <Navbar fixed={isNavbarVisible} progressValue={getPercent} />
         : (
           <div
             style={{

@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Card = props => {
   const {
-    id, title, description, previous, next, onDescriptionClick, tag1, tag2, tag1Description, tag2Description, tag1Title, tag2Title
+    title, description, previous, next, onDescriptionClick, tag1, tag2
   } = props;
   const [isTagVisible, setTagVisibility] = useState(false);
   const [istitle, setTitle] = useState(title);

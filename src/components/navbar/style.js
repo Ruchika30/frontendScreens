@@ -1,13 +1,15 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import { darkPurple, seaBlueColor, skyBlueColor } from '../../assets/styles/colors';
+import {
+  aquaBlue, darkPurple, seaBlueColor, skyBlueColor
+} from '../../assets/styles/colors';
 
 export default {
 
   navbar: css`
      width: 100%;
     padding: 10px 20px;
-
+  
      @media (max-width: 360px) {
        display: none;
      }

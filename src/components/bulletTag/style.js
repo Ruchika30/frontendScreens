@@ -3,13 +3,10 @@ import { darkGrayColor, navyBlueColor } from '../../assets/styles/colors';
 export default {
   tagRoot: {
     '& div': {
-      // padding: [8, 15],
       backgroundColor: '#fff',
       border: '1px solid #E5E5E5',
       borderRadius: 20,
       textAlign: 'center',
-      // marginRight: 8,
-      // maxHeight: '20px',
       padding: '1px 2px',
       overflowX: 'scroll',
       whiteSpace: 'nowrap',

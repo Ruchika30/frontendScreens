@@ -5,7 +5,7 @@ import React, { forwardRef, useEffect, useState } from 'react';
 import style from './style';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router';
-import CardWithDataBelow from '../../components/cardWithDetailBelow';
+import CardWithDataBelow from '../../components/cardWithDetailsBelow';
 import { skyBlueColor } from '../../assets/styles/colors';
 import { heading, w100 } from '../../assets/styles/reset';
 import { pLeft6 } from '../../assets/styles/spacing';

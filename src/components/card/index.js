@@ -7,14 +7,12 @@ import { m3 } from '../../assets/styles/spacing';
 const Card = props => {
   const { details } = props;
   const {
-    cardWrapper, innerCardWrapper, title, bgImage
+    cardWrapper, innerCardWrapper
   } = style;
   const { name, options, popularity } = details || {};
 
   return (
     <div css={cardWrapper}>
-      {/* <img src={space} css={bgImage}></img> */}
-
       {details
         ? (
           <div css={innerCardWrapper}>

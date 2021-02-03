@@ -12,7 +12,6 @@ export default {
     paddingBottom: '10px',
     borderRadius: '5px',
     maxWidth: '360px',
-    // minHeight: '250px',
     fontFamily: 'latoRegular',
     boxShadow: 'rgba(0, 0, 0, 0.08) 0px 6px 16px 0px',
     '&:hover': {

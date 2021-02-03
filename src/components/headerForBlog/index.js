@@ -8,7 +8,6 @@ import {
   faUsers
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Tag from '../tags_b';
 import {
   banner, category, logo, logoWithTxt
 } from '../../assets/icons';

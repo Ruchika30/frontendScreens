@@ -14,7 +14,7 @@ import Menu from '../menu';
 
 const Navbar = props => {
   const history = useHistory();
-  const { barColor } = props;
+  const { barColor, fixed, bgColor } = props;
   const [toggle, setToggle] = useState(false);
   const [setClose, setCloseIcon] = useState(false);
 
@@ -45,14 +45,15 @@ const Navbar = props => {
   };
 
   return (
-
     <div>
-      {/* <div css={hamburger}>
-        <Menu pageWrapId="page-wrap" outerContainerId="App" />
-      </div> */}
       <div
         css={navbar}
-        style={{ backgroundColor: aquaBlue }}
+        // style={
+        //   fixed ? { position: 'fixed', top: '0px', backgroundColor: bgColor || aquaBlue } : { display: 'none' }
+        // }
+
+        style={{ backgroundColor: bgColor || aquaBlue }}
+
       >
         {/* navbar for other devices */}
         <div css={menuWrapper}>
@@ -65,34 +66,8 @@ const Navbar = props => {
 
           </ul>
         </div>
-
-        {/* {!toggle ? (
-          <div css={hamburger} onClick={onHamburgerClick} id="hamburgerMenu">
-            <div css={bar} />
-            <div css={bar} />
-            <div css={bar} />
-          </div>
-        )
-          : <img src={cancel} alt="logo" onClick={onHamburgerClick} style={{ width: '20px' }} />} */}
-
       </div>
       <div css={hamburger}><Menu pageWrapId="page-wrap" outerContainerId="App" /></div>
-
-      {/* <div css={hamburger} /> */}
-
-      {/* {toggle && (
-        <Menu onStateChange={handleOpen}>
-          <div style={{ zIndex: 200 }}>
-            <ul css={[navbarMobileStyle]} id="navbarMobileStyle">
-              <li onClick={() => handleClick('/sectors')} css={[menuItem]}>Careers</li>
-              <li onClick={onClickBlog} css={menuItem}>Blog</li>
-            </ul>
-          </div>
-        </Menu>
-      )} */}
-
-      {/* Hamburger Menu for mobile */}
-
     </div>
 
   );

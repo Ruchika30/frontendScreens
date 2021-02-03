@@ -4,7 +4,7 @@ import React from 'react';
 import { dFlex } from '../../assets/styles/flexbox';
 import style from './style';
 import { gear } from '../../assets/icons';
-import Tag from '../tag';
+import Tag from '../bulletTag';
 
 const index = props => {
   const { details } = props;
