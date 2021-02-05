@@ -10,7 +10,6 @@ import style from './style';
 
 const BreadCrumb = props => {
   const { listOfLinks, txtColor } = props;
-  debugger;
   const history = useHistory();
   const [screenWidth, setscreenWidth] = useState(900);
   const { container, breadCrumbs } = style;

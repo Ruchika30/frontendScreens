@@ -24,7 +24,8 @@ export default {
   cardGridStyle: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))',
-    marginTop: '20px'
+    marginTop: '20px',
+    cursor: 'pointer'
 
   }
 

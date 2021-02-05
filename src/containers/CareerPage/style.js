@@ -192,12 +192,13 @@ export default {
             display: flex;
             align-items: center;
             padding: 5px;
+            cursor: pointer;
             padding-left: 20px;
              &:hover{
-               border-radius: 5px;
+               border-radius: 3px;
                color:  ${darkBlue};
               background-color: ${seaBlueColor};
-              transform: translate(0, -5px);
+              transform: translate(0, -3px);
 
             }
     `

@@ -169,7 +169,8 @@ export default {
         display: flex;
         // background-color: ${lightGreyColor};
         margin: auto;
-        padding: 10px 10%;
+        width: 90%;
+        padding: 10px 0;
         align-items: center;
         justify-content: space-between;
       `,

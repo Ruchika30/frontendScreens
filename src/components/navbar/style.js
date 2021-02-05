@@ -9,7 +9,7 @@ export default {
   navbar: css`
      width: 100%;
     // padding: 10px 20px;
-  
+    cursor: pointer;
      @media (max-width: 360px) {
        display: none;
      }

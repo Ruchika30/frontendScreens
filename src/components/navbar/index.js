@@ -9,7 +9,6 @@ import { aquaBlue } from '../../assets/styles/colors';
 import './style.css';
 
 // import { slide as Menu } from 'react-burger-menu';
-import $ from 'jquery';
 import Menu from '../menu';
 
 const Navbar = props => {
@@ -51,9 +50,7 @@ const Navbar = props => {
         // style={
         //   fixed ? { position: 'fixed', top: '0px', backgroundColor: bgColor || aquaBlue } : { display: 'none' }
         // }
-
         style={{ backgroundColor: bgColor || aquaBlue }}
-
       >
         {/* navbar for other devices */}
         <div css={menuWrapper}>

@@ -185,18 +185,15 @@ const CareerPage = ({ idDetailContext }) => {
               <h4 onClick={toggleMenu} css={[menuTitle, lato]}>{menuItem}</h4>
               {expandMenu ? (
                 <div css={menuItemsStyle}>
-                  {menuList.map((item, index) => {
-                    debugger;
-                    return (
-                      <ScrollIntoView selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
-                        <ul css={[lato, menuItem === item.value ? active : inActive]}>
-                          <li>
-                            {item.value}
-                          </li>
-                        </ul>
-                      </ScrollIntoView>
-                    );
-                  })}
+                  {menuList.map((item, index) => (
+                    <ScrollIntoView selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
+                      <ul css={[lato, menuItem === item.value ? active : inActive]}>
+                        <li>
+                          {item.value}
+                        </li>
+                      </ul>
+                    </ScrollIntoView>
+                  ))}
                 </div>
               ) : null}
             </div>

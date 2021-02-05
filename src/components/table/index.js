@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -49,11 +51,24 @@ const columns = [
 
 const useStyles = makeStyles({
   root: {
-    width: '100%'
+    width: '100%',
+    '&$hover:hover': {
+      // Set hover color
+      backgroundColor: 'red'
+    }
   },
   container: {
     maxHeight: 440
+  },
+
+  tableRow: {
+    cursor: 'pointer'
+    // '&:hover': {
+    //   backgroundColor: '#1B1443 !important',
+    //   color: 'white !important'
+    // }
   }
+
 });
 
 const StickyHeadTable = props => {
@@ -91,7 +106,7 @@ const StickyHeadTable = props => {
 
           <TableBody>
             {careerData && careerData.map(row => (
-              <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+              <TableRow hover role="checkbox" tabIndex={-1} key={row.code} className={classes.tableRow}>
                 {columns.map(column => {
                   const value = row[column.id];
                   return (
