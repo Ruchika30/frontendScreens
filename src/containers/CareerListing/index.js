@@ -22,6 +22,7 @@ import consumer from '../../context/consumer';
 import Table from '../../components/table';
 import BreadCrumb from '../../components/breadCrumb';
 import LoaderProvider from '../../hooks/use-loader';
+import Footer from '../../components/footer';
 
 const CareerList = ({ idDetailContext }) => {
   const [carrerList, setCareerList] = useState([]);
@@ -53,6 +54,16 @@ const CareerList = ({ idDetailContext }) => {
           width: 100%;
         },
   `;
+
+  const layoutStyle = css`
+   font-family: latoRegular;
+    width: 70%;
+    margin: auto;
+    min-height: 100vh;
+    '@media(max-width: 450px)': {
+      width: '90%'
+    }
+  `;
   const handleCareerClick = () => {
     history.push(`/career/${id}`);
   };
@@ -70,10 +81,10 @@ const CareerList = ({ idDetailContext }) => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (searchTerm) {
-        const body = { career_name: searchTerm };
+        const body = { career_name: searchTerm, career_sector_id: id };
         show();
-        const { careers } = await searchCareer(body);
-        setCareerList(careers);
+        const { career_list } = await searchCareer(body);
+        setCareerList(career_list);
         hide();
       }
     }, 2000);
@@ -89,37 +100,48 @@ const CareerList = ({ idDetailContext }) => {
 
   return (
     <React.Fragment>
-      <Navbar fixed barColor={lightCyan} />
-      {/* banner */}
-      <div css={header}>
-        <CarouselComponent />
-      </div>
-      <Layout contentStyle={styles.layoutContainer}>
-        <div style={{ marginTop: '10px' }}>
-          <BreadCrumb listOfLinks={links} />
+      <div style={{ minHeight: '200px' }}>
+        <Navbar fixed barColor={lightCyan} />
+        {/* banner */}
+        <div css={header}>
+          <CarouselComponent />
         </div>
-        <div css={[m3, mLeft0]}>Career Options</div>
-        <div style={{ width: '100%' }} css={srchWrapper}>
-          <SearchBar searchvalue={handleCareerSearch} />
-        </div>
-        {/* tags */}
-        {/* <div css={[dFlex, m3, mLeft0]}>
+        <Layout contentStyle={[layoutStyle]}>
+          <div style={{ marginTop: '10px' }}>
+            <BreadCrumb listOfLinks={links} txtColor="black" />
+          </div>
+          <div css={[m3, mLeft0]}>Career Options</div>
+          <div style={{ width: '100%' }} css={srchWrapper}>
+            <SearchBar
+              searchvalue={handleCareerSearch}
+              labelTxt="Choose the career of your interest"
+              btnLabel="Search"
+              placeholder="Enter career "
+            />
+          </div>
+          {/* tags */}
+          {/* <div css={[dFlex, m3, mLeft0]}>
           <div css={[mRight3]}><Tag dropDown text="Industry" css={tag} /></div>
           <div css={mRight3}><Tag dropDown text="Avg Salary" css={tag} /></div>
           <div css={mRight3}><Tag dropDown text="Popularity" css={tag} /></div>
         </div> */}
 
-        {/* {carrerList && carrerList.map(item => (
+          {/* {carrerList && carrerList.map(item => (
           <div onClick={handleCareerClick}>
             <CareerDetailCard careerData={item} />
             <hr />
           </div>
         ))} */}
-        <div onClick={handleCareerClick} style={{ minHeight: '70vh', marginTop: '20px' }}>
-          <Table careerData={carrerList} />
-        </div>
+          <div onClick={handleCareerClick} style={{ marginTop: '20px' }}>
+            <Table careerData={carrerList} />
+          </div>
 
-      </Layout>
+        </Layout>
+
+      </div>
+      <div style={{ width: '100%', position: 'absolute' }}>
+        <Footer />
+      </div>
     </React.Fragment>
   );
 };

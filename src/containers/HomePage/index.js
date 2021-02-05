@@ -14,6 +14,7 @@ import {
 import { mBottom3 } from '../../assets/styles/spacing';
 import { paperColor } from '../../assets/styles/colors';
 import { SocialIcon } from 'react-social-icons';
+import Footer from '../../components/footer';
 
 const HomePage = () => {
   const {
@@ -306,26 +307,7 @@ const HomePage = () => {
                   </div>
                 )}
 
-        <footer css={footer}>
-          <div>
-            ©Copyright Careeristic • 2020
-          </div>
-          {/* social icons */}
-          <div>
-            <ul>
-              <li css={liWrapper}>
-                <div>
-                  <SocialIcon url="https://www.instagram.com/careeristic/" />
-                </div>
-                <div>
-                  <SocialIcon url="https://www.linkedin.com/in/careeristic-in-8872311b9/" />
-                </div>
-
-              </li>
-            </ul>
-          </div>
-
-        </footer>
+        <Footer />
       </div>
 
     </React.Fragment>

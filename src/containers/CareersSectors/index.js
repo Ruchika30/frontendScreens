@@ -12,8 +12,9 @@ import Card from '../../components/cardWithDetailsBelow';
 import Layout from '../../components/layout/index.js';
 import styles from '../../assets/styles/base';
 import {
-  aquaBlue, celestialBlue, lightCyan, lightGreyColor, paperColor, skyBlueColor
+  aquaBlue, celestialBlue, darkBlue, lightCyan, lightGreyColor, paperColor, skyBlueColor
 } from '../../assets/styles/colors';
+import { heading } from '../../assets/styles/reset';
 import {
   fontSize28, gothicSemiBold, lato, latoBlack, w700
 } from '../../assets/styles/typography';
@@ -23,6 +24,7 @@ import { careerSectors, searchCareerSectors } from '../../services/careers';
 import BreadCrumb from '../../components/breadCrumb';
 import LoaderProvider from '../../hooks/use-loader';
 import style from './style';
+import Footer from '../../components/footer';
 
 const container = css`
     width: 70%;
@@ -32,13 +34,6 @@ const container = css`
     padding: 20px 0px;
    
  `;
-
-const srchWrapper = css`
-    background-color: ${paperColor};
-    padding: 13px;
-    margin : 5px 0px;
-    box-shadow: 0 0 0 1px rgba(63,63,68,0.05), 0 1px 2px 0 rgba(63,63,68,0.15);
-    `;
 
 const header = css`
   background-color: ${aquaBlue};
@@ -60,6 +55,7 @@ const CareersPage = () => {
   const [sectors, setSectors] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const { show, hide } = LoaderProvider();
+  const { srchWrapper } = style;
 
   const getInitialData = async () => {
     try {
@@ -72,6 +68,10 @@ const CareersPage = () => {
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
       // hide();
     }
+  };
+
+  const handleSearch = e => {
+    setSearchTerm(e.target.value);
   };
 
   useEffect(() => {
@@ -88,59 +88,62 @@ const CareersPage = () => {
     const delayDebounceFn = setTimeout(async () => {
       const body = { name: searchTerm };
       show();
-      const response = await searchCareerSectors(body);
-      setSectors(response);
+      if (searchTerm) {
+        const response = await searchCareerSectors(body);
+        setSectors(response);
+      }
       hide();
     }, 2000);
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
 
-  const handleSearch = e => {
-    setSearchTerm(e.target.value);
-  };
-
   return (
     <React.Fragment>
-      {/* <div> */}
-      <Navbar fixed barColor={aquaBlue} />
-      {/* </div> */}
-      {/* Header */}
-      <div css={header}>
-        <div css={[container]}>
-          <div css={[fontSize28, w700, gothicSemiBold, lato]}>Career Options of India</div>
-          <div css={[m3, mLeft0, gothicSemiBold, lato]}>
-            Ex nostrud sit officia incididunt ut cupidatat duis aliquip reprehenderit occaecat aute velit.
-            Eiusmod in sint eiusmod anim nulla eiusmod
-            reprehenderit magna officia culpa nisi.
-            Ex voluptate anim ut irure qui pariatur dolore fugiat voluptate ex consequat reprehenderit. Minim labore consequat voluptate commodo
-            ipsum elit duis.
+      <div style={{ position: 'relative', minHeight: '100vh', paddingBottom: '100px' }}>
+        <Navbar fixed barColor={aquaBlue} />
+        {/* Header */}
+        <div css={header}>
+          <div css={[container]}>
+            <div css={[fontSize28, w700, lato, heading]}>Career Options of India</div>
+            <div css={[m3, mLeft0, lato]} style={{ color: darkBlue }}>
+              Ex nostrud sit officia incididunt ut cupidatat duis aliquip reprehenderit occaecat aute velit.
+              Eiusmod in sint eiusmod anim nulla eiusmod
+              reprehenderit magna officia culpa nisi.
+              Ex voluptate anim ut irure qui pariatur dolore fugiat voluptate ex consequat reprehenderit. Minim labore consequat voluptate commodo
+              ipsum elit duis.
+            </div>
+          </div>
+        </div>
 
+        <Layout contentStyle={styles.layoutContainer}>
+          <div style={{ marginTop: '10px' }}>
+            <BreadCrumb listOfLinks={links} txtColor="black" />
           </div>
 
+          <div style={{ width: '100%' }} css={srchWrapper}>
+            <SearchBar
+              searchvalue={handleSearch}
+              labelTxt="Choose the sector of your interest"
+              btnLabel="Search"
+              placeholder="Enter career sector"
+            />
+          </div>
+          <section css={style.cardGridStyle}>
+            {sectors.map((item, e) => (
+              <div onClick={() => handleSectorClick(e, item._id)}>
+                <Card details={item} />
+              </div>
+            ))}
+          </section>
+        </Layout>
+        <div style={{
+          width: '100%', position: 'absolute', bottom: '0px', backgroundColor: 'white'
+        }}
+        >
+          <Footer />
         </div>
-
       </div>
-
-      <Layout contentStyle={styles.layoutContainer}>
-        <div style={{ marginTop: '10px' }}>
-          <BreadCrumb listOfLinks={links} />
-        </div>
-
-        <div style={{ width: '100%' }} css={srchWrapper}>
-          <SearchBar searchvalue={handleSearch} />
-        </div>
-        <section css={style.cardGridStyle}>
-          {sectors.map((item, e) => (
-            <div onClick={() => handleSectorClick(e, item._id)}>
-              <Card details={item} />
-              {/* <CardwWithDetailBelow details={item} /> */}
-            </div>
-          ))}
-
-          {/* <Card details /> */}
-        </section>
-      </Layout>
 
     </React.Fragment>
   );

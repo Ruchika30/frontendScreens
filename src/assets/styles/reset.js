@@ -2,9 +2,9 @@ import { css } from '@emotion/core';
 import {
   m0, space
 } from './spacing';
-import { fontFace } from './typography';
+import { fontFace, lato } from './typography';
 import {
-  bgColor, paperColor, primaryColor, secondaryColor
+  bgColor, darkBlue, paperColor, primaryColor, secondaryColor
 } from './colors';
 
 // animation duration for components appear / disappear should be consistent
@@ -40,12 +40,15 @@ export const borderRadiusSm = {
 
 export const title = {
   fontSize: '1.3rem',
-  fontFamily: 'gothic'
+  fontFamily: lato,
+  fontWeight: 100
 };
 
 export const heading = {
   fontSize: '1.7rem',
-  fontFamily: 'gothic'
+  fontFamily: lato,
+  color: darkBlue,
+  fontWeight: 600
 
 };
 

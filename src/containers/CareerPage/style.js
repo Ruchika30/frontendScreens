@@ -78,7 +78,7 @@ export default {
         // padding-top: 50px;
         width: 100%;
         overflow-y: scroll;
-        margin-top: 1%;
+        // margin-top: 1%;
         background-color:  ${paperColor};
         &> div {
             padding: 3% 5%;
@@ -102,7 +102,7 @@ export default {
     `,
 
   headerWrapper: css`
-      width: 70%;
+      width: 90%;
       ${dFlex};
       margin: auto;
        @media (max-width: 450px) {
@@ -129,7 +129,8 @@ export default {
         width: 100%;
         color:  ${paperColor};
         background-color: ${darkBlue};
-        // color: red;
+        position : absolute;
+        z-index: 200;
   `,
 
   contentContainer: css`
@@ -154,9 +155,10 @@ export default {
 
   dropDownMenu: css`
     // position: absolute;
+    border-top: 1px solid ${lighSeaBlue};
     top: 100px;
     z-index: 200;
-    margin: 10px 0px;
+    margin-top: 10px;
     width: 100%;
     @media (min-width: 800px) {
             display: none;
@@ -166,10 +168,14 @@ export default {
 
   active: css`
     color: ${lighSeaBlue};
+    list-style-type: none;
+    font-size: 1.3rem;
         
     `,
   inActive: css`
   color: white;
+  list-style-type: none;
+    font-size: 1.3rem;
        
     `,
 
@@ -186,8 +192,13 @@ export default {
             display: flex;
             align-items: center;
             padding: 5px;
+            padding-left: 20px;
              &:hover{
+               border-radius: 5px;
+               color:  ${darkBlue};
               background-color: ${seaBlueColor};
+              transform: translate(0, -5px);
+
             }
     `
 

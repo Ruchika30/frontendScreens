@@ -8,7 +8,7 @@ export default {
 
   navbar: css`
      width: 100%;
-    padding: 10px 20px;
+    // padding: 10px 20px;
   
      @media (max-width: 360px) {
        display: none;

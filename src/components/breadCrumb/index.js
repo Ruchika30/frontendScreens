@@ -9,7 +9,8 @@ import { useHistory } from 'react-router-dom';
 import style from './style';
 
 const BreadCrumb = props => {
-  const { listOfLinks } = props;
+  const { listOfLinks, txtColor } = props;
+  debugger;
   const history = useHistory();
   const [screenWidth, setscreenWidth] = useState(900);
   const { container, breadCrumbs } = style;
@@ -42,7 +43,7 @@ const BreadCrumb = props => {
     <div css={[container, fontSize14, gothicSemiBold]}>
       <ul css={breadCrumbs}>
         {listOfLinks.map((item, index) => (
-          <li onClick={() => handleClick(item.link)}>
+          <li onClick={() => handleClick(item.link)} style={{ color: txtColor || 'white' }}>
             {getLinkValue(item, index)}
             {(index === listOfLinks.length - 1) ? null : <span style={{ padding: '0px 10px' }}> / </span> }
           </li>

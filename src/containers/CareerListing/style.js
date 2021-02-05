@@ -19,6 +19,10 @@ export default {
     background-color: ${paperColor};
     padding: 13px;
     margin : 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
     box-shadow: 0 0 0 1px rgba(63,63,68,0.05), 0 1px 2px 0 rgba(63,63,68,0.15);
     `
 

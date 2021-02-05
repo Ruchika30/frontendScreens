@@ -1,7 +1,7 @@
 
+/** @jsx jsx */
 import { css } from '@emotion/core';
-import { space } from '../../assets/icons';
-import { fontSize28 } from '../../assets/styles/typography';
+import { darkBlue, paperColor } from '../../assets/styles/colors';
 
 export default {
 
@@ -16,8 +16,10 @@ export default {
     boxShadow: 'rgba(0, 0, 0, 0.08) 0px 6px 16px 0px',
     '&:hover': {
       transition: '0.3s',
-      // transform: 'scale(1.05)'
-      transform: 'translate(0, -10px)'
+      transform: 'translate(0, -10px)',
+      backgroundColor: darkBlue,
+      color: 'white'
+
     }
   },
   imageWrapper: {
@@ -25,11 +27,12 @@ export default {
     objectFit: 'contain'
   },
 
-  text: {
-    padding: '0px 15px',
-    borderBottomLeftRadius: '5px',
-    borderBottomRightRadius: '5px'
-  },
+  text: css`
+    padding: 0px 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+   
+    `,
 
   image: {
     width: '100%',
@@ -38,11 +41,9 @@ export default {
     borderTopRightRadius: '5px'
   },
   excerpt: {
-    color: 'black',
     fontSize: '14px'
   },
   time: {
-    color: '#222831',
     fontSize: '14px'
   }
 

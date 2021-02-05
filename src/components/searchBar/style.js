@@ -7,10 +7,10 @@ import {
 export default {
 
   container: css`
-        width: 50%;
+        width: 63%;
         border: 1px solid lightgrey;
         border-radius: 3px;
-        padding:  7px;
+        padding:  2px;
          display:flex;
         align-items: center;
         justify-content: space-between;

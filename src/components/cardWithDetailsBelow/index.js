@@ -16,7 +16,7 @@ const VerticalCard = props => {
         <img src={choose} css={styles.image} alt="sector_icon" />
       </div>
       <div css={styles.text}>
-        <h3 css={{ fontWeight: 'bold', color: 'black', padding: '10px 0px' }}>{name}</h3>
+        <h3 css={{ fontWeight: 'bold', padding: '10px 0px' }}>{name}</h3>
         <p css={styles.excerpt}>
           Career Option:
           {' '}

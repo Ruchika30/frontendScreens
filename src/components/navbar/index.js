@@ -61,8 +61,8 @@ const Navbar = props => {
             <img src={logoWithTxt} alt="logo" style={{ width: '100%' }} />
           </div>
           <ul css={menu}>
-            <li onClick={() => handleClick('/sectors')} css={menuItem}>Careers</li>
             <li onClick={onClickBlog} css={menuItem}>Blog</li>
+            <li onClick={() => handleClick('/sectors')} css={menuItem}>Careers</li>
 
           </ul>
         </div>

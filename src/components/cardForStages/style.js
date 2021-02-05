@@ -54,7 +54,7 @@ export default {
         font-size: 1.2em;
         padding-top: 10px;
         justify-content: center;
-        font-family: gothic;
+        font-family: latoRegular;
     `
 
 };

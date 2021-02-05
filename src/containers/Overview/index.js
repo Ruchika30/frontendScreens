@@ -40,7 +40,7 @@ const Overview = props => {
 
   return (
     <div css={wrapper}>
-      <div css={[heading, lato]}>Overview</div>
+      <h1 css={[lato]}>Overview</h1>
       <div css={[title, lato]}>{courseName}</div>
       <div css={[description, mTop2, lato]}>{overviewText}</div>
     </div>

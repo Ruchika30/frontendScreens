@@ -10,7 +10,7 @@ export default {
 
   title: ({
     fontSize: '2rem',
-    fontFamily: 'gothic'
+    fontFamily: 'latoRegular'
   })
 
 };
