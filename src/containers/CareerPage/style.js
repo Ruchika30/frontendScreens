@@ -84,9 +84,7 @@ export default {
             padding: 3% 5%;
 
         }
-        // @media (max-width: 1350px ) {
-        //       margin-left: 25%;
-        // },
+       
          @media (max-width: 800px) {
               margin-left: 0;
                  width: 100%;
@@ -116,7 +114,9 @@ export default {
         padding: 10px;
         border: 1px solid black;
         width: 100%;
-        border-radius: 2px;
+        // border-radius: 2px;
+          border-top-left-radius: 2px;
+           border-bottom-left-radius: 2px;
         color:  ${paperColor};
         background-color: ${darkBlue};
 
@@ -181,11 +181,13 @@ export default {
 
   iconWrapper: css`
         padding: 5px;
+        background-color:${darkBlue};
     `,
 
   icon: css`
         width: 100%;
          border-radius: 5px;
+         color: white;
     `,
 
   itemContainer: css`
@@ -195,7 +197,7 @@ export default {
             cursor: pointer;
             padding-left: 20px;
              &:hover{
-               border-radius: 3px;
+              
                color:  ${darkBlue};
               background-color: ${seaBlueColor};
               transform: translate(0, -3px);

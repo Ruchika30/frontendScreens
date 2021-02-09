@@ -3,16 +3,17 @@ import Navbar from '../../components/navbar';
 import Header from '../../components/headerForBlog';
 import Card from '../../components/cardForBlog';
 import './style.scss';
-
 import { useHistory, useParams } from 'react-router-dom';
 import { GET_CATEGORY_ARTICLES_QUERY } from '../../queries/category/getCategoryArticles';
 import Query from '../../components/query';
 import { upwardArrow } from '../../assets/icons';
+import GoToTopProvider from '../../hooks/use-topNavigation';
 
 const CategoryPage = ({ location }) => {
   const history = useHistory();
   const [idValue, setIdValue] = useState('');
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
+  const { showGoTop, hideGoTop } = GoToTopProvider();
 
   useEffect(() => {
     setIdValue(location.state.categoryId);
@@ -26,9 +27,9 @@ const CategoryPage = ({ location }) => {
 
   const scrollFunction = () => {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      setGoToTopIconVisiblity(true);
+      showGoTop();
     } else {
-      setGoToTopIconVisiblity(false);
+      hideGoTop();
     }
   };
 
@@ -70,7 +71,7 @@ const CategoryPage = ({ location }) => {
         )}
       </Query>
 
-      {goToTopIconVisiblity && (
+      {/* {goToTopIconVisiblity && (
         <div
           style={{
             position: 'fixed',
@@ -84,7 +85,7 @@ const CategoryPage = ({ location }) => {
             <img src={upwardArrow} alt="goTop" className="home" />
           </div>
         </div>
-      )}
+      )} */}
 
     </div>
   );

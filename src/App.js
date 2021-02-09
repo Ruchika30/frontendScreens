@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import CareerIdValueProvider from './context/idValueProvider';
 import { greyForBg, pagewhite, paperColor } from './assets/styles/colors';
 import { LoaderProvider } from './hooks/use-loader';
+import { GoToTopProvider } from './hooks/use-topNavigation';
 import './App.scss';
 
 // const HomePage = lazy(() => import('../src/containers/HomePage'));
@@ -20,27 +21,29 @@ const HomePage = lazy(() => import('./containers/HomePage'));
 
 const App = () => (
   <div className="App" style={{ backgroundColor: pagewhite, minHeight: '100vh' }}>
-    <LoaderProvider>
-      <Router>
-        <Suspense fallback={<div className="loader centerLoader" />}>
-          <Switch>
-            <CareerIdValueProvider>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/sectors" component={CareerSectors} />
-              <Route exact path="/careers/:id" component={CareersListing} />
-              <Route exact path="/career/:id" component={CareerPage} />
-              <Route exact path="/overview/:id" component={Overview} />
-              <Route exact path="/video" component={video} />
+    <GoToTopProvider>
+      <LoaderProvider>
+        <Router>
+          <Suspense fallback={<div className="loader centerLoader" />}>
+            <Switch>
+              <CareerIdValueProvider>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/sectors" component={CareerSectors} />
+                <Route exact path="/careers/:id" component={CareersListing} />
+                <Route exact path="/career/:id" component={CareerPage} />
+                <Route exact path="/overview/:id" component={Overview} />
+                <Route exact path="/video" component={video} />
 
-              <Route exact path="/blog" component={BlogLandingPage} />
-              <Route exact path="/article" component={BlogPage} />
-              <Route exact path="/category" component={CategoryPage} />
-              <Route exact path="/about" component={AboutPage} />
-            </CareerIdValueProvider>
-          </Switch>
-        </Suspense>
-      </Router>
-    </LoaderProvider>
+                <Route exact path="/blog" component={BlogLandingPage} />
+                <Route exact path="/article" component={BlogPage} />
+                <Route exact path="/category" component={CategoryPage} />
+                <Route exact path="/about" component={AboutPage} />
+              </CareerIdValueProvider>
+            </Switch>
+          </Suspense>
+        </Router>
+      </LoaderProvider>
+    </GoToTopProvider>
   </div>
 );
 

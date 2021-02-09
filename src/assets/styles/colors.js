@@ -30,6 +30,7 @@ export const lightCyan = '#D6FFF6';
 export const aquaBlue = '#B4FBFB';
 export const darkPurple = '#353478';
 export const pagewhite = '#F4F7F7';
+export const lightPurple = '#DCD4F3';
 
 export const lightGrayFontColor = {
   color: lightGreyColor

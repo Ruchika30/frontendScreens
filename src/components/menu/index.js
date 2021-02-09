@@ -6,6 +6,10 @@ export default props => {
   const history = useHistory();
 
   const onClickBlog = () => {
+    history.push('/blog');
+  };
+
+  const onClickHome = () => {
     history.push('/');
   };
 
@@ -13,12 +17,14 @@ export default props => {
   // Pass on our props
 
     <Menu {...props}>
-      <a className="menu-item" href="/sectors">
-        Careers
+      <a className="menu-item" onClick={onClickHome}>
+        Home
       </a>
-
       <a className="menu-item" onClick={onClickBlog}>
         Blog
+      </a>
+      <a className="menu-item" href="/sectors">
+        Careers
       </a>
 
     </Menu>

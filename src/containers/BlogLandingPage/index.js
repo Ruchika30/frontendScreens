@@ -7,12 +7,16 @@ import CATEGORY_ARTICLES_QUERY from '../../queries/category/landingPageData';
 import Query from '../../components/query';
 import CategoryCard from '../../components/categoryLabel';
 import { home, upwardArrow } from '../../assets/icons';
+import GoToTopProvider from '../../hooks/use-topNavigation';
+import Navbar from '../../components/navbar';
+import { lightCyan } from '../../assets/styles/colors';
 
 const BlogLandingPage = () => {
   const history = useHistory();
 
   const [isVisible, setNavbarVisible] = useState(false);
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
+  const { showGoTop, hideGoTop } = GoToTopProvider();
 
   const handleScroll = () => {
     if (window.scrollY > 150) {
@@ -24,6 +28,14 @@ const BlogLandingPage = () => {
     window.addEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollFunction = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      showGoTop();
+    } else {
+      hideGoTop();
+    }
+  };
+
   const handleDescriptionClick = (id, categoryId) => {
     history.push('/article', { id, categoryId });
   };
@@ -32,18 +44,11 @@ const BlogLandingPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const scrollFunction = () => {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      setGoToTopIconVisiblity(true);
-    } else {
-      setGoToTopIconVisiblity(false);
-    }
-  };
-
   window.onscroll = () => scrollFunction();
 
   return (
     <div className="main">
+      <Navbar fixed barColor={lightCyan} />
       <div>
         <Header main />
       </div>
@@ -99,7 +104,7 @@ const BlogLandingPage = () => {
                })}
           </div> */}
 
-        {goToTopIconVisiblity && (
+        {/* {goToTopIconVisiblity && (
           <div
             style={{
               position: 'fixed',
@@ -113,7 +118,7 @@ const BlogLandingPage = () => {
               <img src={upwardArrow} alt="goTop" className="home" />
             </div>
           </div>
-        )}
+        )} */}
       </div>
 
     </div>

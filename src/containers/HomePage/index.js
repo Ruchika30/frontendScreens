@@ -3,7 +3,6 @@
 import { css, jsx } from '@emotion/react';
 import React, { useEffect, useState } from 'react';
 import style from './style';
-
 import Layout from '../../components/layout';
 import NumberAnimation from '../../components/numberAnimation';
 import CardWithBtn from '../../components/cardForStages';
@@ -12,9 +11,12 @@ import {
   HomePgBanner, careerChangers, choose, decide, explore, grads, highSchool, home, kids, logoIcon, logoWithTxt, school, whyUs
 } from '../../assets/icons';
 import { mBottom3 } from '../../assets/styles/spacing';
-import { paperColor } from '../../assets/styles/colors';
+import { aquaBlue, paperColor } from '../../assets/styles/colors';
 import { SocialIcon } from 'react-social-icons';
 import Footer from '../../components/footer';
+import GoToTopProvider from '../../hooks/use-topNavigation';
+import consumer from '../../context/consumer';
+import Navbar from '../../components/navbar';
 
 const HomePage = () => {
   const {
@@ -28,6 +30,9 @@ const HomePage = () => {
   const [overviewActive, setOverviewActive] = useState(true);
   const [skillsActive, setskillsActive] = useState(false);
   const [chooseOptionActive, setChooseOptionActive] = useState(false);
+
+  const { showGoTop, hideGoTop } = GoToTopProvider();
+  const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
 
   // base
   const container = css`
@@ -68,14 +73,6 @@ const HomePage = () => {
             font-size: 1vw;
     `;
 
-  const handleChange = ({ target: { value } }) => {
-    this.setState({ value });
-  };
-
-  const onClickBlog = () => {
-    history.push('/blog');
-  };
-
   function updateTextPathOffset(offset) {
     const textPath = document.querySelector('#text-path');
     textPath.setAttribute('startOffset', offset);
@@ -92,13 +89,15 @@ const HomePage = () => {
       const scrollPercent = rect.y / window.innerHeight;
       console.log('scrollPercent', scrollPercent);
       updateTextPathOffset(scrollPercent * 1 * 500);
-
-      if (scrollPercent < -0.50) {
-        setNmbrAnimation(true);
-      } else {
-        setNmbrAnimation(false);
-      }
     });
+  };
+
+  const scrollFunction = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      showGoTop();
+    } else {
+      hideGoTop();
+    }
   };
 
   const setToActive = stateName => {
@@ -127,30 +126,14 @@ const HomePage = () => {
     setToInActive(setskillsActive);
   };
 
-  window.addEventListener('scroll', event => {
-    onScroll();
-  });
+  window.onscroll = () => scrollFunction();
 
   return (
     <React.Fragment onScroll={onScroll}>
       <div style={{ backgroundColor: paperColor }}>
         <header css={header}>
           <div css={animationTextBody}>
-            <div css={menuWrapper}>
-              <div style={{ width: '200px' }}>
-                <img src={logoWithTxt} alt="logo" style={{ width: '100%' }} />
-              </div>
-              <ul css={menu}>
-                <li onClick={onClickBlog}>
-                  <a href="/blog" css={menuItem}>Blog</a>
-                </li>
-                <li onClick={onClickBlog}>
-                  <a href="/sectors" css={menuItem}>Career</a>
-                </li>
-                {/* <li onClick={handleAbout}>About Us</li> */}
-              </ul>
-            </div>
-
+            <Navbar fixed barColor={aquaBlue} />
             <div css={bannerContextContainer}>
               <div css={headerContent}>
                 <div css={title}>
@@ -314,4 +297,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default consumer(HomePage);

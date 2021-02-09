@@ -5,18 +5,29 @@ import {
 } from '../../assets/styles/colors';
 
 export default {
+  wrapper: css`
+  display: flex;
+   flex-direction: row;
+   width: 100%;
+  @media (max-width: 480px){
+          flex-direction: column;
+  } 
+          
+  `,
 
   container: css`
-        width: 63%;
+        width: 80%;
         border: 1px solid lightgrey;
         border-radius: 3px;
         padding:  2px;
          display:flex;
         align-items: center;
         justify-content: space-between;
+
         
         @media (max-width: 480px){
             width: 100%;
+           
           
         }
     `,

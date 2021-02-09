@@ -27,7 +27,8 @@ export const LoaderProvider = ({ children }) => {
   return (
     <LoaderContext.Provider value={{ show, hide }}>
       {state.visible ? (
-        <Loader />) : null}
+        <Loader />
+      ) : null}
       {children}
     </LoaderContext.Provider>
   );

@@ -109,13 +109,13 @@ const Header = props => {
           <div className="header">
             <div className="animationTextBody">
               <div className="menuWrapper">
-                <div className="icon-navbar" onClick={handleLogoClick}>
+                {/* <div className="icon-navbar" onClick={handleLogoClick}>
                   <img
                     className="category-icon"
                     src={logoWithTxt}
                     alt="logo"
                   />
-                </div>
+                </div> */}
 
                 <div className="aboutUs">
                   {/* <div className="aboutTitle" onClick={handleClick}> About Us </div> */}

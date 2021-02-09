@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 const SearchBar = props => {
   const { labelTxt, placeholder, btnLabel } = props;
   const {
-    searchBarStyle, lensContainer, container, icon, iconWrapper
+    searchBarStyle, wrapper, lensContainer, container, icon, iconWrapper
   } = style;
 
   const handleValue = term => {
@@ -20,22 +20,27 @@ const SearchBar = props => {
 
   return (
 
-    <React.Fragment>
-      <div>{labelTxt}</div>
-      <div css={container}>
-        <input
-          css={searchBarStyle}
-          placeholder={placeholder}
-          onChange={handleValue}
-        />
-        {/* <div css={iconWrapper}>
+    <div css={wrapper}>
+      <div style={{ margin: '10px 0px', flex: 1 }}>{labelTxt}</div>
+      <div style={{
+        display: 'flex', width: '100% !important', flex: 2.5, justifyContent: 'space-evenly'
+      }}
+      >
+        <div css={container}>
+          <input
+            css={searchBarStyle}
+            placeholder={placeholder}
+            onChange={handleValue}
+          />
+          {/* <div css={iconWrapper}>
         <FontAwesomeIcon icon={faSearch} css={icon} alt="icon" />
       </div> */}
+        </div>
+        <Button variant="contained" color="primary" disableElevation>
+          {btnLabel}
+        </Button>
       </div>
-      <Button variant="contained" color="primary" disableElevation>
-        {btnLabel}
-      </Button>
-    </React.Fragment>
+    </div>
   );
 };
 

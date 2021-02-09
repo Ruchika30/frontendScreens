@@ -54,7 +54,7 @@ const Navbar = props => {
       >
         {/* navbar for other devices */}
         <div css={menuWrapper}>
-          <div style={{ width: '180px' }} onClick={onLogoClick}>
+          <div style={{ width: '180px', cursor: 'pointer' }} onClick={onLogoClick}>
             <img src={logoWithTxt} alt="logo" style={{ width: '100%' }} />
           </div>
           <ul css={menu}>

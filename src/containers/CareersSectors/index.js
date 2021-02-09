@@ -25,6 +25,8 @@ import BreadCrumb from '../../components/breadCrumb';
 import LoaderProvider from '../../hooks/use-loader';
 import style from './style';
 import Footer from '../../components/footer';
+import GoToTopProvider from '../../hooks/use-topNavigation';
+import consumer from '../../context/consumer';
 
 const container = css`
     width: 70%;
@@ -56,19 +58,30 @@ const CareersPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { show, hide } = LoaderProvider();
   const { srchWrapper } = style;
+  const { showGoTop, hideGoTop } = GoToTopProvider();
 
   const getInitialData = async () => {
     try {
       show();
       const response = await careerSectors();
       setSectors(response);
-      hide();
+      // hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
       // hide();
     }
   };
+
+  const scrollFunction = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      showGoTop();
+    } else {
+      hideGoTop();
+    }
+  };
+
+  window.onscroll = () => scrollFunction();
 
   const handleSearch = e => {
     setSearchTerm(e.target.value);
@@ -91,7 +104,8 @@ const CareersPage = () => {
       if (searchTerm) {
         const response = await searchCareerSectors(body);
         setSectors(response);
-      }
+      } else getInitialData();
+
       hide();
     }, 2000);
 
@@ -121,6 +135,7 @@ const CareersPage = () => {
             <BreadCrumb listOfLinks={links} txtColor="black" />
           </div>
 
+          {/* {sectors.length && ( */}
           <div style={{ width: '100%' }} css={srchWrapper}>
             <SearchBar
               searchvalue={handleSearch}
@@ -129,6 +144,7 @@ const CareersPage = () => {
               placeholder="Enter career sector"
             />
           </div>
+          {/* )} */}
           <section css={style.cardGridStyle}>
             {sectors.map((item, e) => (
               <div onClick={() => handleSectorClick(e, item._id)}>
@@ -149,4 +165,4 @@ const CareersPage = () => {
   );
 };
 
-export default CareersPage;
+export default consumer(CareersPage);

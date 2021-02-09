@@ -10,6 +10,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { home, profile, upwardArrow } from '../../assets/icons';
 import moment from 'moment';
 import { darkBlue } from '../../assets/styles/colors';
+import GoToTopProvider from '../../hooks/use-topNavigation';
 
 const BlogPage = ({ location }) => {
   const { id, categoryId } = location.state;
@@ -18,15 +19,12 @@ const BlogPage = ({ location }) => {
   const [recommBlogs, setRecomBlogs] = useState([]);
   const [isNavbarVisible, setNavbarVisible] = useState(false);
   const history = useHistory();
+  const { showGoTop, hideGoTop } = GoToTopProvider();
 
   useEffect(() => {
     setIdValue(id);
     setCategoryid(categoryId);
   }, [categoryId, id, location]);
-
-  const gotoHome = () => {
-    history.push('/');
-  };
 
   const otherBlogs = [
     {
@@ -65,25 +63,23 @@ const BlogPage = ({ location }) => {
     window.addEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollFunction = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      showGoTop();
+    } else {
+      hideGoTop();
+    }
+  };
+
+  window.onscroll = () => scrollFunction();
+
   return (
     <div>
-      {isNavbarVisible
+      {/* {isNavbarVisible
         ? <Navbar fixed={isNavbarVisible} progressValue={getPercent} />
-        : (
-          <div
-            style={{
-              position: 'fixed',
-              bottom: '20px',
-              right: '30px',
-              zIndex: 299
-            }}
-            onClick={gotoHome}
-          >
-            <div className="goToTopWrapper">
-              <img src={upwardArrow} alt="goTop" className="home" />
-            </div>
-          </div>
-        )}
+        : null} */}
+
+      <Navbar fixed={isNavbarVisible} progressValue={getPercent} />
 
       {/* query */}
       <Query query={GET_BLOGPOST} id={idValue}>
@@ -181,7 +177,7 @@ const BlogPage = ({ location }) => {
 
               const filterFunction = item => item.id !== idValue;
               const filterMax = (fn, c) => x => c && fn(x) && c--;
-              const max = 3;
+              const max = 4;
               const recommendedBlogs = blog_posts.filter(filterMax(filterFunction, max));
               return recommendedBlogs;
             }

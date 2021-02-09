@@ -23,6 +23,9 @@ import BreadCrumb from '../../components/breadCrumb';
 import GoToTop from '../../components/goToTop';
 import LoaderProvider from '../../hooks/use-loader';
 import Footer from '../../components/footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import GoToTopProvider from '../../hooks/use-topNavigation';
 
 const CareerPage = ({ idDetailContext }) => {
   const [careerId, setCareerId] = idDetailContext;
@@ -33,6 +36,7 @@ const CareerPage = ({ idDetailContext }) => {
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('Career Options');
   const [menuLink, setMenuLink] = useState('');
+  const { showGoTop, hideGoTop } = GoToTopProvider();
 
   const refFromUseRef = useRef(null);
   const history = useHistory();
@@ -41,6 +45,7 @@ const CareerPage = ({ idDetailContext }) => {
     menuTitle, iconWrapper, menu, itemContainer, icon, contentWrapper, dropDownMenu,
     contentAndMenuWrapper, headingStyle, headerWrapper
   } = style;
+
   const { show, hide } = LoaderProvider();
 
   const careerMenu = 'CAREER MENU';
@@ -59,12 +64,17 @@ const CareerPage = ({ idDetailContext }) => {
 
  `;
 
-  const handleMenu = () => {
-    refFromUseRef.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const toggleMenu = () => {
     expandMenu ? setExpandMenu(false) : setExpandMenu(true);
+  };
+
+  const scrollFunction = () => {
+    console.log('gagga0----', document.body.scrollTop);
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      showGoTop();
+    } else {
+      hideGoTop();
+    }
   };
 
   const links = [
@@ -79,6 +89,17 @@ const CareerPage = ({ idDetailContext }) => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
+
+  const handleScroll = () => {
+    const textContainer = document.querySelector('#mainContent');
+    const rect = textContainer.getBoundingClientRect();
+    const scrollPercent = rect.y / window.innerHeight;
+    console.log('scrollPercent--', scrollPercent);
+
+    if (scrollPercent > -1.007176488456865) { console.log('oberview'); }
+    if (scrollPercent < -1.007176488456865) { console.log('skillset'); }
+    if (scrollPercent < -1.5539) { console.log('roles'); }
+  };
 
   const handleMenuClick = item => {
     history.replace(item.link);
@@ -107,14 +128,6 @@ const CareerPage = ({ idDetailContext }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const scrollFunction = () => {
-    if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
-      setGoToTopIconVisiblity(true);
-    } else {
-      setGoToTopIconVisiblity(false);
-    }
-  };
-
   const getCorrespondingContent = menu => {
     switch (menu) {
       case '#overview': {
@@ -136,10 +149,17 @@ const CareerPage = ({ idDetailContext }) => {
     }
   };
 
+  const getIcon = () => {
+    if (expandMenu) {
+      return faCaretUp;
+    }
+    return faCaretDown;
+  };
+
   window.onscroll = () => scrollFunction();
 
   return (
-    <div>
+    <div onScroll={handleScroll}>
       <div css={[headerContainer]}>
         <Navbar fixed barColor={aquaBlue} />
 
@@ -182,7 +202,10 @@ const CareerPage = ({ idDetailContext }) => {
 
             {/* dropdown-menu */}
             <div css={dropDownMenu}>
-              <h4 onClick={toggleMenu} css={[menuTitle, lato]}>{menuItem}</h4>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }} onClick={toggleMenu} css={menuTitle}>
+                <div css={[lato]}>{menuItem}</div>
+                <FontAwesomeIcon icon={getIcon()} css={icon} alt="icon" />
+              </div>
               {expandMenu ? (
                 <div css={menuItemsStyle}>
                   {menuList.map((item, index) => (
@@ -231,7 +254,7 @@ const CareerPage = ({ idDetailContext }) => {
                   {menuList.length ? (
                     <div css={contentWrapper}>
                       {menuList && menuList.map(menu => (
-                        <div>{getCorrespondingContent(menu.link)}</div>
+                        <div id="mainContent">{getCorrespondingContent(menu.link)}</div>
                       ))}
                       <div style={{
                         bottom: '0px',

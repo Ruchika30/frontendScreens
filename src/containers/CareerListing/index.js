@@ -6,7 +6,7 @@ import style from './style';
 import Navbar from '../../components/navbar';
 import Layout from '../../components/layout/index.js';
 import styles from '../../assets/styles/base';
-import { lightCyan } from '../../assets/styles/colors';
+import { aquaBlue, lightCyan, skyBlueColor } from '../../assets/styles/colors';
 import SearchBar from '../../components/searchBar';
 import {
   m3, mLeft0
@@ -23,6 +23,7 @@ import Table from '../../components/table';
 import BreadCrumb from '../../components/breadCrumb';
 import LoaderProvider from '../../hooks/use-loader';
 import Footer from '../../components/footer';
+import GoToTopProvider from '../../hooks/use-topNavigation';
 
 const CareerList = ({ idDetailContext }) => {
   const [carrerList, setCareerList] = useState([]);
@@ -32,6 +33,7 @@ const CareerList = ({ idDetailContext }) => {
   const [careerId, setCareerId] = idDetailContext;
   const [searchTerm, setSearchTerm] = useState(null);
   const { show, hide } = LoaderProvider();
+  const { showGoTop, hideGoTop } = GoToTopProvider();
 
   const getInitialData = async (id, pageNo) => {
     try {
@@ -48,7 +50,7 @@ const CareerList = ({ idDetailContext }) => {
   };
 
   const header = css`
-  background-color: ${lightCyan};
+  background-color: ${aquaBlue};
       @media (max-width: 450px ) {
           padding-top: 60px;
           width: 100%;
@@ -60,8 +62,9 @@ const CareerList = ({ idDetailContext }) => {
     width: 70%;
     margin: auto;
     min-height: 100vh;
-    '@media(max-width: 450px)': {
-      width: '90%'
+    
+      @media (max-width: 450px ) {
+               width: 90% ;
     }
   `;
   const handleCareerClick = () => {
@@ -78,6 +81,16 @@ const CareerList = ({ idDetailContext }) => {
     { link: `/careers/${id}`, value: 'CareerList' }
   ];
 
+  const scrollFunction = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      showGoTop();
+    } else {
+      hideGoTop();
+    }
+  };
+
+  window.onscroll = () => scrollFunction();
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (searchTerm) {
@@ -86,8 +99,8 @@ const CareerList = ({ idDetailContext }) => {
         const { career_list } = await searchCareer(body);
         setCareerList(career_list);
         hide();
-      }
-    }, 2000);
+      } else { getInitialData(id); }
+    }, 1500);
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
@@ -111,6 +124,7 @@ const CareerList = ({ idDetailContext }) => {
             <BreadCrumb listOfLinks={links} txtColor="black" />
           </div>
           <div css={[m3, mLeft0]}>Career Options</div>
+          {/* {carrerList.length ? ( */}
           <div style={{ width: '100%' }} css={srchWrapper}>
             <SearchBar
               searchvalue={handleCareerSearch}
@@ -119,6 +133,7 @@ const CareerList = ({ idDetailContext }) => {
               placeholder="Enter career "
             />
           </div>
+          {/* ) : null} */}
           {/* tags */}
           {/* <div css={[dFlex, m3, mLeft0]}>
           <div css={[mRight3]}><Tag dropDown text="Industry" css={tag} /></div>
