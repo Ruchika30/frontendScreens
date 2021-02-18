@@ -26,6 +26,7 @@ import Footer from '../../components/footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import GoToTopProvider from '../../hooks/use-topNavigation';
+import AvgSalary from '../AvgSalary';
 
 const CareerPage = ({ idDetailContext }) => {
   const [careerId, setCareerId] = idDetailContext;
@@ -97,7 +98,7 @@ const CareerPage = ({ idDetailContext }) => {
     console.log('scrollPercent--', scrollPercent);
 
     if (scrollPercent > -1.007176488456865) { console.log('oberview'); }
-    if (scrollPercent < -1.007176488456865) { console.log('skillset'); }
+    if (scrollPercent < -0.21) { console.log('skillset'); }
     if (scrollPercent < -1.5539) { console.log('roles'); }
   };
 
@@ -134,13 +135,13 @@ const CareerPage = ({ idDetailContext }) => {
         return <div id="overview" css={contentContainer}><Overview careerId={id} /></div>;
       }
       case '#skillSet': {
-        return <div id="skillSet" css={contentContainer}><Skillset /></div>;
+        return <div id="skillSet" css={contentContainer}><AvgSalary /></div>;
       }
       case '#responsibility': {
         return <div id="responsibility" css={contentContainer}><Responsibility /></div>;
       }
       case '#videoLibrary': {
-        return <div id="videoLibrary" css={contentContainer}><VideoLibrary /></div>;
+        return <div id="videoLibrary" css={contentContainer}><AvgSalary /></div>;
       }
 
       default: {
