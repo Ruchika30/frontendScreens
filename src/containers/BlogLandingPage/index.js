@@ -56,11 +56,11 @@ const BlogLandingPage = () => {
       {/* category Bar */}
       <div className="categoryCard">
 
-        <Query query={CATEGORY_ARTICLES_QUERY} id={null}>
+        {/* <Query query={CATEGORY_ARTICLES_QUERY} id={null}>
           {({ data: { categories } }) => (
             <div>
               <div style={{ margin: '5px' }}>
-                {categories.map(item => (
+                { categories.map(item => (
                   <>
                     <CategoryCard name={item.name} id={item.id} />
                     <div>
@@ -81,7 +81,9 @@ const BlogLandingPage = () => {
               </div>
             </div>
           )}
-        </Query>
+        </Query> */}
+
+        <div>Coming Soon ...</div>
 
         {/* card row */}
         {/* <div className="cardWrapper">
