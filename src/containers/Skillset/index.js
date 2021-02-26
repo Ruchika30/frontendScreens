@@ -5,7 +5,7 @@ import CardWithDetailOnSide from '../../components/CardWithDetailOnSide';
 import style from './style.js';
 import { getSkillset as getSkillsetService } from '../../services/careers';
 import { useHistory, useParams } from 'react-router';
-import { mTop2 } from '../../assets/styles/spacing';
+import { mTop3 } from '../../assets/styles/spacing';
 import { heading } from '../../assets/styles/reset';
 import { lato } from '../../assets/styles/typography';
 
@@ -33,7 +33,7 @@ const Skillset = () => {
   return (
     <div>
       <div css={[heading, lato]}>Required Skills for this career</div>
-      <div css={[gridStyle, mTop2]}>
+      <div css={[gridStyle]}>
         {skillList.map(item => (
           // <div style={{ marginRight: '50px' }}>
           <div>

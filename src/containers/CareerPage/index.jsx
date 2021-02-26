@@ -32,8 +32,8 @@ const CareerPage = ({ idDetailContext }) => {
   const [careerId, setCareerId] = idDetailContext;
   const { id } = useParams();
   const [expandMenu, setExpandMenu] = useState('');
-  const [menuItem, setMenuItem] = useState('Overview');
-  const [menuList, setMenuList] = useState([]);
+  const [menuItem, setMenuItem] = useState('Video Library');
+  // const [menuList, setMenuList] = useState([]);
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('Career Options');
   const [menuLink, setMenuLink] = useState('');
@@ -70,13 +70,28 @@ const CareerPage = ({ idDetailContext }) => {
   };
 
   const scrollFunction = () => {
-    console.log('gagga0----', document.body.scrollTop);
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      showGoTop();
+      // showGoTop();
+      debugger;
+      console.log('heyy');
     } else {
       hideGoTop();
     }
   };
+
+  const menuList = [{
+    _id: '60127b598387de0017a5350e', value: 'Video Library', link: '#videoLibrary', id: 0, logo: 'fa fa-camera', hidden: false
+  }, {
+    _id: '60127b598387de0017a5350e', value: 'Overview', link: '#overview', id: 0, logo: 'fa fa-camera', hidden: false
+  }, {
+    _id: '60127b598387de0017a5350f', value: 'SkillSet', link: '#skillSet', id: 1, logo: 'fa fa-arrow', hidden: false
+  }, {
+    _id: '60127b598387de0017a53510', value: 'Roles & Reponsibility', link: '#responsibility', id: 2, logo: 'fa fa-box', hidden: true
+  }, {
+    _id: '60127b598387de0017a5350f', value: 'Avg Salary', link: '#avgSalary', id: 1, logo: 'fa fa-arrow', hidden: false
+  }
+
+  ];
 
   const links = [
     { link: '/', value: 'Home' },
@@ -95,11 +110,21 @@ const CareerPage = ({ idDetailContext }) => {
     const textContainer = document.querySelector('#mainContent');
     const rect = textContainer.getBoundingClientRect();
     const scrollPercent = rect.y / window.innerHeight;
-    console.log('scrollPercent--', scrollPercent);
 
-    if (scrollPercent > -1.007176488456865) { console.log('oberview'); }
-    if (scrollPercent < -0.21) { console.log('skillset'); }
-    if (scrollPercent < -1.5539) { console.log('roles'); }
+    if (scrollPercent < -6.198329) {
+      setMenuItem('Avg Salary');
+    } else
+    if (scrollPercent < -4.289638) {
+      setMenuItem('Roles & Reponsibility');
+    } else
+    if (scrollPercent < -2.537163) {
+      setMenuItem('SkillSet');
+    } else
+    if (scrollPercent < -0.7934) {
+      setMenuItem('Overview');
+    } else {
+      setMenuItem('Video Library');
+    }
   };
 
   const handleMenuClick = item => {
@@ -117,7 +142,7 @@ const CareerPage = ({ idDetailContext }) => {
     try {
       show();
       const { items } = await careerListMenuItems(id);
-      setMenuList(items);
+      // setMenuList(items);
       hide();
     } catch (error) {
       // handle error
@@ -125,23 +150,26 @@ const CareerPage = ({ idDetailContext }) => {
   };
 
   useEffect(() => {
-    getInitialData();
+    // getInitialData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getCorrespondingContent = menu => {
     switch (menu) {
+      case '#videoLibrary': {
+        return <div id="videoLibrary" css={contentContainer}><VideoLibrary /></div>;
+      }
       case '#overview': {
         return <div id="overview" css={contentContainer}><Overview careerId={id} /></div>;
       }
+      case '#avgSalary': {
+        return <div id="avgSalary" css={contentContainer}><AvgSalary /></div>;
+      }
       case '#skillSet': {
-        return <div id="skillSet" css={contentContainer}><AvgSalary /></div>;
+        return <div id="skillSet" css={contentContainer}><Skillset /></div>;
       }
       case '#responsibility': {
         return <div id="responsibility" css={contentContainer}><Responsibility /></div>;
-      }
-      case '#videoLibrary': {
-        return <div id="videoLibrary" css={contentContainer}><AvgSalary /></div>;
       }
 
       default: {
@@ -182,103 +210,100 @@ const CareerPage = ({ idDetailContext }) => {
       </div>
 
       {/* <div style={{ marginTop: '10px', paddingLeft: '24%' }}> */}
-      { menuList ? (
-        <div>
-          <Layout contentStyle={{
+      <div>
+        <Layout contentStyle={{
+          width: '100%',
+          margin: 'auto'
+          // backgroundColor: darkBlue
+        }}
+        >
+          <div style={{
+            marginTop: '10px',
             width: '100%',
-            margin: 'auto'
-            // backgroundColor: darkBlue
+            margin: 'auto',
+            padding: '10px 5%',
+            backgroundColor: darkBlue
           }}
           >
-            <div style={{
-              marginTop: '10px',
-              width: '100%',
-              margin: 'auto',
-              padding: '10px 5%',
-              backgroundColor: darkBlue
-            }}
-            >
-              <BreadCrumb listOfLinks={links} />
+            <BreadCrumb listOfLinks={links} />
+          </div>
+
+          {/* dropdown-menu */}
+          <div css={dropDownMenu}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }} onClick={toggleMenu} css={menuTitle}>
+              <div css={[lato]}>{menuItem}</div>
+              <FontAwesomeIcon icon={getIcon()} css={icon} alt="icon" />
             </div>
-
-            {/* dropdown-menu */}
-            <div css={dropDownMenu}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }} onClick={toggleMenu} css={menuTitle}>
-                <div css={[lato]}>{menuItem}</div>
-                <FontAwesomeIcon icon={getIcon()} css={icon} alt="icon" />
-              </div>
-              {expandMenu ? (
-                <div css={menuItemsStyle}>
-                  {menuList.map((item, index) => (
-                    <ScrollIntoView selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
-                      <ul css={[lato, menuItem === item.value ? active : inActive]}>
-                        <li>
-                          {item.value}
-                        </li>
-                      </ul>
-                    </ScrollIntoView>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-
-            {menuList ? (
-              <div css={contentAndMenuWrapper}>
-                {/* panel menu  */}
-                <div style={{
-                  display: 'flex',
-                  height: 'calc(100vh - 189px)',
-                  width: '100%'
-                }}
-                >
-                  {menuList.length ? (
-                    <div css={panel}>
-                      <div style={{ marginBottom: '10px', marginLeft: '20px' }}>
-                        <h4 css={[headingStyle, lato]}>CAREER MENU</h4>
-                      </div>
-                      {menuList.map((item, index) => (
-                        <ScrollIntoView smooth="smooth" selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
-                          <div css={[itemContainer]}>
-                            <ul css={[lato, menuItem === item.value ? active : inActive]}>
-                              <li>
-                                {item.value}
-                              </li>
-                            </ul>
-                          </div>
-                        </ScrollIntoView>
-                      ))}
-
-                    </div>
-                  ) : null }
-
-                  {/* content */}
-                  {menuList.length ? (
-                    <div css={contentWrapper}>
-                      {menuList && menuList.map(menu => (
-                        <div id="mainContent">{getCorrespondingContent(menu.link)}</div>
-                      ))}
-                      <div style={{
-                        bottom: '0px',
-                        width: '100%',
-                        marginTop: '5%'
-                      }}
-                      >
-                        <Footer />
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-
+            {expandMenu ? (
+              <div css={menuItemsStyle}>
+                {menuList.map((item, index) => (
+                  <ScrollIntoView selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
+                    <ul css={[lato, menuItem === item.value ? active : inActive]}>
+                      <li>
+                        {item.value}
+                      </li>
+                    </ul>
+                  </ScrollIntoView>
+                ))}
               </div>
             ) : null}
+          </div>
 
-            { goToTopIconVisiblity && <GoToTop goToTopIconVisiblity />}
+          {menuList ? (
+            <div css={contentAndMenuWrapper}>
+              {/* panel menu  */}
+              <div style={{
+                display: 'flex',
+                height: 'calc(100vh - 210px)',
+                width: '100%'
+              }}
+              >
+                {menuList.length ? (
+                  <div css={panel}>
+                    <div style={{ marginBottom: '10px', marginLeft: '20px' }}>
+                      <h4 css={[headingStyle, lato]}>CAREER MENU</h4>
+                    </div>
+                    {menuList.map((item, index) => (
+                      <ScrollIntoView smooth="smooth" selector={item && item.link} style={{ position: 'relative' }} onClick={() => handleMenuClick(item, index)}>
+                        <div css={[itemContainer]}>
+                          <ul css={[lato, menuItem === item.value ? active : inActive]}>
+                            <li>
+                              {item.value}
+                            </li>
+                          </ul>
+                        </div>
+                      </ScrollIntoView>
+                    ))}
 
-          </Layout>
+                  </div>
+                ) : null }
 
-        </div>
+                {/* content */}
+                {menuList.length ? (
+                  <div css={contentWrapper}>
+                    {menuList && menuList.map(menu => (
+                      <div id="mainContent">{getCorrespondingContent(menu.link)}</div>
+                    ))}
+                    <div style={{
+                      bottom: '0px',
+                      width: '100%',
+                      marginTop: '5%'
+                    }}
+                    >
+                      <Footer />
+                    </div>
+                  </div>
+                ) : null}
+              </div>
 
-      ) : null}
+            </div>
+          ) : null}
+
+          {/* { goToTopIconVisiblity && <GoToTop goToTopIconVisiblity />} */}
+
+        </Layout>
+
+      </div>
 
     </div>
   );

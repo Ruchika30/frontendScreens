@@ -5,9 +5,9 @@ import React, { forwardRef, useEffect, useState } from 'react';
 import style from './style';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router';
-import CardWithDataBelow from '../../components/cardWithDetailsBelow';
+import CardComponent from '../../components/cardForVideoLibrary';
 import { skyBlueColor } from '../../assets/styles/colors';
-import { heading, w100 } from '../../assets/styles/reset';
+import { heading, title, w100 } from '../../assets/styles/reset';
 import { pLeft6 } from '../../assets/styles/spacing';
 import { getOverviewDetails } from '../../services/careers';
 
@@ -145,11 +145,17 @@ const VideoLibrary = ({ ref }) => {
         />
       </section>
 
-      <section>
-        <div style={{ display: 'flex', overflow: 'auto', whiteSpace: 'nowrap' }}>
+      <section style={{ marginTop: '15px' }}>
+        <div css={title}> Clips of popular questions</div>
+        <div style={{
+          display: 'flex', overflow: 'auto', whiteSpace: 'nowrap', marginTop: '15px'
+        }}
+        >
           {arrayOfrows.map(item => (
             <div>
-              <CardWithDataBelow data={item} />
+              <div>
+                <CardComponent data={item} />
+              </div>
             </div>
           ))}
 

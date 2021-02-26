@@ -41,7 +41,7 @@ export const borderRadiusSm = {
 export const title = {
   fontSize: '1.3rem',
   fontFamily: lato,
-  fontWeight: 100
+  fontWeight: 400
 };
 
 export const heading = {

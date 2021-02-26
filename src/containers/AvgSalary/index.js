@@ -56,7 +56,9 @@ class App extends Component {
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
 
         </div>
-        <Chart chartData={this.state.chartData} location="Massachusetts" legendPosition="bottom" />
+        <div style={{ width: '80%' }}>
+          <Chart chartData={this.state.chartData} location="Massachusetts" legendPosition="bottom" />
+        </div>
       </div>
     );
   }

@@ -19,5 +19,6 @@ export { default as decide } from './decide.jpg';
 export { default as explore } from './explore.jpg';
 export { default as logo } from './logo_png.png';
 export { default as school } from './school.png';
-export { default as HomePgBanner } from './HomePgBanner.png';
+export { default as HomePgBanner } from './HomePg-Banner.png';
 export { default as category } from './category.png';
+export { default as dummy } from './dummy.jpg';

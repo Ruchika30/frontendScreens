@@ -6,6 +6,7 @@ export default {
           position: relative;
             padding-bottom: 56.25%;
             height: 0;
+            margin-top: 15px;
 
     `,
 

@@ -1,9 +1,9 @@
 
-
 .goToTopWrapper{
     height: 50px;
     width: 50px;
-    //  background-color: $sea;
+     background-color: #B4FBFB;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
     border-radius: 50%;
     padding: 5px;
     margin-left: 5%;
@@ -12,4 +12,5 @@
 
 .home{
     width: 100%;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
 }

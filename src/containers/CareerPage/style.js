@@ -134,7 +134,7 @@ export default {
   `,
 
   contentContainer: css`
-       height: 1000px;
+       height: 1500px;
     `,
 
   wrapper: css`
@@ -197,7 +197,7 @@ export default {
             cursor: pointer;
             padding-left: 20px;
              &:hover{
-              
+              border-radius: 2px;
                color:  ${darkBlue};
               background-color: ${seaBlueColor};
               transform: translate(0, -3px);
