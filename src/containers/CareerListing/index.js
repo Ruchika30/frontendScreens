@@ -30,7 +30,7 @@ const CareerList = ({ idDetailContext }) => {
   const { headings, tag, srchWrapper } = style;
   const { id } = useParams();
   const history = useHistory();
-  const [careerId, setCareerId] = idDetailContext;
+  const { careerId, setCareerId } = idDetailContext;
   const [searchTerm, setSearchTerm] = useState(null);
   const { show, hide } = LoaderProvider();
   const { showGoTop, hideGoTop } = GoToTopProvider();
@@ -45,7 +45,7 @@ const CareerList = ({ idDetailContext }) => {
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
-      // hide();
+      hide();
     }
   };
 

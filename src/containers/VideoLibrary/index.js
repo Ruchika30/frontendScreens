@@ -4,12 +4,13 @@ import { css, jsx } from '@emotion/core';
 import React, { forwardRef, useEffect, useState } from 'react';
 import style from './style';
 import { useHistory } from 'react-router-dom';
-import { useParams } from 'react-router';
 import CardComponent from '../../components/cardForVideoLibrary';
 import { skyBlueColor } from '../../assets/styles/colors';
 import { heading, title, w100 } from '../../assets/styles/reset';
 import { pLeft6 } from '../../assets/styles/spacing';
+import consumer from '../../context/consumer';
 import { getOverviewDetails } from '../../services/careers';
+import LoaderProvider from '../../hooks/use-loader';
 
 const headerWrapper = css`
     ${w100};
@@ -21,26 +22,29 @@ const header = css`
    ${pLeft6}
   `;
 
-const VideoLibrary = ({ ref }) => {
+const VideoLibrary = ({ ref, idDetailContext }) => {
   const history = useHistory();
-  const { id } = useParams();
+  const { careerId } = idDetailContext;
+  const { show, hide } = LoaderProvider();
+  // const { id } = useParams();
+
   const [sectorDetails, setSectorDetails] = useState('');
 
   const getInitialData = async idValue => {
     try {
-      // show();
+      show();
       const response = await getOverviewDetails(idValue);
       setSectorDetails(response);
-      // hide();
+      hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
-      // hide();
+      hide();
     }
   };
 
   useEffect(() => {
-    getInitialData(id);
+    getInitialData(careerId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -164,4 +168,4 @@ const VideoLibrary = ({ ref }) => {
     </div>
   );
 };
-export default VideoLibrary;
+export default consumer(VideoLibrary);

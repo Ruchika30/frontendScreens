@@ -11,7 +11,8 @@ const apiEndpoints = {
   skillset: 'SkillSets',
   roles: 'Roles',
   search: 'search',
-  menu: 'menu'
+  menu: 'menu',
+  salary: 'salary'
 };
 
 const API_ROUTES = {
@@ -22,7 +23,8 @@ const API_ROUTES = {
   getRoles: `${api}/${apiEndpoints.roles}`,
   searchSector: `${api}/${prefixCareersSector}/${apiEndpoints.search}`,
   searchCareer: `${api}/${prefixCareerList}/${apiEndpoints.search}`,
-  careerListMenu: `${api}/${apiEndpoints.menu}`
+  careerListMenu: `${api}/${apiEndpoints.menu}`,
+  getAvgSalary: `${api}/${apiEndpoints.salary}`
 
 };
 

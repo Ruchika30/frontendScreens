@@ -5,7 +5,7 @@ import { css, jsx } from '@emotion/core';
 import React, { useEffect, useState } from 'react';
 import style from './style';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useParams } from 'react-router';
+import consumer from '../../context/consumer';
 import Navbar from '../../components/navbar';
 // import Header from '../../components/header';
 import Layout from '../../components/layout';
@@ -15,6 +15,7 @@ import { heading, title, w100 } from '../../assets/styles/reset';
 import { fontSize28, lato, w700 } from '../../assets/styles/typography';
 import { mTop2, pLeft6, pTop3 } from '../../assets/styles/spacing';
 import { getRolesAndResponsibilities as getResponsibilitiesService } from '../../services/careers';
+import LoaderProvider from '../../hooks/use-loader';
 
 const headerWrapper = css`
     ${w100};
@@ -26,28 +27,30 @@ const header = css`
    ${pLeft6}
   `;
 
-const Responsibilty = ({ ref }) => {
+const Responsibilty = ({ ref, idDetailContext }) => {
   const history = useHistory();
-  const { id } = useParams();
+  const { careerId } = idDetailContext;
+  // const { id } = useParams();
   const { contentWrapper, videoWrapper } = style;
   const [responsibilities, setResponsibilities] = useState([]);
+  const { show, hide } = LoaderProvider();
 
   const getInitialData = async idValue => {
     try {
-      // show();
+      show();
       const response = await getResponsibilitiesService(idValue);
       const { responsibility_list } = response;
       setResponsibilities(responsibility_list);
-      // hide();
+      hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
-      // hide();
+      hide();
     }
   };
 
   useEffect(() => {
-    getInitialData(id);
+    getInitialData(careerId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -104,4 +107,4 @@ const Responsibilty = ({ ref }) => {
     </div>
   );
 };
-export default Responsibilty;
+export default consumer(Responsibilty);

@@ -1,68 +1,74 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import LoaderProvider from '../../hooks/use-loader';
+import {
+  getAvgSalary as getAvgSalaryService
+} from '../../services/careers';
+import consumer from '../../context/consumer';
 import Chart from '../../components/chart';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      chartData: {}
-    };
-  }
+const AvgSalary = ({ idDetailContext }) => {
+  const { show, hide } = LoaderProvider();
+  const { careerId } = idDetailContext;
+  const [avgsalaryList, setAvgSalaryList] = useState([]);
+  const [chartDataObj, setchartDataObj] = useState(null);
 
-  componentWillMount() {
-    // this.getchartData(); // this should be this.getChartData();
-    this.getChartData();
-  }
+  const getInitialData = async careerId => {
+    try {
+      show();
+      const { salaryList } = await getAvgSalaryService(careerId);
+      setAvgSalaryList(salaryList);
+      const backgroundColor = [
+        '#141f79',
+        '#eacb11',
+        '#141f79',
+        '#eacb11'
 
-  getChartData() {
-    // Ajax calls here
-    this.setState({
-      chartData: {
-        labels: ['1', '1-4', '5-9', '10-19', '20+'],
-        datasets: [
-          {
-            label: 'Population',
-            data: [
-              352,
-              1001,
-              3003,
-              6000,
-              2000,
-              100,
-              10,
-              20,
-              30,
-              40
-            ],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)',
-              'rgba(153, 102, 255, 0.6)',
-              'rgba(255, 159, 64, 0.6)',
-              'rgba(255, 99, 132, 0.6)'
-            ]
-          }
-        ]
+      ];
+      const labels = [];
+      const datasets = [];
+      const data = [];
+      const chartData = {};
+      const obj = {};
+      const chartDataBody = salaryList.map(item => {
+        labels.push(item.year);
+        data.push(item.salary);
+        return { labels, data };
+      });
+
+      obj.label = 'avg salary';
+      obj.data = chartDataBody[0].data;
+      obj.backgroundColor = backgroundColor;
+      datasets.push(obj);
+
+      chartData.labels = chartDataBody[0].labels;
+      chartData.datasets = datasets;
+      if (chartData) {
+        setchartDataObj(chartData);
       }
-    });
-  }
+      hide();
+    } catch (error) {
+      // setErrorFlag(true);
+      // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
+      // hide();
+    }
+  };
 
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
+  useEffect(() => {
+    getInitialData(careerId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-        </div>
-        <div style={{ width: '80%' }}>
-          <Chart chartData={this.state.chartData} location="Massachusetts" legendPosition="bottom" />
-        </div>
+  return (
+    <div className="App">
+      <div className="App-header">
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+
       </div>
-    );
-  }
-}
+      <div style={{ width: '80%' }}>
+        {chartDataObj && <Chart chartData={chartDataObj} location="Average Salary" legendPosition="bottom" />}
+      </div>
+    </div>
+  );
+};
 
-export default App;
-
+export default consumer(AvgSalary);

@@ -8,19 +8,24 @@ import { useHistory, useParams } from 'react-router';
 import { mTop3 } from '../../assets/styles/spacing';
 import { heading } from '../../assets/styles/reset';
 import { lato } from '../../assets/styles/typography';
+import consumer from '../../context/consumer';
+import LoaderProvider from '../../hooks/use-loader';
 
-const Skillset = () => {
+const Skillset = ({ idDetailContext }) => {
   const { gridStyle } = style;
-  const { id } = useParams();
+  const { careerId } = idDetailContext;
   const [skillList, setSkills] = useState([]);
+  const { show, hide } = LoaderProvider();
 
   const getInitialData = async () => {
     try {
-      // show();
-      const response = await getSkillsetService(id);
+      show();
+      const response = await getSkillsetService(careerId);
       const { skills } = response;
       setSkills(skills);
+      hide();
     } catch (error) {
+      hide();
       // handle error
     }
   };
@@ -47,4 +52,4 @@ const Skillset = () => {
   );
 };
 
-export default Skillset;
+export default consumer(Skillset);

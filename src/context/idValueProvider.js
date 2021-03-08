@@ -8,9 +8,10 @@ const CareerIdValueProvider = props => {
 
   return (
     <IdValueContext.Provider
-      value={[careerId,
+      value={{
+        careerId,
         setCareerId
-      ]}
+      }}
     >
       {props.children}
     </IdValueContext.Provider>

@@ -207,10 +207,6 @@ export default {
        
     `,
 
-  animationTextBody: css`
-      
-    `,
-
   iconContainer: css`
     width: 70 %;
     `,

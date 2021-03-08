@@ -7,27 +7,28 @@ import consumer from '../../context/consumer';
 import { mTop2 } from '../../assets/styles/spacing';
 import { heading, title } from '../../assets/styles/reset';
 import { lato } from '../../assets/styles/typography';
+import LoaderProvider from '../../hooks/use-loader';
 
-const Overview = props => {
-  const { careerId } = props;
+const Overview = ({ idDetailContext }) => {
+  const { careerId } = idDetailContext;
   const {
     description, wrapper
   } = style;
   const [overviewData, setOverViewData] = useState('');
-
+  const { show, hide } = LoaderProvider();
   const { courseName, overviewText } = overviewData || {};
 
   const getInitialData = async id => {
     try {
-      // show();
+      show();
       const response = await overviewService('5fc25408edd5611e28402703');
       setOverViewData(response);
 
-      // hide();
+      hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
-      // hide();
+      hide();
     }
   };
 

@@ -8,12 +8,14 @@ import { GET_CATEGORY_ARTICLES_QUERY } from '../../queries/category/getCategoryA
 import Query from '../../components/query';
 import { upwardArrow } from '../../assets/icons';
 import GoToTopProvider from '../../hooks/use-topNavigation';
+import consumer from '../../context/consumer';
 
-const CategoryPage = ({ location }) => {
+const CategoryPage = ({ location, idDetailContext }) => {
   const history = useHistory();
   const [idValue, setIdValue] = useState('');
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
   const { showGoTop, hideGoTop } = GoToTopProvider();
+  const { careerId, setCareerId } = idDetailContext;
 
   useEffect(() => {
     setIdValue(location.state.categoryId);
@@ -91,4 +93,4 @@ const CategoryPage = ({ location }) => {
   );
 };
 
-export default CategoryPage;
+export default consumer(CategoryPage);

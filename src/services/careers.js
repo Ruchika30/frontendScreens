@@ -48,6 +48,11 @@ export const getSkillset = promiseMemoize(async id => {
   return response;
 });
 
+export const getAvgSalary = promiseMemoize(async id => {
+  const response = await api('GET', `${API_ROUTES.getAvgSalary}/${id}`, false);
+  return response;
+});
+
 export const getRolesAndResponsibilities = promiseMemoize(async id => {
   const response = await api('GET', `${API_ROUTES.getRoles}/${id}`, false);
   return response;
