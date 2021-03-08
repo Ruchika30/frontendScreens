@@ -22,3 +22,6 @@ export { default as school } from './school.png';
 export { default as HomePgBanner } from './HomePg-Banner.png';
 export { default as category } from './category.png';
 export { default as dummy } from './dummy.jpg';
+
+export { default as careerLibrary } from './career_libraryBanner.png';
+export { default as sectorBanner } from './sectors_banner.png';

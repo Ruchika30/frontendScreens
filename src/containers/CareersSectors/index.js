@@ -27,6 +27,7 @@ import style from './style';
 import Footer from '../../components/footer';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import consumer from '../../context/consumer';
+import { sectorBanner } from '../../assets/icons';
 
 const container = css`
     width: 70%;
@@ -52,12 +53,15 @@ const links = [
   { link: '/sectors', value: 'CareerSectors' }
 ];
 
-const CareersPage = () => {
+const CareersPage = ({ idDetailContext }) => {
   const history = useHistory();
   const [sectors, setSectors] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const { show, hide } = LoaderProvider();
-  const { srchWrapper } = style;
+  const { setCareerId } = idDetailContext;
+  const {
+    srchWrapper, imageWrapper
+  } = style;
   const { showGoTop, hideGoTop } = GoToTopProvider();
 
   const getInitialData = async () => {
@@ -94,6 +98,8 @@ const CareersPage = () => {
 
   const handleSectorClick = (e, id) => {
     if (e.stopPropagation) { e.stopPropagation(); }
+    setCareerId(id);
+    console.log('id--', id);
     history.push(`/careers/${id}`);
   };
 
@@ -115,9 +121,9 @@ const CareersPage = () => {
   return (
     <React.Fragment>
       <div style={{ position: 'relative', minHeight: '100vh', paddingBottom: '100px' }}>
-        <Navbar fixed barColor={aquaBlue} />
+        {/* <Navbar fixed barColor={aquaBlue} /> */}
         {/* Header */}
-        <div css={header}>
+        {/* <div css={header}>
           <div css={[container]}>
             <div css={[fontSize28, w700, lato, heading]}>Career Options of India</div>
             <div css={[m3, mLeft0, lato]} style={{ color: darkBlue }}>
@@ -128,7 +134,21 @@ const CareersPage = () => {
               ipsum elit duis.
             </div>
           </div>
-        </div>
+        </div> */}
+
+        <header css={header}>
+          <div>
+            <Navbar fixed barColor={aquaBlue} />
+            {/* <div css={bannerContextContainer}> */}
+            <div css={imageWrapper}>
+              <img
+                src={sectorBanner}
+                style={{ width: '70%', maxHeight: '300px' }}
+              />
+            </div>
+            {/* </div> */}
+          </div>
+        </header>
 
         <Layout contentStyle={styles.layoutContainer}>
           <div style={{ marginTop: '10px' }}>

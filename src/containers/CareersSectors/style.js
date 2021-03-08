@@ -1,6 +1,6 @@
 import { mBottom1, mRight3, p5 } from '../../assets/styles/spacing';
 import { css } from '@emotion/core';
-import { lightGreyColor, paperColor, skyBlueColor } from '../../assets/styles/colors';
+import { lightPurple, paperColor, skyBlueColor } from '../../assets/styles/colors';
 
 export default {
 
@@ -20,6 +20,48 @@ export default {
           list-style-type: none;
       }
     `,
+
+  bannerContextContainer: css`
+        display: flex;
+        justify-content: space-between;    
+    `,
+
+  headerContent: css`
+        width: 30%;
+        padding-top: 50px; 
+        padding-left: 100px;
+
+       @media (max-width: 480px){
+            padding-left: 5%;
+             width: 90%;
+       }
+    `,
+  title: css`
+        // text-align: center;
+            font-size: 3rem;
+            font-family: gothic;
+            font-weight: 500;
+    `,
+  headerDescription: css`
+     @media (max-width: 750px){
+            display: none;
+     }
+    `,
+  headerImg: css`
+        height: 450px;
+        @media (max-width: 480px){
+            display: none;
+        }
+        
+    `,
+
+  imageWrapper: css`
+    // max-height: 200px;
+      object-fit: contain;
+      display: flex;
+    justify-content: center;
+    background-color: ${lightPurple};
+  `,
 
   cardGridStyle: {
     display: 'grid',
