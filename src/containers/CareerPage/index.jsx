@@ -29,7 +29,7 @@ import GoToTopProvider from '../../hooks/use-topNavigation';
 import AvgSalary from '../AvgSalary';
 
 const CareerPage = ({ idDetailContext }) => {
-  const [careerId, setCareerId] = idDetailContext;
+  const { careerId, setCareerId } = idDetailContext;
   const { id } = useParams();
   const [expandMenu, setExpandMenu] = useState('');
   const [menuItem, setMenuItem] = useState('Video Library');
@@ -72,8 +72,6 @@ const CareerPage = ({ idDetailContext }) => {
   const scrollFunction = () => {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       // showGoTop();
-      debugger;
-      console.log('heyy');
     } else {
       hideGoTop();
     }
@@ -101,6 +99,10 @@ const CareerPage = ({ idDetailContext }) => {
 
   ];
 
+  window.addEventListener('scroll', event => {
+    console.log('Scrolling...');
+  });
+
   function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -113,17 +115,22 @@ const CareerPage = ({ idDetailContext }) => {
 
     if (scrollPercent < -6.198329) {
       setMenuItem('Avg Salary');
+      history.replace('avgSalary');
     } else
     if (scrollPercent < -4.289638) {
       setMenuItem('Roles & Reponsibility');
+      history.replace('responsibility');
     } else
     if (scrollPercent < -2.537163) {
       setMenuItem('SkillSet');
+      history.replace('skillSet');
     } else
     if (scrollPercent < -0.7934) {
       setMenuItem('Overview');
+      history.replace('overview');
     } else {
       setMenuItem('Video Library');
+      history.replace('videoLibrary');
     }
   };
 
