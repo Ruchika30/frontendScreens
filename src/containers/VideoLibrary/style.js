@@ -16,6 +16,14 @@ export default {
             left: 0;
             width: 90%;
             height: 100%;
+            `,
+
+  arrow: css`
+        // padding: 5px;
+        // border-radius: 50%;
+        // height: 40px;
+        // width: 40px;
+    
     `
 
 };

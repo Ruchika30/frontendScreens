@@ -35,6 +35,7 @@
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "promise-memoize": "^1.2.1",
+    "pure-react-carousel": "^1.27.6",
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
     "react-burger-menu": "^3.0.3",
@@ -53,7 +54,8 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.3.3",
+    "semantic-ui-react": "^2.0.3"
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"npm run set:qontract:alias && npm run start:mock-server\"",

@@ -8,7 +8,7 @@ export default {
   wrapper: {
     textDecoration: 'none',
     margin: '0px 10px',
-    marginBottom: '25px',
+    // marginBottom: '25px',
     paddingBottom: '10px',
     borderRadius: '5px',
     maxWidth: '360px',
