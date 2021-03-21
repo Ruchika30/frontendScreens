@@ -4,7 +4,7 @@ import {
 } from './spacing';
 import { fontFace, lato } from './typography';
 import {
-  bgColor, darkBlue, paperColor, primaryColor, secondaryColor
+  bgColor, darkPurple, paperColor, primaryColor, secondaryColor
 } from './colors';
 
 // animation duration for components appear / disappear should be consistent
@@ -47,7 +47,7 @@ export const title = {
 export const heading = {
   fontSize: '1.7rem',
   fontFamily: lato,
-  color: darkBlue,
+  color: darkPurple,
   fontWeight: 600
 
 };

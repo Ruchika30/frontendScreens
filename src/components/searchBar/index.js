@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import style from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import Button from '@material-ui/core/Button';
+import Button from '../button';
 
 const SearchBar = props => {
   const { labelTxt, placeholder, btnLabel } = props;
@@ -36,9 +36,15 @@ const SearchBar = props => {
         <FontAwesomeIcon icon={faSearch} css={icon} alt="icon" />
       </div> */}
         </div>
-        <Button variant="contained" color="primary" disableElevation>
-          {btnLabel}
-        </Button>
+        <div style={{ flex: 0.5, display: 'flex', marginLeft: '20px' }}>
+          <Button
+            text={btnLabel}
+            clsName="submitBtn"
+            // onClick={() => { handleSubmit(); }}
+            variant="contained"
+          />
+        </div>
+
       </div>
     </div>
   );

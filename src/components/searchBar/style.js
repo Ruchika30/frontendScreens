@@ -20,13 +20,16 @@ export default {
         border: 1px solid lightgrey;
         border-radius: 3px;
         padding:  2px;
-         display:flex;
+         display: flex;
         align-items: center;
+        flex: 1;
         justify-content: space-between;
 
         
         @media (max-width: 480px){
             width: 100%;
+             display: flex;
+             flex: 1;
            
           
         }

@@ -142,6 +142,7 @@ const CareersPage = ({ idDetailContext }) => {
             {/* <div css={bannerContextContainer}> */}
             <div css={imageWrapper}>
               <img
+                alt="banner"
                 src={sectorBanner}
                 style={{ width: '100%', maxHeight: '300px' }}
               />

@@ -52,12 +52,11 @@ const CareerPage = ({ idDetailContext }) => {
   const careerMenu = 'CAREER MENU';
 
   const panel = css`
-  background-color: ${darkBlue};
+  background-color : #241c4f;
     padding: 30px;
     position: sticky;
     top: 0;
     width: 20%;
-    // margin-top: 1%;
 
      @media (max-width: 800px) {
             display: none;
@@ -190,7 +189,7 @@ const CareerPage = ({ idDetailContext }) => {
               <img src={gear} css={icon} alt="logo" />
             </div>
             <div style={{ marginLeft: '10px' }} css={alignVerticallyCenter}>
-              <div css={[fontSize28, lato, heading]}>dummy name </div>
+              <div css={[fontSize28, lato, heading]}>Koftware Engineer </div>
               {/* <div css={[dFlex, pTop2]}>
                 <div css={[actionBtns]}>Follow</div>
                 <div css={[actionBtns]}>Compare</div>

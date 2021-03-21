@@ -19,7 +19,7 @@ import {
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import consumer from '../../context/consumer';
-import Table from '../../components/table';
+import Table from '../../components/tableNew';
 import BreadCrumb from '../../components/breadCrumb';
 import LoaderProvider from '../../hooks/use-loader';
 import Footer from '../../components/footer';
@@ -148,7 +148,8 @@ const CareerList = ({ idDetailContext }) => {
           </div>
         ))} */}
           <div onClick={handleCareerClick} style={{ marginTop: '20px' }}>
-            <Table careerData={carrerList} />
+            {carrerList.map(item => (<Table careerData={item} />))}
+
           </div>
 
         </Layout>
