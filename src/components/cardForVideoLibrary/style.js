@@ -11,7 +11,7 @@ export default {
     // marginBottom: '25px',
     paddingBottom: '10px',
     borderRadius: '5px',
-    maxWidth: '360px',
+    minWidth: '360px',
     fontFamily: 'latoRegular',
     boxShadow: 'rgba(0, 0, 0, 0.08) 0px 6px 16px 0px',
     '&:hover': {
@@ -31,6 +31,7 @@ export default {
     padding: 0px 15px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    white-space: initial;
    
     `,
 

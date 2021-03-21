@@ -42,10 +42,15 @@ const BreadCrumb = props => {
     <div css={[container, fontSize14, gothicSemiBold]}>
       <ul css={breadCrumbs}>
         {listOfLinks.map((item, index) => (
-          <li onClick={() => handleClick(item.link)} style={{ color: txtColor || 'white' }}>
-            {getLinkValue(item, index)}
-            {(index === listOfLinks.length - 1) ? null : <span style={{ padding: '0px 10px' }}> / </span> }
-          </li>
+          <div style={{ display: 'flex' }}>
+            <li onClick={() => handleClick(item.link)} style={{ color: txtColor || 'white', textDecoration: 'underline', listStyle: 'none' }}>
+              {getLinkValue(item, index)}
+            </li>
+            <span style={{ color: txtColor || 'white', textDecoration: 'none', padding: '0px 10px' }}>
+              {(index === listOfLinks.length - 1) ? null : '/'}
+            </span>
+
+          </div>
         ))}
 
       </ul>

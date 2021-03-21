@@ -24,4 +24,4 @@ export { default as category } from './category.png';
 export { default as dummy } from './dummy.jpg';
 
 export { default as careerLibrary } from './career_libraryBanner.png';
-export { default as sectorBanner } from './sectors_banner.png';
+export { default as sectorBanner } from './CareerSectors.png';

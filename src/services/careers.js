@@ -72,3 +72,8 @@ export const careerListMenuItems = promiseMemoize(async id => {
   const response = await api('GET', `${API_ROUTES.careerListMenu}/${id}`, false);
   return response;
 });
+
+export const getVideoLibrary = promiseMemoize(async id => {
+  const response = await api('GET', `${API_ROUTES.getVideos}/${id}`, false);
+  return response;
+});

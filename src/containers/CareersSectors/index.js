@@ -69,7 +69,7 @@ const CareersPage = ({ idDetailContext }) => {
       show();
       const response = await careerSectors();
       setSectors(response);
-      // hide();
+      hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
@@ -143,7 +143,7 @@ const CareersPage = ({ idDetailContext }) => {
             <div css={imageWrapper}>
               <img
                 src={sectorBanner}
-                style={{ width: '70%', maxHeight: '300px' }}
+                style={{ width: '100%', maxHeight: '300px' }}
               />
             </div>
             {/* </div> */}

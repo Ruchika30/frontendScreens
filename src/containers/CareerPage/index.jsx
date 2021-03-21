@@ -115,22 +115,22 @@ const CareerPage = ({ idDetailContext }) => {
 
     if (scrollPercent < -6.198329) {
       setMenuItem('Avg Salary');
-      history.replace('avgSalary');
+      history.replace('#avgSalary');
     } else
     if (scrollPercent < -4.289638) {
       setMenuItem('Roles & Reponsibility');
-      history.replace('responsibility');
+      history.replace('#responsibility');
     } else
     if (scrollPercent < -2.537163) {
       setMenuItem('SkillSet');
-      history.replace('skillSet');
+      history.replace('#skillSet');
     } else
     if (scrollPercent < -0.7934) {
       setMenuItem('Overview');
-      history.replace('overview');
+      history.replace('#overview');
     } else {
       setMenuItem('Video Library');
-      history.replace('videoLibrary');
+      history.replace('#videoLibrary');
     }
   };
 
@@ -144,22 +144,6 @@ const CareerPage = ({ idDetailContext }) => {
       topFunction();
     }
   };
-
-  const getInitialData = async () => {
-    try {
-      show();
-      const { items } = await careerListMenuItems(id);
-      // setMenuList(items);
-      hide();
-    } catch (error) {
-      // handle error
-    }
-  };
-
-  useEffect(() => {
-    // getInitialData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const getCorrespondingContent = menu => {
     switch (menu) {
@@ -206,7 +190,7 @@ const CareerPage = ({ idDetailContext }) => {
               <img src={gear} css={icon} alt="logo" />
             </div>
             <div style={{ marginLeft: '10px' }} css={alignVerticallyCenter}>
-              <div css={[fontSize28, lato, heading]}>Software Engineer</div>
+              <div css={[fontSize28, lato, heading]}>dummy name </div>
               {/* <div css={[dFlex, pTop2]}>
                 <div css={[actionBtns]}>Follow</div>
                 <div css={[actionBtns]}>Compare</div>
