@@ -24,9 +24,11 @@ import BreadCrumb from '../../components/breadCrumb';
 import LoaderProvider from '../../hooks/use-loader';
 import Footer from '../../components/footer';
 import GoToTopProvider from '../../hooks/use-topNavigation';
+import Skeleton from 'react-loading-skeleton';
 
 const CareerList = ({ idDetailContext }) => {
   const [carrerList, setCareerList] = useState([]);
+  const [dummylist, setDummylist] = useState([10])
   const { headings, tag, srchWrapper } = style;
   const { id } = useParams();
   const history = useHistory();
@@ -34,12 +36,15 @@ const CareerList = ({ idDetailContext }) => {
   const [searchTerm, setSearchTerm] = useState(null);
   const { show, hide } = LoaderProvider();
   const { showGoTop, hideGoTop } = GoToTopProvider();
+  const [isLoading, setLoading] = useState(true);
+  const dummylist = [10];
 
   const getInitialData = async (id, pageNo) => {
     try {
-      show();
+      // show();
       const { careers } = await careerListsByIdService(id, pageNo);
       setCareerList(careers);
+      setLoading(false);
 
       hide();
     } catch (error) {
@@ -148,7 +153,13 @@ const CareerList = ({ idDetailContext }) => {
           </div>
         ))} */}
           <div onClick={handleCareerClick} style={{ marginTop: '20px' }}>
-            {carrerList.map(item => (<Table careerData={item} />))}
+            {!isLoading
+              ? carrerList.map(item => (<Table careerData={item} />))
+              : dummylist.map(item => (
+                <div>
+                  <Skeleton variant="rect" width={210} height={200} />
+                </div>
+              ))}
 
           </div>
 

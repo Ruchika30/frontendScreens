@@ -28,6 +28,7 @@ import Footer from '../../components/footer';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import consumer from '../../context/consumer';
 import { sectorBanner } from '../../assets/icons';
+import Skeleton from 'react-loading-skeleton';
 
 const container = css`
     width: 70%;
@@ -66,10 +67,10 @@ const CareersPage = ({ idDetailContext }) => {
 
   const getInitialData = async () => {
     try {
-      show();
+      // show();
       const response = await careerSectors();
       setSectors(response);
-      hide();
+      // hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
@@ -106,13 +107,13 @@ const CareersPage = ({ idDetailContext }) => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       const body = { name: searchTerm };
-      show();
+      // show();
       if (searchTerm) {
         const response = await searchCareerSectors(body);
         setSectors(response);
       } else getInitialData();
 
-      hide();
+      // hide();
     }, 2000);
 
     return () => clearTimeout(delayDebounceFn);
@@ -166,12 +167,18 @@ const CareersPage = ({ idDetailContext }) => {
             />
           </div>
           {/* )} */}
+
           <section css={style.cardGridStyle}>
-            {sectors.map((item, e) => (
+            {sectors ? sectors.map((item, e) => (
               <div onClick={() => handleSectorClick(e, item._id)}>
                 <Card details={item} />
               </div>
-            ))}
+
+            )) : (
+              <div>
+                <Skeleton variant="rect" width={210} height={200} />
+              </div>
+            )}
           </section>
         </Layout>
         <div style={{
