@@ -176,6 +176,7 @@ export default {
   color: white;
   list-style-type: none;
     font-size: 1.3rem;
+    //  transition: 0.9s all;
        
     `,
 
@@ -200,7 +201,8 @@ export default {
               border-radius: 2px;
                color:  ${darkBlue};
               background-color: ${seaBlueColor};
-              transform: translate(0, -3px);
+              // transform: translate(0, -3px);
+              transition: 0.5s all;
 
             }
     `

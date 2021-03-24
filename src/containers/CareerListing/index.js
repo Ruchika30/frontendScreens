@@ -24,16 +24,21 @@ import BreadCrumb from '../../components/breadCrumb';
 import LoaderProvider from '../../hooks/use-loader';
 import Footer from '../../components/footer';
 import GoToTopProvider from '../../hooks/use-topNavigation';
+import { Helmet } from 'react-helmet';
 
 const CareerList = ({ idDetailContext }) => {
   const [carrerList, setCareerList] = useState([]);
   const { headings, tag, srchWrapper } = style;
-  const { id } = useParams();
+  // const { id } = useParams();
   const history = useHistory();
-  const { careerId, setCareerId } = idDetailContext;
+  const {
+    careerId, setCareerId, careerName, careerSector
+  } = idDetailContext;
   const [searchTerm, setSearchTerm] = useState(null);
   const { show, hide } = LoaderProvider();
   const { showGoTop, hideGoTop } = GoToTopProvider();
+
+  console.log('idd--', careerId);
 
   const getInitialData = async (id, pageNo) => {
     try {
@@ -67,8 +72,8 @@ const CareerList = ({ idDetailContext }) => {
                width: 90% ;
     }
   `;
-  const handleCareerClick = () => {
-    history.push(`/career/${id}`);
+  const handleCareerClick = careerName => {
+    history.push(`/career-sectors/${careerSector}/${careerName.split(' ').join('')}`);
   };
 
   const handleCareerSearch = e => {
@@ -77,8 +82,8 @@ const CareerList = ({ idDetailContext }) => {
 
   const links = [
     { link: '/', value: 'Home' },
-    { link: '/sectors', value: 'CareerSectors' },
-    { link: `/careers/${id}`, value: 'CareerList' }
+    { link: '/career-sectors', value: 'CareerSectors' },
+    { link: `/career-sectors/${careerSector}/${careerName}`, value: 'CareerList' }
   ];
 
   const scrollFunction = () => {
@@ -94,25 +99,29 @@ const CareerList = ({ idDetailContext }) => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (searchTerm) {
-        const body = { career_name: searchTerm, career_sector_id: id };
+        const body = { career_name: searchTerm, career_sector_id: careerId };
         show();
         const { career_list } = await searchCareer(body);
         setCareerList(career_list);
         hide();
-      } else { getInitialData(id); }
+      } else { getInitialData(careerId); }
     }, 1500);
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
 
   useEffect(() => {
-    getInitialData(id);
-    setCareerId(id);
+    getInitialData(careerId);
+    // setCareerId(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>career sectors</title>
+        <meta name="description" content="this is career sector description" />
+      </Helmet>
       <div style={{ minHeight: '200px' }}>
         <Navbar fixed barColor={lightCyan} />
         {/* banner */}
@@ -147,8 +156,12 @@ const CareerList = ({ idDetailContext }) => {
             <hr />
           </div>
         ))} */}
-          <div onClick={handleCareerClick} style={{ marginTop: '20px' }}>
-            {carrerList.map(item => (<Table careerData={item} />))}
+          <div style={{ marginTop: '20px' }}>
+            {carrerList.map(item => (
+              <div onClick={() => handleCareerClick(item.career_name)}>
+                <Table careerData={item} />
+              </div>
+            ))}
 
           </div>
 

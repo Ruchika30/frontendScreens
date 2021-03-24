@@ -29,7 +29,9 @@ import GoToTopProvider from '../../hooks/use-topNavigation';
 import AvgSalary from '../AvgSalary';
 
 const CareerPage = ({ idDetailContext }) => {
-  const { careerId, setCareerId } = idDetailContext;
+  const {
+    careerId, setCareerId, careerName, careerSector
+  } = idDetailContext;
   const { id } = useParams();
   const [expandMenu, setExpandMenu] = useState('');
   const [menuItem, setMenuItem] = useState('Video Library');
@@ -47,6 +49,7 @@ const CareerPage = ({ idDetailContext }) => {
     contentAndMenuWrapper, headingStyle, headerWrapper
   } = style;
 
+  const URL = `/career-sectors/${careerSector}/${careerName}`;
   const { show, hide } = LoaderProvider();
 
   const careerMenu = 'CAREER MENU';
@@ -92,15 +95,11 @@ const CareerPage = ({ idDetailContext }) => {
 
   const links = [
     { link: '/', value: 'Home' },
-    { link: '/sectors', value: 'CareerSectors' },
-    { link: `/careers/${id}`, value: 'CareerList' },
-    { link: `/career/${id}`, value: 'CareerDetails' }
+    { link: '/career-sectors', value: 'CareerSectors' },
+    { link: `/career-sectors/${careerSector}/${careerName}`, value: 'CareerList' },
+    { value: 'CareerDetails' }
 
   ];
-
-  window.addEventListener('scroll', event => {
-    console.log('Scrolling...');
-  });
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -127,9 +126,11 @@ const CareerPage = ({ idDetailContext }) => {
     if (scrollPercent < -0.7934) {
       setMenuItem('Overview');
       history.replace('#overview');
+      // history.push(`${URL}/overview`);
     } else {
       setMenuItem('Video Library');
       history.replace('#videoLibrary');
+      // history.push(`${URL}/video-library`);
     }
   };
 
@@ -189,7 +190,9 @@ const CareerPage = ({ idDetailContext }) => {
               <img src={gear} css={icon} alt="logo" />
             </div>
             <div style={{ marginLeft: '10px' }} css={alignVerticallyCenter}>
-              <div css={[fontSize28, lato, heading]}>Koftware Engineer </div>
+              <div css={[fontSize28, lato, heading]}>
+                {careerName}
+              </div>
               {/* <div css={[dFlex, pTop2]}>
                 <div css={[actionBtns]}>Follow</div>
                 <div css={[actionBtns]}>Compare</div>

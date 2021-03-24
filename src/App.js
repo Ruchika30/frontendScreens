@@ -10,8 +10,9 @@ import './App.scss';
 const CareerSectors = lazy(() => import('../src/containers/CareersSectors'));
 const CareersListing = lazy(() => import('../src/containers/CareerListing'));
 const CareerPage = lazy(() => import('./containers/CareerPage/index.jsx'));
+const VideoLibrary = lazy(() => import('../src/containers/VideoLibrary'));
 const Overview = lazy(() => import('../src/containers/Overview'));
-const video = lazy(() => import('../src/containers/VideoLibrary'));
+const Skillset = lazy(() => import('../src/containers/Skillset'));
 
 const BlogLandingPage = lazy(() => import('../src/containers/BlogLandingPage'));
 const BlogPage = lazy(() => import('../src/containers/blogPage'));
@@ -28,11 +29,13 @@ const App = () => (
             <Switch>
               <CareerIdValueProvider>
                 <Route exact path="/" component={HomePage} />
-                <Route exact path="/sectors" component={CareerSectors} />
-                <Route exact path="/careers/:id" component={CareersListing} />
-                <Route exact path="/career/:id" component={CareerPage} />
-                <Route exact path="/overview/:id" component={Overview} />
-                <Route exact path="/video" component={video} />
+                {/* <Route exact path="/sectors" component={CareerSectors} /> */}
+                <Route exact path="/career-sectors" component={CareerSectors} />
+                <Route exact path="/career-sectors/:id" component={CareersListing} />
+                <Route exact path="/career-sectors/:id/:id" component={CareerPage} />
+                <Route exact path="/career-sectors/:id/:id/overview" component={Overview} />
+                <Route exact path="/career-sectors/:id/:id/video-library" component={VideoLibrary} />
+                <Route exact path="/career-sectors/:id/:id/skill-sets" component={Skillset} />
 
                 <Route exact path="/blog" component={BlogLandingPage} />
                 <Route exact path="/article" component={BlogPage} />

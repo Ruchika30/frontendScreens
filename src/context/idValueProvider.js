@@ -5,12 +5,18 @@ import { IdValueContext } from './index';
 // Create a provider for components to consume and subscribe to changes
 const CareerIdValueProvider = props => {
   const [careerId, setCareerId] = useState('');
+  const [careerName, setCareerName] = useState('');
+  const [careerSector, setCareerSector] = useState('');
 
   return (
     <IdValueContext.Provider
       value={{
         careerId,
-        setCareerId
+        setCareerId,
+        careerSector,
+        setCareerSector,
+        careerName,
+        setCareerName
       }}
     >
       {props.children}

@@ -28,6 +28,7 @@ import Footer from '../../components/footer';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import consumer from '../../context/consumer';
 import { sectorBanner } from '../../assets/icons';
+import { Helmet } from 'react-helmet';
 
 const container = css`
     width: 70%;
@@ -58,7 +59,7 @@ const CareersPage = ({ idDetailContext }) => {
   const [sectors, setSectors] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const { show, hide } = LoaderProvider();
-  const { setCareerId } = idDetailContext;
+  const { setCareerId, setCareerSector, careerSector } = idDetailContext;
   const {
     srchWrapper, imageWrapper
   } = style;
@@ -96,11 +97,11 @@ const CareersPage = ({ idDetailContext }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSectorClick = (e, id) => {
+  const handleSectorClick = (e, id, name) => {
     if (e.stopPropagation) { e.stopPropagation(); }
     setCareerId(id);
-    console.log('id--', id);
-    history.push(`/careers/${id}`);
+    setCareerSector(name);
+    history.push(`/career-sectors/${name}`);
   };
 
   useEffect(() => {
@@ -120,6 +121,10 @@ const CareersPage = ({ idDetailContext }) => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>career sectors</title>
+        <meta name="description" content="this is career sector description" />
+      </Helmet>
       <div style={{ position: 'relative', minHeight: '100vh', paddingBottom: '100px' }}>
         {/* <Navbar fixed barColor={aquaBlue} /> */}
         {/* Header */}
@@ -168,7 +173,7 @@ const CareersPage = ({ idDetailContext }) => {
           {/* )} */}
           <section css={style.cardGridStyle}>
             {sectors.map((item, e) => (
-              <div onClick={() => handleSectorClick(e, item._id)}>
+              <div onClick={() => handleSectorClick(e, item._id, item.name)}>
                 <Card details={item} />
               </div>
             ))}
