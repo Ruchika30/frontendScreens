@@ -65,8 +65,8 @@ const VideoLibrary = ({ ref, idDetailContext }) => {
           allowFullScreen
           title="video"
           css={style.iframeStyle}
-          width="560"
-          height="349"
+          // width="360"
+          // height="149"
         />
       </section>
 
