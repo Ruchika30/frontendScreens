@@ -17,6 +17,7 @@ import Footer from '../../components/footer';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import consumer from '../../context/consumer';
 import Navbar from '../../components/navbar';
+import { Helmet } from 'react-helmet';
 
 const HomePage = () => {
   const {
@@ -130,6 +131,20 @@ const HomePage = () => {
 
   return (
     <React.Fragment onScroll={onScroll}>
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        title="Home page"
+        meta={[
+          {
+            name: 'description',
+            content: 'This is Home page description'
+          },
+          {
+            name: 'keywords',
+            content: 'careeristic, careers'
+          }
+        ]}
+      />
       <div style={{ backgroundColor: paperColor }}>
         <header css={header}>
           <div css={animationTextBody}>

@@ -32,7 +32,7 @@ const CareerList = ({ idDetailContext }) => {
   // const { id } = useParams();
   const history = useHistory();
   const {
-    careerId, setCareerId, careerName, careerSector
+    careerId, setCareerId, careerName, careerSector, setCareerName
   } = idDetailContext;
   const [searchTerm, setSearchTerm] = useState(null);
   const { show, hide } = LoaderProvider();
@@ -73,6 +73,7 @@ const CareerList = ({ idDetailContext }) => {
     }
   `;
   const handleCareerClick = careerName => {
+    setCareerName(careerName);
     history.push(`/career-sectors/${careerSector}/${careerName.split(' ').join('')}`);
   };
 
@@ -118,10 +119,20 @@ const CareerList = ({ idDetailContext }) => {
 
   return (
     <React.Fragment>
-      <Helmet>
-        <title>career sectors</title>
-        <meta name="description" content="this is career sector description" />
-      </Helmet>
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        title="career Listing"
+        meta={[
+          {
+            name: 'description',
+            content: 'This is listing description'
+          },
+          {
+            name: 'keywords',
+            content: 'career, list, options'
+          }
+        ]}
+      />
       <div style={{ minHeight: '200px' }}>
         <Navbar fixed barColor={lightCyan} />
         {/* banner */}

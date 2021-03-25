@@ -125,6 +125,21 @@ const CareersPage = ({ idDetailContext }) => {
         <title>career sectors</title>
         <meta name="description" content="this is career sector description" />
       </Helmet>
+
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        title="career sectors"
+        meta={[
+          {
+            name: 'description',
+            content: 'This is careers sectors description'
+          },
+          {
+            name: 'keywords',
+            content: 'career, sectors'
+          }
+        ]}
+      />
       <div style={{ position: 'relative', minHeight: '100vh', paddingBottom: '100px' }}>
         {/* <Navbar fixed barColor={aquaBlue} /> */}
         {/* Header */}

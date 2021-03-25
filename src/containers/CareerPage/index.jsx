@@ -49,7 +49,6 @@ const CareerPage = ({ idDetailContext }) => {
     contentAndMenuWrapper, headingStyle, headerWrapper
   } = style;
 
-  const URL = `/career-sectors/${careerSector}/${careerName}`;
   const { show, hide } = LoaderProvider();
 
   const careerMenu = 'CAREER MENU';
@@ -126,6 +125,7 @@ const CareerPage = ({ idDetailContext }) => {
     if (scrollPercent < -0.7934) {
       setMenuItem('Overview');
       history.replace('#overview');
+      console.log('--', scrollPercent);
       // history.push(`${URL}/overview`);
     } else {
       setMenuItem('Video Library');

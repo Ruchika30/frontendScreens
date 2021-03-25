@@ -9,6 +9,7 @@ import Query from '../../components/query';
 import { upwardArrow } from '../../assets/icons';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import consumer from '../../context/consumer';
+import { Helmet } from 'react-helmet';
 
 const CategoryPage = ({ location, idDetailContext }) => {
   const history = useHistory();
@@ -43,6 +44,20 @@ const CategoryPage = ({ location, idDetailContext }) => {
 
   return (
     <div>
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        title="Career page"
+        meta={[
+          {
+            name: 'description',
+            content: 'This is Career page description'
+          },
+          {
+            name: 'keywords',
+            content: 'careeristic, careers'
+          }
+        ]}
+      />
       <div>
         <Navbar fixed={isVisible} />
       </div>
