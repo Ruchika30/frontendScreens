@@ -86,7 +86,7 @@ const BlogLandingPage = () => {
                 <CategoryCard {...item} />
                 <div>
                   <div className="cardWrapper">
-                    {item.blog_posts.slice(0, 4).forEach(blog => (
+                    {item.blog_posts.slice(0, 4).map(blog => (
                       <Card
                         id={blog._id}
                         key={`article__${blog._id}`}

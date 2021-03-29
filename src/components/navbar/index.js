@@ -59,7 +59,7 @@ const Navbar = props => {
           </div>
           <ul css={menu}>
             <li onClick={onClickBlog} css={menuItem}>Blog</li>
-            <li onClick={() => handleClick('/career-sectors')} css={menuItem}>Careers</li>
+            {/* <li onClick={() => handleClick('/career-sectors')} css={menuItem}>Careers</li> */}
 
           </ul>
         </div>
