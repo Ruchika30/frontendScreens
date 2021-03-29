@@ -16,7 +16,9 @@ const Card = props => {
   const [istitle, setTitle] = useState(title);
 
   const getDescription = description => {
-    if (description.split('').length > 35) { description = `${description.split(' ').splice(0, 35).join(' ')}. . . . . .`; }
+    if (description.split('').length > 35) {
+      const description = `${description.split(' ').splice(0, 35).join(' ')}. . . . . .`;
+    }
     return description;
   };
 

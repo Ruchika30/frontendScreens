@@ -9,20 +9,43 @@ import CategoryCard from '../../components/categoryLabel';
 import { home, upwardArrow } from '../../assets/icons';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import Navbar from '../../components/navbar';
+import LoaderProvider from '../../hooks/use-loader';
 import { lightCyan } from '../../assets/styles/colors';
+import { getAllBlogsAllCategories as getAllBlogsAllCategoriesSrvc } from '../../services/blog';
 
 const BlogLandingPage = () => {
   const history = useHistory();
+  const { show, hide } = LoaderProvider();
 
   const [isVisible, setNavbarVisible] = useState(false);
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
   const { showGoTop, hideGoTop } = GoToTopProvider();
+  const [allData, setAllBlogsAllCategoriesData] = useState([]);
 
   const handleScroll = () => {
     if (window.scrollY > 150) {
       setNavbarVisible(true);
     } else setNavbarVisible(false);
   };
+
+  const getInitialData = async () => {
+    try {
+      show();
+      const allBlogsAllcategories = await getAllBlogsAllCategoriesSrvc();
+      setAllBlogsAllCategoriesData(allBlogsAllcategories);
+
+      hide();
+    } catch (error) {
+      // setErrorFlag(true);
+      // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
+      hide();
+    }
+  };
+
+  useEffect(() => {
+    getInitialData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -56,34 +79,28 @@ const BlogLandingPage = () => {
       {/* category Bar */}
       <div className="categoryCard">
 
-        {/* <Query query={CATEGORY_ARTICLES_QUERY} id={null}>
-          {({ data: { categories } }) => (
-            <div>
-              <div style={{ margin: '5px' }}>
-                { categories.map(item => (
-                  <>
-                    <CategoryCard name={item.name} id={item.id} />
-                    <div>
-                      <div className="cardWrapper">
-                        {item.blog_posts.map(item => (
-                          <Card
-                            id={item.id}
-                            key={`article__${item.id}`}
-                            title={item.Title}
-                            description={item.Description}
-                            onDescriptionClick={() => handleDescriptionClick(item.id, item.category.id)}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </>
-                ))}
-              </div>
-            </div>
-          )}
-        </Query> */}
-
-        <div>Coming Soon ...</div>
+        <div>
+          <div style={{ margin: '5px' }}>
+            {allData.map(item => (
+              <>
+                <CategoryCard {...item} />
+                <div>
+                  <div className="cardWrapper">
+                    {item.blog_posts.slice(0, 4).forEach(blog => (
+                      <Card
+                        id={blog._id}
+                        key={`article__${blog._id}`}
+                        title={blog.title}
+                        description={blog.description}
+                        onDescriptionClick={() => handleDescriptionClick(blog._id, blog.category.id)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </>
+            ))}
+          </div>
+        </div>
 
         {/* card row */}
         {/* <div className="cardWrapper">
@@ -106,7 +123,7 @@ const BlogLandingPage = () => {
                })}
           </div> */}
 
-        {/* {goToTopIconVisiblity && (
+        {goToTopIconVisiblity && (
           <div
             style={{
               position: 'fixed',
@@ -120,7 +137,7 @@ const BlogLandingPage = () => {
               <img src={upwardArrow} alt="goTop" className="home" />
             </div>
           </div>
-        )} */}
+        )}
       </div>
 
     </div>

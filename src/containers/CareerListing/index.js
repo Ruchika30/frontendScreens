@@ -38,8 +38,6 @@ const CareerList = ({ idDetailContext }) => {
   const { show, hide } = LoaderProvider();
   const { showGoTop, hideGoTop } = GoToTopProvider();
 
-  console.log('idd--', careerId);
-
   const getInitialData = async (id, pageNo) => {
     try {
       show();

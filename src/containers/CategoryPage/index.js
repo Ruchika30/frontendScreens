@@ -10,22 +10,42 @@ import { upwardArrow } from '../../assets/icons';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import consumer from '../../context/consumer';
 import { Helmet } from 'react-helmet';
+import { getBlogsByCategories as getBlogsByCategoriesSrvc } from '../../services/blog';
+import LoaderProvider from '../../hooks/use-loader';
 
 const CategoryPage = ({ location, idDetailContext }) => {
   const history = useHistory();
-  const [idValue, setIdValue] = useState('');
+  const [categoryId, setCategoryId] = useState('');
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
+  const [actegpryName, setCategoryName] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
-  const { careerId, setCareerId } = idDetailContext;
+  const [blogList, setBlogList] = useState([]);
+  const { show, hide } = LoaderProvider();
+
+  const getInitialData = async id => {
+    try {
+      show();
+      const { blog_posts, categoryName } = await getBlogsByCategoriesSrvc(id);
+      setBlogList(blog_posts);
+      setCategoryName(categoryName);
+      hide();
+    } catch (error) {
+      // setErrorFlag(true);
+      // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
+      hide();
+    }
+  };
 
   useEffect(() => {
-    setIdValue(location.state.categoryId);
-  }, [location]);
+    getInitialData(location.state.categoryId);
+    setCategoryId(location.state.categoryId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [isVisible, setNavbarVisible] = useState(true);
 
-  const handleDescriptionClick = (id, categoryId) => {
-    history.push('/article', { id, categoryId });
+  const handleDescriptionClick = id => {
+    history.push('/article', { id });
   };
 
   const scrollFunction = () => {
@@ -62,31 +82,26 @@ const CategoryPage = ({ location, idDetailContext }) => {
         <Navbar fixed={isVisible} />
       </div>
 
-      <Query query={GET_CATEGORY_ARTICLES_QUERY} id={idValue}>
-        {({ data: { category } }) => (
-          <>
-            <div>
-              <Header categoryName={category.name} description={category.description} />
-            </div>
-            <div className="contentWrapper">
-              <div className="cardWrapper">
-                {category.blog_posts.map(item => (
-                  <Card
-                    title={item.Title}
-                    description={item.Description}
-                    // next={item.next}
-                    // previous={item.previous}
-                    onDescriptionClick={() => handleDescriptionClick(item.id, item.category.id)}
-                    // tag1={item.tagTitle1}
-                    // tag2={item.tagTitle2}
-                    // tag1Description={item.tagDescription}
-                  />
-                ))}
-              </div>
-            </div>
-          </>
-        )}
-      </Query>
+      <div>
+        <Header categoryName={actegpryName} description="Decription to be sent" />
+      </div>
+
+      <div className="contentWrapper">
+        <div className="cardWrapper">
+          {blogList.map(item => (
+            <Card
+              title={item.title}
+              description={item.description}
+              // next={item.next}
+              // previous={item.previous}
+              onDescriptionClick={() => handleDescriptionClick(item._id)}
+              // tag1={item.tagTitle1}
+              // tag2={item.tagTitle2}
+              // tag1Description={item.tagDescription}
+            />
+          ))}
+        </div>
+      </div>
 
       {/* {goToTopIconVisiblity && (
         <div

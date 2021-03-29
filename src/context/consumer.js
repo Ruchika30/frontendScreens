@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  IdValueContext
+  IdValueContext, blogValueContext
 } from './index';
 
 function consumer(Component) {
@@ -8,12 +8,16 @@ function consumer(Component) {
     return (
       <IdValueContext.Consumer>
         {idDetailContext => (
-          <Component
-            {...props}
-            idDetailContext={idDetailContext}
-          />
+          <blogValueContext.Consumer>
+            {blogContext => (
+              <Component
+                {...props}
+                idDetailContext={idDetailContext}
+                blogContext={blogContext}
+              />
+            )}
+          </blogValueContext.Consumer>
         )}
-
       </IdValueContext.Consumer>
 
     );

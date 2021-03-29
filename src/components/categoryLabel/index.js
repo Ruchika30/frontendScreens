@@ -6,10 +6,11 @@ const CategoryCard = props => {
   const history = useHistory();
 
   const handleCategoryClick = () => {
-    history.push('/category', { categoryId: id });
+    history.push('/category', { categoryId: career_list_id });
   };
 
-  const { name, subtitle, id } = props;
+  const { categoryName, subtitle, career_list_id } = props;
+
   return (
     <div style={{ marginTop: '15px' }}>
       <div className="category" onClick={handleCategoryClick}>
@@ -27,7 +28,7 @@ const CategoryCard = props => {
           </div>
 
           <div className="categoryContainer">
-            <p className="categoryTitle">{name}</p>
+            <p className="categoryTitle">{categoryName}</p>
             <p className="categorySubTitle">{subtitle}</p>
 
           </div>

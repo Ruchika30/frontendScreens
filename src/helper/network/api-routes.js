@@ -3,6 +3,7 @@ const baseUrl = process.env.REACT_APP_BE_URL || '';
 
 const prefixCareersSector = 'career-sector';
 const prefixCareerList = 'career-list';
+const prefixBlog = 'blog';
 
 const apiEndpoints = {
   careerSectors: 'career-sector',
@@ -13,7 +14,10 @@ const apiEndpoints = {
   search: 'search',
   menu: 'menu',
   salary: 'salary',
-  videos: 'videos'
+  videos: 'videos',
+  category: 'category',
+  articles: 'articles'
+
 };
 
 const API_ROUTES = {
@@ -26,8 +30,10 @@ const API_ROUTES = {
   searchCareer: `${api}/${prefixCareerList}/${apiEndpoints.search}`,
   careerListMenu: `${api}/${apiEndpoints.menu}`,
   getAvgSalary: `${api}/${apiEndpoints.salary}`,
-  getVideos: `${api}/${apiEndpoints.videos}`
-
+  getVideos: `${api}/${apiEndpoints.videos}`,
+  allBlogsAllcategories: `${api}/${prefixBlog}/${apiEndpoints.category}`,
+  getBlogsBycategory: `${api}/${prefixBlog}/${apiEndpoints.category}`,
+  getArticle: `${api}/${prefixBlog}/${apiEndpoints.articles}`
 };
 
 export default API_ROUTES;
