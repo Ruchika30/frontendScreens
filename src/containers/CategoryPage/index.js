@@ -17,7 +17,8 @@ const CategoryPage = ({ location, idDetailContext }) => {
   const history = useHistory();
   const [categoryId, setCategoryId] = useState('');
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
-  const [actegpryName, setCategoryName] = useState('');
+  const [categoryName, setCategoryName] = useState('');
+  const [description, setCategoryDesc] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const [blogList, setBlogList] = useState([]);
   const { show, hide } = LoaderProvider();
@@ -25,9 +26,10 @@ const CategoryPage = ({ location, idDetailContext }) => {
   const getInitialData = async id => {
     try {
       show();
-      const { blog_posts, categoryName } = await getBlogsByCategoriesSrvc(id);
+      const { blog_posts, categoryName, categoryDec } = await getBlogsByCategoriesSrvc(id);
       setBlogList(blog_posts);
       setCategoryName(categoryName);
+      setCategoryDesc(categoryDec);
       hide();
     } catch (error) {
       // setErrorFlag(true);
@@ -83,7 +85,7 @@ const CategoryPage = ({ location, idDetailContext }) => {
       </div>
 
       <div>
-        <Header categoryName={actegpryName} description="Decription to be sent" />
+        <Header categoryName={categoryName} description={description} />
       </div>
 
       <div className="contentWrapper">

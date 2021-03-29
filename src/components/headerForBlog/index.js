@@ -21,6 +21,7 @@ const Header = props => {
   const {
     main, categoryName, description, noIcons, animationRqrd
   } = props;
+  debugger;
   const [isFollowing, setFollowing] = useState(false);
   const history = useHistory();
 
