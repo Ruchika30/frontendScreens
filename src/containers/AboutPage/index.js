@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar';
-
 import { useHistory } from 'react-router-dom';
-
 import style from './style.scss';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 

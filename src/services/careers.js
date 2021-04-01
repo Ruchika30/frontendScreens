@@ -77,3 +77,8 @@ export const getVideoLibrary = promiseMemoize(async id => {
   const response = await api('GET', `${API_ROUTES.getVideos}/${id}`, false);
   return response;
 });
+
+export const sendBlogContent = promiseMemoize(async params => {
+  const response = await api('POST', `${API_ROUTES.postBlogdata}`, params, false);
+  return response;
+});

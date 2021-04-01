@@ -29,16 +29,13 @@ import { Helmet } from 'react-helmet';
 const CareerList = ({ idDetailContext }) => {
   const [carrerList, setCareerList] = useState([]);
   const { headings, tag, srchWrapper } = style;
-  // const { id } = useParams();
   const history = useHistory();
   const {
-    careerId, setCareerId, careerName, careerSector
+    careerId, setCareerId, careerName, careerSector, setCareerName
   } = idDetailContext;
   const [searchTerm, setSearchTerm] = useState(null);
   const { show, hide } = LoaderProvider();
   const { showGoTop, hideGoTop } = GoToTopProvider();
-
-  console.log('idd--', careerId);
 
   const getInitialData = async (id, pageNo) => {
     try {
@@ -73,7 +70,8 @@ const CareerList = ({ idDetailContext }) => {
     }
   `;
   const handleCareerClick = careerName => {
-    history.push(`/career-sectors/${careerSector}/${careerName.split(' ').join('')}`);
+    setCareerName(careerName);
+    history.push(`/career-sectors/${careerSector}/${careerName.split(' ').join('')}/video-library`);
   };
 
   const handleCareerSearch = e => {

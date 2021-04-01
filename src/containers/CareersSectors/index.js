@@ -70,7 +70,7 @@ const CareersPage = ({ idDetailContext }) => {
       show();
       const response = await careerSectors();
       setSectors(response);
-      hide();
+      // hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);

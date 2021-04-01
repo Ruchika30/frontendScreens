@@ -37,7 +37,10 @@ export async function api(type, requestURL, data, isSecure = false, pageNo) {
     responseType: 'json',
     headers
   })
-    .then(response => response.data)
+    .then(response => {
+      debugger;
+      return console.log('resp---', response);
+    })
     .catch(async error => {
       console.log('error--', error);
       return error.response.data;
