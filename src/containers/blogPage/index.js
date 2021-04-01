@@ -13,6 +13,7 @@ import { darkBlue } from '../../assets/styles/colors';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import { getArticle as getArticleSrvc } from '../../services/blog';
 import LoaderProvider from '../../hooks/use-loader';
+import ReactMarkdown from 'react-markdown';
 
 const BlogPage = ({ location }) => {
   const { id } = location.state;
@@ -149,7 +150,8 @@ const BlogPage = ({ location }) => {
           </div>
           <div className="contentContainer">
             {/* description */}
-            {blogPost.content}
+            {/* {blogPost.content} */}
+            <ReactMarkdown source={blogPost.content} />
           </div>
 
           <div className="blogFooter">

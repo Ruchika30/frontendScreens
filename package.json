@@ -44,6 +44,7 @@
     "react-helmet": "^6.1.0",
     "react-intl": "^5.4.3",
     "react-jss": "^10.3.0",
+    "react-markdown": "^5.0.3",
     "react-redux": "^7.2.1",
     "react-responsive-carousel": "^3.2.11",
     "react-router": "^5.2.0",
