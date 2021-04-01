@@ -6,7 +6,6 @@ import { Button, TextField, TextareaAutosize } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import LoaderProvider from '../hooks/use-loader';
 import { sendBlogContent } from '../services/careers';
-import ReactMarkdown from 'react-markdown';
 
 const ContentPage = () => {
   const [title, setTitle] = useState('');
@@ -36,7 +35,8 @@ const ContentPage = () => {
       const data = {
         title,
         author,
-        content: JSON.stringify(content),
+        // content: JSON.stringify(content),
+        content,
         category,
         description,
         minutes

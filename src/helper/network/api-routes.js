@@ -33,7 +33,9 @@ const API_ROUTES = {
   getVideos: `${api}/${apiEndpoints.videos}`,
   allBlogsAllcategories: `${api}/${prefixBlog}/${apiEndpoints.category}`,
   getBlogsBycategory: `${api}/${prefixBlog}/${apiEndpoints.category}`,
-  getArticle: `${api}/${prefixBlog}/${apiEndpoints.articles}`
+  getArticle: `${api}/${prefixBlog}/${apiEndpoints.articles}`,
+  postBlogdata: `${api}/blog/category/add`
+
 };
 
 export default API_ROUTES;
