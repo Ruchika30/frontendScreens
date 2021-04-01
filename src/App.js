@@ -19,6 +19,7 @@ const BlogPage = lazy(() => import('../src/containers/blogPage'));
 const CategoryPage = lazy(() => import('../src/containers/CategoryPage'));
 const AboutPage = lazy(() => import('../src/containers/AboutPage'));
 const HomePage = lazy(() => import('./containers/HomePage'));
+const ContentPg = lazy(() => import('./containers/Contentpage'));
 
 const App = () => (
   <div className="App" style={{ backgroundColor: pagewhite, minHeight: '100vh' }}>
@@ -41,6 +42,8 @@ const App = () => (
                 <Route exact path="/article" component={BlogPage} />
                 <Route exact path="/category" component={CategoryPage} />
                 <Route exact path="/about" component={AboutPage} />
+                <Route exact path="/content" component={ContentPg} />
+
               </CareerIdValueProvider>
             </Switch>
           </Suspense>
