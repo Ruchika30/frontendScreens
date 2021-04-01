@@ -15,11 +15,12 @@ const Card = props => {
   const [isTagVisible, setTagVisibility] = useState(false);
   const [istitle, setTitle] = useState(title);
 
-  const getDescription = description => {
-    if (description.split('').length > 35) {
-      const description = `${description.split(' ').splice(0, 35).join(' ')}. . . . . .`;
+  const getDescription = value => {
+    if (value.split('').length > 35) {
+      debugger;
+      const description = `${value.split(' ').splice(0, 35).join(' ')}. . . . . .`;
+      return description;
     }
-    return description;
   };
 
   const onTagClick = titleValue => {
@@ -73,7 +74,8 @@ const Card = props => {
         </div>
 
         <div onClick={onDescriptionClick}>
-          <p className="blogItemContent">{getDescription(description)}</p>
+          {/* <p className="blogItemContent">{() => getDescription(description)}</p> */}
+          <p className="blogItemContent">{description}</p>
           {/* {isTagVisible ?
                   <p className="blogItemContent">{getDescription(tag1Description)}</p>:
                   <p className="blogItemContent">{getDescription(description)}</p>
