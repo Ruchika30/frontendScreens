@@ -8,7 +8,7 @@ export { default as logoWithTxt } from './logo_text_png.png';
 export { default as cancel } from './cancel.svg';
 export { default as rightArrow } from './right-arrow.svg';
 export { default as profile } from './avatar.svg';
-export { default as category_ic } from './copy.svg';
+export { default as category_ic } from './paper.png';
 export { default as kids } from './kids.png';
 export { default as whyUs } from './whyUs.jpg';
 export { default as careerChangers } from './careerChangers.png';

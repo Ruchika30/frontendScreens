@@ -49,7 +49,6 @@ const BlogPage = ({ location }) => {
       show();
       const response = await getArticleSrvc(id);
       setblogPostdata(response[0]);
-
       hide();
     } catch (error) {
       // setErrorFlag(true);
@@ -94,6 +93,11 @@ const BlogPage = ({ location }) => {
   };
 
   window.onscroll = () => scrollFunction();
+
+  const getContent = str => {
+    const val = str?.split('"').join('');
+    return val;
+  };
 
   const getPublishedDate = date => moment(date).format(' MMMM Do YYYY');
   return (
@@ -151,7 +155,7 @@ const BlogPage = ({ location }) => {
           <div className="contentContainer">
             {/* description */}
             {/* {blogPost.content} */}
-            <ReactMarkdown source={blogPost.content} />
+            <ReactMarkdown source={getContent(blogPost.content)} />
           </div>
 
           <div className="blogFooter">

@@ -35,8 +35,8 @@ const ContentPage = () => {
       const data = {
         title,
         author,
-        // content: JSON.stringify(content),
-        content,
+        content: JSON.stringify(content),
+        // content,
         category,
         description,
         minutes

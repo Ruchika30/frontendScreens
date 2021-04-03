@@ -37,7 +37,7 @@ export default {
         text-decoration: none;
         color: ${darkPurple} ;
         font-family: refficreeBold;
-        padding: 5px 12px;
+        padding: 5px 30px;
         font-size: 19px;
         border-radius: 20px;
         border: 2px solid ${seaBlueColor};;
