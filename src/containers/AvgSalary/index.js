@@ -140,7 +140,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const links = [
     { link: '/', value: 'Home' },
     { link: '/career-sectors', value: 'CareerSectors' },
-    { link: `/career-sectors/${careerSector}/${careerName}`, value: 'CareerList' },
+    { link: `/career-sectors/${careerSector}`, value: 'CareerList' },
     { value: 'CareerDetails' }
 
   ];

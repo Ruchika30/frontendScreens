@@ -11,10 +11,9 @@ import { gear } from '../../assets/icons';
 import {
   alignVerticallyCenter, heading, title, w100
 } from '../../assets/styles/reset';
-import { aquaBlue, darkBlue, darkPurple } from '../../assets/styles/colors';
-import { useHistory, useParams } from 'react-router';
+import { aquaBlue, darkBlue } from '../../assets/styles/colors';
+import { useHistory } from 'react-router';
 import Layout from '../../components/layout/index.js';
-import styles from '../../assets/styles/base';
 import { fontSize28, lato } from '../../assets/styles/typography';
 import { getVideoLibrary as getVideoLibrarySrvc } from '../../services/careers';
 import BreadCrumb from '../../components/breadCrumb';
@@ -79,8 +78,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
 
   useEffect(() => {
     getInitialData(careerId);
-    // setCareerId(careerId);
-
+    setMenuItem('Video Library');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
