@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import style from '../CareerPage/style';
 import Navbar from '../../components/navbar';
 import consumer from '../../context/consumer';
@@ -26,17 +26,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import CardWithDetailOnSide from '../../components/CardWithDetailOnSide';
+import { IdValueContext } from '../../context/index';
 
 const VideoLibrary = ({ idDetailContext, ref }) => {
   const {
     careerId, setCareerId, careerName, careerSector
   } = idDetailContext;
   const [expandMenu, setExpandMenu] = useState('');
-  const [menuItem, setMenuItem] = useState('Video Library');
   // const [menuList, setMenuList] = useState([]);
   const [skillList, setSkills] = useState([]);
   const [menuLink, setMenuLink] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
+  const { menuItem, setMenuItem } = useContext(IdValueContext);
 
   const history = useHistory();
   const {

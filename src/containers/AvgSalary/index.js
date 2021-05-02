@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useContext, useEffect, useRef, useState
+} from 'react';
 import style from '../CareerPage/style';
 import Navbar from '../../components/navbar';
 import consumer from '../../context/consumer';
@@ -31,14 +33,14 @@ import GoToTopProvider from '../../hooks/use-topNavigation';
 import AvgSalary from '.';
 import CardComponent from '../../components/cardForVideoLibrary';
 import Chart from '../../components/chart';
-import { mTop2 } from '../../assets/styles/spacing';
+import { IdValueContext } from '../../context/index';
 
 const VideoLibrary = ({ idDetailContext, ref }) => {
   const {
     careerId, setCareerId, careerName, careerSector
   } = idDetailContext;
   const [expandMenu, setExpandMenu] = useState('');
-  const [menuItem, setMenuItem] = useState('Video Library');
+  // const [menuItem, setMenuItem] = useState('Video Library');
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('Career Options');
   const [menuLink, setMenuLink] = useState('');
@@ -49,6 +51,8 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const { show, hide } = LoaderProvider();
   const refFromUseRef = useRef(null);
   const history = useHistory();
+  const { menuItem, setMenuItem } = useContext(IdValueContext);
+
   const {
     header, headerContainer, inActive, active, imgContainer, menuItemsStyle,
     menuTitle, itemContainer, icon, contentWrapper, dropDownMenu,
@@ -103,6 +107,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
       }
       hide();
     } catch (error) {
+      hide();
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
       // hide();

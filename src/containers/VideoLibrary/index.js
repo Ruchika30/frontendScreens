@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useContext, useEffect, useRef, useState
+} from 'react';
 import style from '../CareerPage/style';
 import Navbar from '../../components/navbar';
 import consumer from '../../context/consumer';
-import Overview from '.';
 import ScrollIntoView from 'react-scroll-into-view';
 import { gear } from '../../assets/icons';
 import {
@@ -24,18 +25,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import CardComponent from '../../components/cardForVideoLibrary';
+import { IdValueContext } from '../../context/index';
 
 const VideoLibrary = ({ idDetailContext, ref }) => {
   const {
     careerId, setCareerId, careerName, careerSector
   } = idDetailContext;
   const [expandMenu, setExpandMenu] = useState('');
-  const [menuItem, setMenuItem] = useState('Video Library');
-  // const [menuList, setMenuList] = useState([]);
+  // const [menuItem, setMenuItem] = useState('Video Library');
   const [menuLink, setMenuLink] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const [listOfVideos, setlistOfVideos] = useState([]);
-  const [srcLink, setSrcLink] = useState('https://www.youtube.com/embed/E7wJTI-1dvQ');
+  // const [srcLink, setSrcLink] = useState('https://www.youtube.com/embed/E7wJTI-1dvQ');
+  const [srcLink, setSrcLink] = useState('');
   const history = useHistory();
   const {
     header, headerContainer, inActive, active, imgContainer, menuItemsStyle,
@@ -44,6 +46,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   } = style;
 
   const { show, hide } = LoaderProvider();
+  const { menuItem, setMenuItem } = useContext(IdValueContext);
 
   const panel = css`
   background-color : #241c4f;
@@ -65,10 +68,9 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const getInitialData = async id => {
     try {
       show();
-      const response = await getVideoLibrarySrvc('5fc25408edd5611e28402703');
-      debugger;
+      // const response = await getVideoLibrarySrvc('5fc25408edd5611e28402703');
+      const response = await getVideoLibrarySrvc(id);
       setlistOfVideos(response);
-
       hide();
     } catch (error) {
       // setErrorFlag(true);
@@ -126,6 +128,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const handleMenuClick = item => {
     history.push(`/career-sectors/${careerSector}/${careerName}/${item.link}`);
     setMenuItem(item.value);
+    debugger;
     setMenuLink(item.link);
     // setSelectedMenu
     toggleMenu();

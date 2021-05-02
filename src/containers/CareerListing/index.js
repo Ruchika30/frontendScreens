@@ -71,6 +71,7 @@ const CareerList = ({ idDetailContext }) => {
   `;
   const handleCareerClick = careerName => {
     setCareerName(careerName);
+    // default page is Video-library after clicking on any career
     history.push(`/career-sectors/${careerSector}/${careerName.split(' ').join('')}/video-library`);
   };
 

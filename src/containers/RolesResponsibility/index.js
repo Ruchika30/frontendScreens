@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useContext, useEffect, useRef, useState
+} from 'react';
 import style from '../CareerPage/style';
 import Navbar from '../../components/navbar';
 import consumer from '../../context/consumer';
@@ -28,19 +30,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import GoToTopProvider from '../../hooks/use-topNavigation';
 import { mTop2, pTop3 } from '../../assets/styles/spacing';
+import { IdValueContext } from '../../context/index';
 
 const VideoLibrary = ({ idDetailContext, ref }) => {
   const {
     careerId, setCareerId, careerName, careerSector
   } = idDetailContext;
   const [expandMenu, setExpandMenu] = useState('');
-  const [menuItem, setMenuItem] = useState('Video Library');
+  // const [menuItem, setMenuItem] = useState('Video Library');
   // const [menuList, setMenuList] = useState([]);
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('Career Options');
   const [menuLink, setMenuLink] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const [responsibilities, setResponsibilities] = useState([]);
+  const { menuItem, setMenuItem } = useContext(IdValueContext);
 
   const refFromUseRef = useRef(null);
   const history = useHistory();

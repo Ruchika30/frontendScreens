@@ -114,7 +114,6 @@ export default {
         padding: 10px;
         border: 1px solid black;
         width: 100%;
-        // border-radius: 2px;
           border-top-left-radius: 2px;
            border-bottom-left-radius: 2px;
         color:  ${paperColor};

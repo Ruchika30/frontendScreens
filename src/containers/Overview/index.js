@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import style from '../CareerPage/style';
 import Navbar from '../../components/navbar';
 import consumer from '../../context/consumer';
@@ -25,6 +25,7 @@ import Footer from '../../components/footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import GoToTopProvider from '../../hooks/use-topNavigation';
+import { IdValueContext } from '../../context/index';
 
 import { mTop2 } from '../../assets/styles/spacing';
 
@@ -34,7 +35,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   } = idDetailContext;
   const { id } = useParams();
   const [expandMenu, setExpandMenu] = useState('');
-  const [menuItem, setMenuItem] = useState('Video Library');
+  // const [menuItem, setMenuItem] = useState('');
   // const [menuList, setMenuList] = useState([]);
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('Career Options');
@@ -42,6 +43,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const [overviewData, setOverViewData] = useState('');
   const { courseName, overviewText } = overviewData || {};
+  const { menuItem, setMenuItem } = useContext(IdValueContext);
 
   const history = useHistory();
   const {
@@ -223,22 +225,25 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
                     <div style={{ marginBottom: '10px', marginLeft: '20px' }}>
                       <h4 css={[headingStyle, lato]}>CAREER MENU</h4>
                     </div>
-                    {menuList.map((item, index) => (
-                      <ScrollIntoView
-                        smooth="smooth"
-                        selector={item && item.link}
-                        style={{ position: 'relative' }}
-                        onClick={() => handleMenuClick(item, index)}
-                      >
-                        <div css={[itemContainer]}>
-                          <ul css={[lato, menuItem === item.value ? active : inActive]}>
-                            <li>
-                              {item.value}
-                            </li>
-                          </ul>
-                        </div>
-                      </ScrollIntoView>
-                    ))}
+                    {menuList.map((item, index) => {
+                      debugger;
+                      return (
+                        <ScrollIntoView
+                          smooth="smooth"
+                          selector={item && item.link}
+                          style={{ position: 'relative' }}
+                          onClick={() => handleMenuClick(item, index)}
+                        >
+                          <div css={[itemContainer]}>
+                            <ul css={[lato, menuItem === item.value ? active : inActive]}>
+                              <li>
+                                {item.value}
+                              </li>
+                            </ul>
+                          </div>
+                        </ScrollIntoView>
+                      );
+                    })}
 
                   </div>
                 ) : null}
