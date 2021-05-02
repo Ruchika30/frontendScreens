@@ -32,8 +32,6 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
     careerId, setCareerId, careerName, careerSector
   } = idDetailContext;
   const [expandMenu, setExpandMenu] = useState('');
-  // const [menuItem, setMenuItem] = useState('Video Library');
-  const [menuLink, setMenuLink] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const [listOfVideos, setlistOfVideos] = useState([]);
   // const [srcLink, setSrcLink] = useState('https://www.youtube.com/embed/E7wJTI-1dvQ');
@@ -128,9 +126,6 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const handleMenuClick = item => {
     history.push(`/career-sectors/${careerSector}/${careerName}/${item.link}`);
     setMenuItem(item.value);
-    debugger;
-    setMenuLink(item.link);
-    // setSelectedMenu
     toggleMenu();
     if (expandMenu) {
       topFunction();
@@ -175,7 +170,6 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
         <Layout contentStyle={{
           width: '100%',
           margin: 'auto'
-          // backgroundColor: darkBlue
         }}
         >
           <div style={{
@@ -247,8 +241,6 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
                 {/* content */}
                 {menuList.length ? (
                   <div css={contentWrapper}>
-                    {/* {menuList && menuList.map(menu => ( */}
-                    {/* <div id="mainContent">{getCorrespondingContent(menu.link)}</div> */}
                     <div id="mainContent">
                       <div css={ref}>
                         <div css={heading}>Video Library</div>

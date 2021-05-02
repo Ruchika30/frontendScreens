@@ -33,13 +33,8 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const {
     careerId, setCareerId, careerName, careerSector
   } = idDetailContext;
-  const { id } = useParams();
   const [expandMenu, setExpandMenu] = useState('');
-  // const [menuItem, setMenuItem] = useState('');
-  // const [menuList, setMenuList] = useState([]);
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState('Career Options');
-  const [menuLink, setMenuLink] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const [overviewData, setOverViewData] = useState('');
   const { courseName, overviewText } = overviewData || {};
@@ -130,8 +125,6 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const handleMenuClick = item => {
     history.push(`/career-sectors/${careerSector}/${careerName}/${item.link}`);
     setMenuItem(item.value);
-    setMenuLink(item.link);
-    // setSelectedMenu
     toggleMenu();
     if (expandMenu) {
       topFunction();

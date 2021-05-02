@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar';
 import Header from '../../components/headerForBlog';
 import Card from '../../components/cardForBlog';
 import './style.scss';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { GET_CATEGORY_ARTICLES_QUERY } from '../../queries/category/getCategoryArticles';
 import Query from '../../components/query';
 import { upwardArrow } from '../../assets/icons';

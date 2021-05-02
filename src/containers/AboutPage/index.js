@@ -7,7 +7,6 @@ import { faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-s
 
 const AboutPage = ({ location }) => {
   const history = useHistory();
-  const [idValue, setIdValue] = useState('');
   const [isVisible, setNavbarVisible] = useState(true);
 
   const openInNewTab = url => {

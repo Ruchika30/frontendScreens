@@ -6,7 +6,6 @@ import React, {
 import style from '../CareerPage/style';
 import Navbar from '../../components/navbar';
 import consumer from '../../context/consumer';
-import Overview from '.';
 import ScrollIntoView from 'react-scroll-into-view';
 import { gear } from '../../assets/icons';
 import {
@@ -15,7 +14,6 @@ import {
 import { aquaBlue, darkBlue, darkPurple } from '../../assets/styles/colors';
 import { useHistory, useParams } from 'react-router';
 import Layout from '../../components/layout/index.js';
-import styles from '../../assets/styles/base';
 import {
   fontSize20, fontSize28, gothic, gothicSemiBold, lato, latoBlack
 } from '../../assets/styles/typography';
@@ -40,13 +38,9 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   // const [menuItem, setMenuItem] = useState('Video Library');
   // const [menuList, setMenuList] = useState([]);
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState('Career Options');
-  const [menuLink, setMenuLink] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const [responsibilities, setResponsibilities] = useState([]);
   const { menuItem, setMenuItem } = useContext(IdValueContext);
-
-  const refFromUseRef = useRef(null);
   const history = useHistory();
   const {
     contentContainer, header, videoWrapper, courseNameStyle, gridStyle, headerContainer, inActive, active, actionBtns, wrapper, imgContainer, menuItemsStyle,
@@ -158,10 +152,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
 
   const handleMenuClick = item => {
     history.push(`/career-sectors/${careerSector}/${careerName}/${item.link}`);
-    debugger;
     setMenuItem(item.value);
-    setMenuLink(item.link);
-    // setSelectedMenu
     toggleMenu();
     if (expandMenu) {
       topFunction();

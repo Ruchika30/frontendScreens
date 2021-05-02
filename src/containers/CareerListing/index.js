@@ -5,8 +5,7 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import style from './style';
 import Navbar from '../../components/navbar';
 import Layout from '../../components/layout/index.js';
-import styles from '../../assets/styles/base';
-import { aquaBlue, lightCyan, skyBlueColor } from '../../assets/styles/colors';
+import { aquaBlue, lightCyan } from '../../assets/styles/colors';
 import SearchBar from '../../components/searchBar';
 import {
   m3, mLeft0
@@ -42,7 +41,6 @@ const CareerList = ({ idDetailContext }) => {
       show();
       const { careers } = await careerListsByIdService(id, pageNo);
       setCareerList(careers);
-
       hide();
     } catch (error) {
       // setErrorFlag(true);

@@ -14,10 +14,6 @@ import styles from '../../assets/styles/base';
 import {
   aquaBlue, celestialBlue, darkBlue, lightCyan, lightGreyColor, paperColor, skyBlueColor
 } from '../../assets/styles/colors';
-import { heading } from '../../assets/styles/reset';
-import {
-  fontSize28, gothicSemiBold, lato, latoBlack, w700
-} from '../../assets/styles/typography';
 import SearchBar from '../../components/searchBar';
 import { m3, mLeft0, pLeft6 } from '../../assets/styles/spacing';
 import { careerSectors, searchCareerSectors } from '../../services/careers';

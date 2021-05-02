@@ -33,9 +33,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
     careerId, setCareerId, careerName, careerSector
   } = idDetailContext;
   const [expandMenu, setExpandMenu] = useState('');
-  // const [menuList, setMenuList] = useState([]);
   const [skillList, setSkills] = useState([]);
-  const [menuLink, setMenuLink] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const { menuItem, setMenuItem } = useContext(IdValueContext);
 
@@ -121,8 +119,6 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const handleMenuClick = item => {
     history.push(`/career-sectors/${careerSector}/${careerName}/${item.link}`);
     setMenuItem(item.value);
-    setMenuLink(item.link);
-    // setSelectedMenu
     toggleMenu();
     if (expandMenu) {
       topFunction();
