@@ -58,10 +58,10 @@ export const getRolesAndResponsibilities = promiseMemoize(async id => {
   return response;
 });
 
-export const searchCareerSectors = async data => {
+export const searchCareerSectors = promiseMemoize(async data => {
   const response = await api('POST', `${API_ROUTES.searchSector}`, data, false, 0);
   return response;
-};
+});
 
 export const searchCareer = async data => {
   const response = await api('POST', `${API_ROUTES.searchCareer}`, data, false, 0);

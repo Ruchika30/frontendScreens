@@ -8,6 +8,7 @@ const CareerIdValueProvider = props => {
   const [careerName, setCareerName] = useState('');
   const [careerSector, setCareerSector] = useState('');
   const [menuItem, setMenuItem] = useState('Video Library');
+  const [careerSectorID, setCareerSectorID] = useState('');
 
   return (
     <IdValueContext.Provider
@@ -16,10 +17,13 @@ const CareerIdValueProvider = props => {
         setCareerId,
         careerSector,
         setCareerSector,
+        careerSectorID,
+        setCareerSectorID,
         careerName,
         setCareerName,
-        setMenuItem,
-        menuItem
+        menuItem,
+        setMenuItem
+
       }}
     >
       {props.children}

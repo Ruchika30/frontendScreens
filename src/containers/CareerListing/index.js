@@ -30,7 +30,7 @@ const CareerList = ({ idDetailContext }) => {
   const { headings, tag, srchWrapper } = style;
   const history = useHistory();
   const {
-    careerId, setCareerId, careerName, careerSector, setCareerName
+    careerId, setCareerId, careerName, careerSector, setCareerName, careerSectorID
   } = idDetailContext;
   const [searchTerm, setSearchTerm] = useState(null);
   const { show, hide } = LoaderProvider();
@@ -67,10 +67,11 @@ const CareerList = ({ idDetailContext }) => {
                width: 90% ;
     }
   `;
-  const handleCareerClick = careerName => {
-    setCareerName(careerName);
+  const handleCareerClick = item => {
+    setCareerId(item._id);
+    setCareerName(item.career_name);
     // default page is Video-library after clicking on any career
-    history.push(`/career-sectors/${careerSector}/${careerName.split(' ').join('')}/video-library`);
+    history.push(`/career-sectors/${careerSector}/${item.career_name.split(' ').join('')}/video-library`);
   };
 
   const handleCareerSearch = e => {
@@ -96,20 +97,19 @@ const CareerList = ({ idDetailContext }) => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (searchTerm) {
-        const body = { career_name: searchTerm, career_sector_id: careerId };
+        const body = { career_name: searchTerm, career_sector_id: careerSectorID };
         show();
         const { career_list } = await searchCareer(body);
         setCareerList(career_list);
         hide();
-      } else { getInitialData(careerId); }
+      } else { getInitialData(careerSectorID); }
     }, 1500);
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
 
   useEffect(() => {
-    getInitialData(careerId);
-    // setCareerId(id);
+    getInitialData(careerSectorID);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -130,7 +130,6 @@ const CareerList = ({ idDetailContext }) => {
             <BreadCrumb listOfLinks={links} txtColor="black" />
           </div>
           <div css={[m3, mLeft0]}>Career Options</div>
-          {/* {carrerList.length ? ( */}
           <div style={{ width: '100%' }} css={srchWrapper}>
             <SearchBar
               searchvalue={handleCareerSearch}
@@ -155,7 +154,7 @@ const CareerList = ({ idDetailContext }) => {
         ))} */}
           <div style={{ marginTop: '20px' }}>
             {carrerList.map(item => (
-              <div onClick={() => handleCareerClick(item.career_name)}>
+              <div onClick={() => handleCareerClick(item)}>
                 <Table careerData={item} />
               </div>
             ))}
