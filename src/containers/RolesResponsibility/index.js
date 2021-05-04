@@ -301,20 +301,20 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
 
                       </div>
                     </div>
-                    <div style={{
-                      bottom: '0px',
-                      width: '100%',
-                      marginTop: '5%'
-                    }}
-                    >
-                      <Footer />
-                    </div>
+
                   </div>
                 ) : null}
               </div>
 
             </div>
           ) : null}
+          <div style={{
+            bottom: '0px',
+            width: '100%'
+          }}
+          >
+            <Footer />
+          </div>
 
           {/* { goToTopIconVisiblity && <GoToTop goToTopIconVisiblity />} */}
 

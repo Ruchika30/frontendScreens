@@ -9,7 +9,7 @@ import { dFlex } from '../../assets/styles/flexbox';
 export default {
   videoWrapper: css`
           position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 40.25%;
             height: 0;
 
     `,
@@ -19,7 +19,7 @@ export default {
             top: 0;
             left: 0;
             width: 90%;
-            height: 100%;
+            height: 90%;
     `,
 
   actionBtns: css`  
@@ -82,7 +82,6 @@ export default {
         background-color:  ${paperColor};
         &> div {
             padding: 3% 5%;
-
         }
        
          @media (max-width: 800px) {
@@ -93,11 +92,7 @@ export default {
            width: 100%;
            
         }
-
-   
-       
-       
-    `,
+  `,
 
   headerWrapper: css`
       width: 90%;

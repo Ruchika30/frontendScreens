@@ -55,7 +55,7 @@ const CareersPage = ({ idDetailContext }) => {
   const [sectors, setSectors] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const { show, hide } = LoaderProvider();
-  const { setCareerId, setCareerSector, careerSector } = idDetailContext;
+  const { setCareerSectorID, setCareerSector, careerSector } = idDetailContext;
   const {
     srchWrapper, imageWrapper
   } = style;
@@ -66,11 +66,11 @@ const CareersPage = ({ idDetailContext }) => {
       show();
       const response = await careerSectors();
       setSectors(response);
-      // hide();
+      hide();
     } catch (error) {
       // setErrorFlag(true);
       // handleError(error, setError, '/returnb2c', [getOrderRefundDataB2cService]);
-      // hide();
+      hide();
     }
   };
 
@@ -95,7 +95,7 @@ const CareersPage = ({ idDetailContext }) => {
 
   const handleSectorClick = (e, id, name) => {
     if (e.stopPropagation) { e.stopPropagation(); }
-    setCareerId(id);
+    setCareerSectorID(id);
     setCareerSector(name);
     history.push(`/career-sectors/${name}`);
   };
@@ -108,7 +108,6 @@ const CareersPage = ({ idDetailContext }) => {
         const response = await searchCareerSectors(body);
         setSectors(response);
       } else getInitialData();
-
       hide();
     }, 2000);
 

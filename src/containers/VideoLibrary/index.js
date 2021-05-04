@@ -28,7 +28,7 @@ import { IdValueContext } from '../../context/index';
 
 const VideoLibrary = ({ idDetailContext, ref }) => {
   const {
-    careerId, setCareerId, careerName, careerSector
+    careerId, careerName, careerSector
   } = idDetailContext;
   const [expandMenu, setExpandMenu] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
@@ -66,8 +66,8 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
     try {
       show();
       // const response = await getVideoLibrarySrvc('5fc25408edd5611e28402703');
-      const response = await getVideoLibrarySrvc(id);
-      setlistOfVideos(response);
+      const { videoList } = await getVideoLibrarySrvc(id);
+      setlistOfVideos(videoList);
       hide();
     } catch (error) {
       // setErrorFlag(true);
@@ -94,6 +94,11 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
     }
   };
 
+  const getCareerSector = careerSector => {
+    const value = careerSector.replaceAll(' ', '');
+    return value.toLowerCase();
+  };
+
   const menuList = [{
     _id: '60127b598387de0017a5350e', value: 'Video Library', link: 'video-library', id: 0, logo: 'fa fa-camera', hidden: false
   }, {
@@ -111,7 +116,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   const links = [
     { link: '/', value: 'Home' },
     { link: '/career-sectors', value: 'CareerSectors' },
-    { link: `/career-sectors/${careerSector}`, value: 'CareerList' },
+    { link: `/career-sectors/${getCareerSector(careerSector)}`, value: 'CareerList' },
     { value: 'CareerDetails' }
 
   ];
@@ -122,7 +127,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
   }
 
   const handleMenuClick = item => {
-    history.push(`/career-sectors/${careerSector}/${careerName}/${item.link}`);
+    history.push(`/career-sectors/${getCareerSector(careerSector)}/${careerName}/${item.link}`);
     setMenuItem(item.value);
     toggleMenu();
     if (expandMenu) {
@@ -205,6 +210,7 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
           {menuList ? (
             <div css={contentAndMenuWrapper}>
               {/* panel menu  */}
+
               <div style={{
                 display: 'flex',
                 // height: 'calc(100vh - 210px)',
@@ -239,43 +245,42 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
 
                 {/* content */}
                 {menuList.length ? (
-                  <div css={contentWrapper}>
-                    <div id="mainContent">
-                      <div css={ref}>
-                        <div css={heading}>Video Library</div>
-                        <section css={style.videoWrapper}>
-                          <iframe
-                            src={srcLink}
-                            frameBorder="0"
-                            allow="autoplay; encrypted-media"
-                            allowFullScreen
-                            title="video"
-                            css={style.iframeStyle}
+                  <div style={{ width: '100%' }}>
+                    <div css={contentWrapper}>
+                      <div id="mainContent">
+                        <div css={ref}>
+                          <div css={heading}>Video Library</div>
+                          <section css={style.videoWrapper}>
+                            <iframe
+                              src={srcLink}
+                              frameBorder="0"
+                              allow="autoplay; encrypted-media"
+                              allowFullScreen
+                              title="video"
+                              css={style.iframeStyle}
                             // width="360"
                             // height="149"
-                          />
-                        </section>
+                            />
+                          </section>
 
-                        <section style={{ marginTop: '15px' }}>
-                          <div css={title}> Clips of popular questions</div>
-                          <div style={{
-                            display: 'flex', overflow: 'auto', whiteSpace: 'nowrap', marginTop: '15px'
-                          }}
-                          >
-                            {listOfVideos?.map(item => (
-                              <div onClick={() => handleCardClick(item.link)}>
-                                <CardComponent cardProps={item} />
-                              </div>
-                            ))}
-
-                          </div>
-
-                        </section>
+                          <section style={{ marginTop: '15px' }}>
+                            <div css={title}> Clips of popular questions</div>
+                            <div style={{
+                              display: 'flex', overflow: 'auto', whiteSpace: 'nowrap', marginTop: '15px', maxWidth: '400px'
+                            }}
+                            >
+                              {listOfVideos?.map(item => (
+                                <div onClick={() => handleCardClick(item.link)}>
+                                  <CardComponent cardProps={item} />
+                                </div>
+                              ))}
+                            </div>
+                          </section>
+                        </div>
                       </div>
 
                     </div>
 
-                    {/* ))} */}
                     <div style={{
                       bottom: '0px',
                       width: '100%',
@@ -287,7 +292,6 @@ const VideoLibrary = ({ idDetailContext, ref }) => {
                   </div>
                 ) : null}
               </div>
-
             </div>
           ) : null}
 

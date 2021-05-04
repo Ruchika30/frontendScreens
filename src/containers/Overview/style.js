@@ -9,12 +9,6 @@ import { mRight2 } from '../../assets/styles/spacing';
 import { dFlex } from '../../assets/styles/flexbox';
 
 export default {
-  videoWrapper: css`
-          position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-
-    `,
 
   iframeStyle: css`
             position: absolute;
