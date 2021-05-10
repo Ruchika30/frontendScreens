@@ -5,15 +5,11 @@ import { category_ic, rightArrow } from '../../assets/icons';
 const CategoryCard = props => {
   const history = useHistory();
 
-  const handleCategoryClick = () => {
-    history.push('/category', { categoryId: career_list_id });
-  };
-
   const { categoryName, subtitle, career_list_id } = props;
 
   return (
     <div style={{ marginTop: '15px' }}>
-      <div className="category" onClick={handleCategoryClick}>
+      <div className="category">
         <div style={{ display: 'flex', alignItems: 'center' }}>
 
           <div>

@@ -31,7 +31,7 @@
     "history": "^5.0.0",
     "jest-emotion": "^10.0.32",
     "jest-fetch-mock": "^3.0.3",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "promise-memoize": "^1.2.1",

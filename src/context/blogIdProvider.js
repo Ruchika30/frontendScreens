@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-import { IdValueContext } from './index';
+import { BlogValueContext } from './index';
 // Create Context Object
 
 // Create a provider for components to consume and subscribe to changes
-const blogIdProvider = props => {
+const BlogIdProvider = props => {
   const [categoryId, setCategoryId] = useState('');
   const [categoryName, setCategoryName] = useState('');
+  const [blogId, setBlogId] = useState('');
 
   return (
-    <IdValueContext.Provider
+    <BlogValueContext.Provider
       value={{
-        categoryId, setCategoryId, categoryName, setCategoryName
+        categoryId,
+        setCategoryId,
+        categoryName,
+        setCategoryName,
+        blogId,
+        setBlogId
       }}
     >
       {props.children}
-    </IdValueContext.Provider>
+    </BlogValueContext.Provider>
   );
 };
 
-export default blogIdProvider;
+export default BlogIdProvider;

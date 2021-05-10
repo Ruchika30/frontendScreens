@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './style.scss';
 import Tag from '../../components/tags';
 import Card from '../../components/cardForBlog';
@@ -6,7 +6,7 @@ import Navbar from '../../components/navbar';
 import GET_BLOGPOST from '../../queries/category/getArticle';
 import { GET_CATEGORY_ARTICLES_QUERY } from '../../queries/category/getCategoryArticles';
 import Query from '../../components/query';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { home, profile, upwardArrow } from '../../assets/icons';
 import moment from 'moment';
 import { darkBlue } from '../../assets/styles/colors';
@@ -14,9 +14,9 @@ import GoToTopProvider from '../../hooks/use-topNavigation';
 import { getArticle as getArticleSrvc } from '../../services/blog';
 import LoaderProvider from '../../hooks/use-loader';
 import ReactMarkdown from 'react-markdown';
+import { BlogValueContext } from '../../context';
 
-const BlogPage = ({ location }) => {
-  const { id } = location.state;
+const BlogPage = ({ location }, props) => {
   const [idValue, setIdValue] = useState('');
   const [recommBlogs, setRecomBlogs] = useState([]);
   const [isNavbarVisible, setNavbarVisible] = useState(false);
@@ -24,25 +24,8 @@ const BlogPage = ({ location }) => {
   const history = useHistory();
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const { show, hide } = LoaderProvider();
-
-  useEffect(() => {
-    setIdValue(id);
-  }, [id, location]);
-
-  const otherBlogs = [
-    {
-      title: 'Computer Engineering',
-      description:
-         'Non cillum deserunt exercitation qui non sunt sit. Non cillum deserunt exercitation qui non sunt sit. Non cillum deserunt exercitation qui non sunt sit',
-      previous: true
-    },
-    {
-      title: 'EXTC Engineering',
-      description:
-         'Non cillum deserunt exercitation qui non sunt sit. Non cillum deserunt exercitation qui non sunt sit. Non cillum deserunt exercitation qui non sunt sit',
-      next: true
-    }
-  ];
+  const blogId = window.location.pathname.split('/').pop();
+  const { categoryName, categoryId } = useContext(BlogValueContext);
 
   const getInitialData = async id => {
     try {
@@ -58,13 +41,9 @@ const BlogPage = ({ location }) => {
   };
 
   useEffect(() => {
-    getInitialData(id);
+    getInitialData(blogId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const handleDescriptionClick = id => {
-    history.push('/article', { id });
-  };
+  }, [blogId]);
 
   //  Get Scrollvalue for Progress bar
   const getPercent = () => {
@@ -92,6 +71,15 @@ const BlogPage = ({ location }) => {
     }
   };
 
+  // window.addEventListener('popstate', event => window.history.pushState({ categoryid: categoryId }, '', `/blog/${categoryName}`)  );
+
+  useEffect(() => () => {
+    if (history.action === 'POP') {
+      history.replace(`/blog/${categoryName}`, { categoryId });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   window.onscroll = () => scrollFunction();
 
   const getContent = str => {
@@ -111,7 +99,7 @@ const BlogPage = ({ location }) => {
       <div>
         <div className="blogContainer">
           <div className="contentContainer">
-            <h2>{blogPost.title}</h2>
+            <h1>{blogPost.title}</h1>
           </div>
           {/* author */}
           <div className="nameOuterContainer">
@@ -188,44 +176,6 @@ const BlogPage = ({ location }) => {
           {/* Recommended */}
         </div>
       </div>
-
-      {/* <Query query={GET_CATEGORY_ARTICLES_QUERY} id={categoryIdvalue}>
-        {({ data: { category } }) => {
-          const getRecommendedBlogs = () => {
-            if (category) {
-              const { blog_posts } = category;
-
-              const filterFunction = item => item.id !== idValue;
-              const filterMax = (fn, c) => x => c && fn(x) && c--;
-              const max = 4;
-              const recommendedBlogs = blog_posts.filter(filterMax(filterFunction, max));
-              return recommendedBlogs;
-            }
-            return null;
-          };
-
-          return (
-            <div className="recommendedContentWrapper">
-              <div className="recommendedTitle">Recommended</div>
-              <div className="cardWrapper">
-                {getRecommendedBlogs().map(item => (
-
-                  <Card
-                    id={item.id}
-                    key={`article__${item.id}`}
-                    title={item.Title}
-                    description={item.Description}
-                    onDescriptionClick={() => handleDescriptionClick(item.id)}
-                    // next={item.next}
-                    // previous={item.previous}
-                  />
-                ))}
-              </div>
-            </div>
-
-          );
-        }}
-      </Query> */}
 
     </div>
   );

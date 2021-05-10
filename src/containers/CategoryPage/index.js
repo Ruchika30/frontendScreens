@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../../components/navbar';
 import Header from '../../components/headerForBlog';
 import Card from '../../components/cardForBlog';
 import './style.scss';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { GET_CATEGORY_ARTICLES_QUERY } from '../../queries/category/getCategoryArticles';
 import Query from '../../components/query';
 import { upwardArrow } from '../../assets/icons';
@@ -12,16 +12,16 @@ import consumer from '../../context/consumer';
 import { Helmet } from 'react-helmet';
 import { getBlogsByCategories as getBlogsByCategoriesSrvc } from '../../services/blog';
 import LoaderProvider from '../../hooks/use-loader';
+import { BlogValueContext } from '../../context';
 
 const CategoryPage = ({ location, idDetailContext }) => {
   const history = useHistory();
-  const [categoryId, setCategoryId] = useState('');
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
-  const [categoryName, setCategoryName] = useState('');
   const [description, setCategoryDesc] = useState('');
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const [blogList, setBlogList] = useState([]);
   const { show, hide } = LoaderProvider();
+  const { categoryName, setCategoryName, setCategoryId } = useContext(BlogValueContext);
 
   const getInitialData = async id => {
     try {
@@ -46,8 +46,10 @@ const CategoryPage = ({ location, idDetailContext }) => {
 
   const [isVisible, setNavbarVisible] = useState(true);
 
-  const handleDescriptionClick = id => {
-    history.push('/article', { id });
+  const handleDescriptionClick = item => {
+    const blogId = item._id;
+    const blogTitle = item.title.replaceAll(' ', '-');
+    history.push(`/blog/${categoryName}/${blogTitle}`, { blogId });
   };
 
   const scrollFunction = () => {
@@ -90,18 +92,31 @@ const CategoryPage = ({ location, idDetailContext }) => {
 
       <div className="contentWrapper">
         <div className="cardWrapper">
-          {blogList.map(item => (
-            <Card
-              title={item.title}
-              description={item.description}
-              // next={item.next}
-              // previous={item.previous}
-              onDescriptionClick={() => handleDescriptionClick(item._id)}
-              // tag1={item.tagTitle1}
-              // tag2={item.tagTitle2}
-              // tag1Description={item.tagDescription}
-            />
-          ))}
+          {blogList.map(blog => {
+            const blogTitle = blog.title.replaceAll(' ', '-');
+
+            return (
+              <Link
+                to={{
+                  pathname: `/blog/${categoryName}/${blogTitle}/${blog._id}`,
+                  query: {
+                    blogId: blog?._id
+                  }
+                }}
+              >
+                <Card
+                  title={blog.title}
+                  description={blog.description}
+                  // next={item.next}
+                  // previous={item.previous}
+                  onDescriptionClick={() => handleDescriptionClick(blog)}
+                  // tag1={item.tagTitle1}
+                  // tag2={item.tagTitle2}
+                  // tag1Description={item.tagDescription}
+                />
+              </Link>
+            );
+          })}
         </div>
       </div>
 

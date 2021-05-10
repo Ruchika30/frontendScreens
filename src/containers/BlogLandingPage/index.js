@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useContext, useEffect, useState } from 'react';
 import './style.scss';
 import Header from '../../components/headerForBlog';
 import Card from '../../components/cardForBlog';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import CATEGORY_ARTICLES_QUERY from '../../queries/category/landingPageData';
 import Query from '../../components/query';
 import CategoryCard from '../../components/categoryLabel';
@@ -12,6 +13,7 @@ import Navbar from '../../components/navbar';
 import LoaderProvider from '../../hooks/use-loader';
 import { lightCyan } from '../../assets/styles/colors';
 import { getAllBlogsAllCategories as getAllBlogsAllCategoriesSrvc } from '../../services/blog';
+import { BlogValueContext } from '../../context';
 
 const BlogLandingPage = () => {
   const history = useHistory();
@@ -21,6 +23,8 @@ const BlogLandingPage = () => {
   const [goToTopIconVisiblity, setGoToTopIconVisiblity] = useState(false);
   const { showGoTop, hideGoTop } = GoToTopProvider();
   const [allData, setAllBlogsAllCategoriesData] = useState([]);
+  const [categoryName, setCategoryName] = useState('');
+  const { setBlogId, blogId } = useContext(BlogValueContext);
 
   const handleScroll = () => {
     if (window.scrollY > 150) {
@@ -59,16 +63,27 @@ const BlogLandingPage = () => {
     }
   };
 
-  const handleDescriptionClick = (id, categoryId) => {
-    history.push('/article', { id, categoryId });
+  const handleDescriptionClick = (item, blog) => {
+    const blogId = blog._id;
+    const blogTitle = blog.title.replaceAll(' ', '-');
+    history.push(`/blog/${item.categoryName}/${blogTitle}`, { blogId });
   };
 
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleCardClick = blog => {
+    setBlogId(blog._id);
+    console.log('blogId--', blog._id, blogId);
+  };
+
   window.onscroll = () => scrollFunction();
 
+  const handleCategoryClick = item => {
+    setCategoryName(item.categoryName);
+    history.push(`/blog/${item.categoryName}`, { categoryId: item.career_list_id });
+  };
   return (
     <div className="main">
       <Navbar fixed barColor={lightCyan} />
@@ -78,23 +93,37 @@ const BlogLandingPage = () => {
 
       {/* category Bar */}
       <div className="categoryCard">
-
         <div>
           <div style={{ margin: '5px' }}>
             {allData.map(item => (
               <>
-                <CategoryCard {...item} />
+                <div onClick={() => handleCategoryClick(item)}>
+                  <CategoryCard {...item} />
+                </div>
                 <div>
                   <div className="cardWrapper">
-                    {item.blog_posts.slice(0, 4).map(blog => (
-                      <Card
-                        id={blog._id}
-                        key={`article__${blog._id}`}
-                        title={blog.title}
-                        description={blog.description}
-                        onDescriptionClick={() => handleDescriptionClick(blog._id, blog.category.id)}
-                      />
-                    ))}
+                    {item.blog_posts.slice(0, 4).map(blog => {
+                      const blogTitle = blog.title.replaceAll(' ', '-');
+                      return (
+                        <Link
+                          to={{
+                            pathname: `/blog/${item.categoryName}/${blogTitle}/${blog._id}`,
+                            query: {
+                              blogId: blog?._id
+                            }
+                          }}
+                        >
+                          <Card
+                            id={blog._id}
+                            key={`article__${blog._id}`}
+                            title={blog.title}
+                            description={blog.description}
+                            // onDescriptionClick={() => handleDescriptionClick(item, blog)}
+
+                          />
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               </>
